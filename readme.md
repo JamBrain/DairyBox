@@ -1,5 +1,5 @@
 # DairyBox
-<img align="right" src="https://raw.githubusercontent.com/povrazor/dairybox/master/Docs/Logo.png">
+<img align="right" src="https://raw.githubusercontent.com/povrazor/dairybox/master/docs/Logo.png">
 DairyBox is the Web Development Toolchain for Ludum Dare's LD2015 web project. To participate and contribute to the core development, you will be using this suite of tools.
 
 DairyBox uses: 
