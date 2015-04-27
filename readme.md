@@ -1,32 +1,33 @@
 # DairyBox
 <img align="right" src="https://raw.githubusercontent.com/povrazor/dairybox/master/docs/Logo.png">
-DairyBox is the Web Development Toolchain for Ludum Dare's LD2015 web project. To participate and contribute to the core development, you will be using this suite of tools.
+DairyBox is the Web Development Toolchain for Ludum Dare. To participate and contribute to the core development, you will be using this suite of tools.
 
 DairyBox uses: 
-* **Vagrant** - A set of tools for automating and confiring Virtual Machines
-* **vagrant-exec** - Plugin for Vagrant used by scripts to run remote commants
-* **VirtualBox** - for hosting and running Virtual Machines
-* **Scotch Box** - a flexible preconfigured LAMP-stack VM for Vagrant (Linux+Apache+MySQL+PHP)
+* **Vagrant** - A set of tools for automating and controlling Virtual Machines
+* **VirtualBox** - for hosting and running those Virtual Machines
+* **Scotch Box** - a flexible preconfigured LAMP VM for Vagrant (Linux+Apache+MySQL+PHP)
 
-The current Ludum Dare runs LAMP, so for now we'll also use LAMP. In the future we may switch to a custom LEMP configuration. For details, check out [JuiceBox](https://github.com/povrazor/juicebox).
+The Ludum Dare website runs LAMP, so for now we'll also use LAMP. In the future we may switch to a custom LEMP configuration. For details, check out [JuiceBox](https://github.com/povrazor/juicebox).
 
-## TODO: Setup
-* Install Vagrant (LATEST VERSION!)
+## DairyBox Setup
+* Install Vagrant (LATEST VERSION): http://vagrantup.com/
 * Install Vagrant-Exec plugin: `vagrant plugin install vagrant-exec`
-* Install Virtual Box (LATEST VERSION!)
-* clone the repos: `git clone https://github.com/povrazor/dairybox.git ludumdev`
-* `vagrant up`
+* Install Virtual Box (LATEST VERSION): https://www.virtualbox.org/wiki/Downloads
+* Clone the DairyBox repos: `git clone https://github.com/povrazor/dairybox.git ludumdare`
+* Do a `vagrant up`
 
 After setup, your server is here: http://192.168.48.48 (`www/public`).
 
-## TODO: Using a source Repos
-* `git clone` in to the `www` directory
+## Source Setup
+* `git clone` the source code to the `www` directory
 
 ## Tips
 * Files are in `www/public/`
 * `vagrant up` to initialize, start, or resume a server
 * `vagrant suspend` to put it to sleep
 * `vagrant destroy` to delete the VM (the files in www are fine, but everything else is lost)
+* `vagrant ssh` to connect to the VM
+  * `sudo nano ``./php-ini.sh``` while SSH'ing to edit the php.ini file.
 
 ## Utilities
 * **info.sh** - Get information about the VM. php.ini location, IP addresses, etc.
@@ -54,6 +55,8 @@ The next time you start your server with `vagrant up`, you may be prompted which
 The public IP is usually the IP listed under **eth2**.
 
 ## Enabling OpCache
+You should only enable OpCache if you need to better simulate the active Ludum Dare server environment, or test OpCache aware features. For most development, it's preferred that your PHP scripts aren't cached.
+
 TODO
 
 ## Configuring APCu

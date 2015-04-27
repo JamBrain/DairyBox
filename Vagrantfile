@@ -10,6 +10,7 @@ Vagrant.configure("2") do |config|
 	
 	config.vm.provision "file", source: "provision/bootstrap.sh", destination: "bootstrap.sh"
 	config.vm.provision "file", source: "provision/install-apcu.sh", destination: "install-apcu.sh"
+	config.vm.provision "file", source: "provision/php-ini.sh", destination: "php-ini.sh"
 	
 	config.vm.provision "bootstrap", type: "shell" do |s|
 		s.inline = "sudo ./bootstrap.sh"

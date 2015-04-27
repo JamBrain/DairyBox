@@ -1,7 +1,8 @@
 #!/bin/sh
 
 echo "VM php.ini location:"
-echo "/etc/php5/apache2/php.ini"
+vagrant exec "php-ini.sh"
+#provision/php-ini.sh
 echo ""
 
 echo "VM Network Info:"
