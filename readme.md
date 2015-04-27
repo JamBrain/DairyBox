@@ -27,7 +27,7 @@ After setup, your server is here: http://192.168.48.48 (`www/public`).
 * `vagrant suspend` to put it to sleep
 * `vagrant destroy` to delete the VM (the files in www are fine, but everything else is lost)
 * `vagrant ssh` to connect to the VM
-  * `sudo nano ``./php-ini.sh``` while SSH'ing to edit the php.ini file.
+  * ``sudo nano `./php-ini.sh` `` while SSH'ing to edit the php.ini file.
 
 ## Utilities
 * **info.sh** - Get information about the VM. php.ini location, IP addresses, etc.
