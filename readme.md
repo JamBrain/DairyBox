@@ -16,11 +16,13 @@ The current Ludum Dare runs LAMP, so for now we'll also use LAMP. For details on
 * Checkout the repos
 * `vagrant up`
 
-http://192.168.48.48
+After setup, your server is here: http://192.168.48.48 (`www/public`).
 
 ## TODO: Using a source Repos
 * `git clone` in to the `www` directory
 
 ## Utilities
 * http://192.168.48.48/utils/ (`www/public/utils`)
-* apcu.php - login: root  password: root
+* apcu.php - Manage APCu state - login: **root**  password: **root**
+* ocp.php - Manage Opcache state
+* phpinfo.php - Simple script with a phpinfo() call.
