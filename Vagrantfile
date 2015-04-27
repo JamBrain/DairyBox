@@ -2,7 +2,6 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-
 	config.vm.box = "scotch/box"
 	config.vm.network "private_network", ip: "192.168.48.48"
 #	config.vm.network "public_network"

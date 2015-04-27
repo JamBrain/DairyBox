@@ -46,3 +46,7 @@ The next time you start your server with `vagrant up`, you may be prompted which
 `./info.sh`
 
 The public IP is usually the IP listed under **eth2**.
+
+## Enabling OpCache
+TODO
+
