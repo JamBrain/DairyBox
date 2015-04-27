@@ -3,19 +3,18 @@
 DairyBox is the Web Development Toolchain for Ludum Dare's LD2015 web project. To participate and contribute to the core development, you will be using this suite of tools.
 
 DairyBox uses: 
-* Vagrant - A set of tools for automating and confiring Virtual Machines
-* vagrant-exec - Plugin for Vagrant used by scripts
-* VirtualBox - for hosting and running Virtual Machines
-* Scotch Box - a flexible preconfigured LAMP stack VM (Linux+Apache+MySQL+PHP)
+* **Vagrant** - A set of tools for automating and confiring Virtual Machines
+* **vagrant-exec** - Plugin for Vagrant used by scripts to run remote commants
+* **VirtualBox** - for hosting and running Virtual Machines
+* **Scotch Box** - a flexible preconfigured LAMP-stack VM for Vagrant (Linux+Apache+MySQL+PHP)
 
 The current Ludum Dare runs LAMP, so for now we'll also use LAMP. In the future we may switch to a custom LEMP configuration. For details, check out [JuiceBox](https://github.com/povrazor/juicebox).
 
 ## TODO: Setup
 * Install Vagrant (LATEST VERSION!)
+* Install Vagrant-Exec plugin: `vagrant plugin install vagrant-exec`
 * Install Virtual Box (LATEST VERSION!)
-* Install Vagrant-Exec plugin
-  `vagrant plugin install vagrant-exec`
-* clone the repos
+* clone the repos: `git clone https://github.com/povrazor/dairybox.git ludumdev`
 * `vagrant up`
 
 After setup, your server is here: http://192.168.48.48 (`www/public`).
@@ -23,8 +22,14 @@ After setup, your server is here: http://192.168.48.48 (`www/public`).
 ## TODO: Using a source Repos
 * `git clone` in to the `www` directory
 
+## TIPS
+* `vagrant up`
+* `vagrant suspend`
+
+
 ## Utilities
-* **info.sh** - Get information about the VM, including all IP addresses (such as the public DHCP IP).
+* **info.sh** - Get information about the VM. php.ini location, IP addresses, etc.
+* **log.sh** - Get the Apache+PHP Log (use PHP function "error_log" to send errors here).
 
 ## Web Utilities
 * http://192.168.48.48/utils/ (`www/public/utils`)
@@ -50,3 +55,5 @@ The public IP is usually the IP listed under **eth2**.
 ## Enabling OpCache
 TODO
 
+## Configuring APCu
+TODO
