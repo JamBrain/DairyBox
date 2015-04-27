@@ -22,10 +22,11 @@ After setup, your server is here: http://192.168.48.48 (`www/public`).
 ## TODO: Using a source Repos
 * `git clone` in to the `www` directory
 
-## TIPS
-* `vagrant up`
-* `vagrant suspend`
-
+## Tips
+* Files are in `www/public/`
+* `vagrant up` to initialize, start, or resume a server
+* `vagrant suspend` to put it to sleep
+* `vagrant destroy` to delete the VM (the files in www are fine, but everything else is lost)
 
 ## Utilities
 * **info.sh** - Get information about the VM. php.ini location, IP addresses, etc.
