@@ -1,4 +1,5 @@
 # DairyBox
+<img align="right" src="https://raw.githubusercontent.com/povrazor/dairybox/master/Docs/Logo.png">
 DairyBox is the Web Development Toolchain for Ludum Dare's LD2015 web project. To participate and contribute to the core development, you will be using this suite of tools.
 
 DairyBox uses: 
@@ -31,7 +32,7 @@ After setup, your server is here: http://192.168.48.48 (`www/public`).
 * **ocp.php** - Manage Opcache state (PHP Opcache)
 * **phpinfo.php** - Simple script with a phpinfo() call.
 
-If you want PHPMyAdmin, simply download the latest version and unzip it in to the `public/phpmyadmin' folder. Access it with.
+If you want PHPMyAdmin, simply download the latest version and unzip it in to the `public/phpmyadmin` folder. Access it with.
 
 http://192.168.48.48/phpmyadmin/ - Login: **root**  Password: **root**
 
