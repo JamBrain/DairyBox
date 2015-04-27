@@ -7,7 +7,7 @@ DairyBox uses:
 * VirtualBox - for hosting and running Virtual Machines
 * Scotch Box - a flexible preconfigured LAMP stack VM (Linux+Apache+MySQL+PHP)
 
-The current Ludum Dare runs LAMP, so for now we'll also use LAMP. In the future we may switch to a custom LEMP configuration. For details, check out [https://github.com/povrazor/juicebox](JuiceBox).
+The current Ludum Dare runs LAMP, so for now we'll also use LAMP. In the future we may switch to a custom LEMP configuration. For details, check out [JuiceBox](https://github.com/povrazor/juicebox).
 
 ## TODO: Setup
 * Install Vagrant (LATEST VERSION!)
