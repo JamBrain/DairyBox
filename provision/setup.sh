@@ -2,4 +2,4 @@
 # Run codebase specific setup scripts
 
 cd /var/www/scripts
-source ./setup.sh
+source sh setup.sh
