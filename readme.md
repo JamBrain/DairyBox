@@ -19,7 +19,7 @@ The Ludum Dare website runs LAMP, so for now we'll also use LAMP. In the future 
 After setup, your server is here: http://192.168.48.48 (`www/public`).
 
 ## Source Setup
-* Initialize a new repository in the `www` directory, and set the origin to the source repository.
+Initialize a new repository in the `www` directory, and set the origin to the source repository.
 
 ```
 cd www
