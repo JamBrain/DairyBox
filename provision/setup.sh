@@ -1,5 +1,4 @@
 #!/bin/sh
 # Run codebase specific setup scripts
 
-cd /var/www/scripts
-source sh setup.sh
+sh /var/www/scripts/setup.sh
