@@ -19,7 +19,17 @@ The Ludum Dare website runs LAMP, so for now we'll also use LAMP. In the future 
 After setup, your server is here: http://192.168.48.48 (`www/public`).
 
 ## Source Setup
-* `git clone` the source code to the `www` directory
+* Initialize a new repository in the `www` directory, and set the origin to the source repository.
+
+```
+cd www
+git init
+git remote add origin https://github.com/ludumdare/ludumdare.git
+git fetch
+git checkout -t origin/master
+```
+
+**NOTE**: There should be no `/public/utils` directory and no `/config.php` in your source code.
 
 ## Tips
 * Files are in `www/public/`
