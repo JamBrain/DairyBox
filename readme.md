@@ -25,7 +25,7 @@ Since the files are NOT on the VM, you can safely `vagrant destroy` whenever you
 ## Setup Part 1: DairyBox
 * Clone the DairyBox repo. 
   * **EXAMPLE:** `git clone https://github.com/povrazor/dairybox.git ludumdare` where `ludumdare` is the directory you plan to work out of.
-  * **NOTE:** DairyBox is the toolchain. For convenience, we use GIT to download and install it. Most people don't need a Fork of DairyBox, and it's easier to update everyone 
+  * **NOTE:** DairyBox is the toolchain. For convenience, we use GIT to download and install it. Most people don't need a Fork of DairyBox. Upgrades are MUCH simpler if you don't.
 * **DO NOT** do a `vagrant up` yet. We have one more step...
 
 ## Setup Part 2: Source
