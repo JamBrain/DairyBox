@@ -7,8 +7,8 @@ $cfg_db_login = "root";
 $cfg_db_password = "root";
 
 
-// Debug Mode - Outputs extra information //
-//$cfg_debug = true;
+// Disable Debug Mode //
+//$cfg_no_debug = true;
 
 
 // By default we use MySQL. Enable this flag to use PDO. //

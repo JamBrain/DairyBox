@@ -5,7 +5,7 @@ DairyBox is the Web Development Toolchain for Ludum Dare. To participate and con
 DairyBox uses: 
 * **Vagrant** - A set of tools for automating and controlling Virtual Machines
 * **VirtualBox** - for hosting and running those Virtual Machines
-* **Scotch Box** - a flexible preconfigured LAMP VM for Vagrant (Linux+Apache+MySQL+PHP)
+* **Scotch/Box** - a flexible preconfigured LAMP VM for Vagrant (Linux+Apache+MySQL+PHP)
 
 The Ludum Dare website runs LAMP, so for now we'll also use LAMP. In the future we may switch to a custom LEMP configuration. For details, check out [JuiceBox](https://github.com/povrazor/juicebox).
 
