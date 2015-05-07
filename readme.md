@@ -24,6 +24,8 @@ The Ludum Dare website runs LAMP, so for now we'll also use LAMP. In the future 
 ## Setup Part 2: Source
 Initialize a new repository in the `www` directory, and set the origin to your source repository.
 
+**NOTE:** You may want to fork the `ludumdare/ludumdare` repository to your own GitHub account. If you do, adjust the `git remote` command below accordingly.
+
 ```
 cd www
 git init
