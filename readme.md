@@ -72,24 +72,31 @@ From your root working directory (not `www`).
 * Initialize a fresh VM with `vagrant up`.
 
 ## Tips
-* Files are in `www/public/`
 * `vagrant up` to initialize, start, or resume a server
 * `vagrant suspend` to put it to sleep
 * `vagrant destroy` to delete the VM (the files in www are fine, but everything else is lost)
 * `vagrant ssh` to connect to the VM
   * ``sudo nano `./php-ini.sh` `` while SSH'ing to edit the php.ini file.
+    * **CTRL+O** to Save (a prompt. You'll have to push Enter)
+    * **CTRL+X** to Exit
 
 ## Utilities
+### Local Utilities
+Things you can run from your shell.
 * **info.sh** - Get information about the VM. php.ini location, IP addresses, etc.
 * **log.sh** - Get the Apache+PHP Log (use PHP function "error_log" to send errors here).
+### Remote Utilities
+Things you can run after doing a `vagrant ssh` to connect to the server.
+* **php-ini.sh** - returns the location of php.ini (often used with back-ticks when you need
 
 ## Web Utilities
+These are some extras pre-installed on DairyBox. Helpful for debugging.
 * http://192.168.48.48/utils/ (`www/public/utils`)
 * **apcu.php** - Manage APCu state (fast RAM cache) - login: **root**  password: **root**
 * **ocp.php** - Manage Opcache state (PHP Opcache)
 * **phpinfo.php** - Simple script with a phpinfo() call.
 
-If you want PHPMyAdmin, simply download the latest version and unzip it in to the `public/phpmyadmin` directory. Access it with.
+If you want PHPMyAdmin, simply download the latest version and unzip it in to the `public/phpmyadmin` directory. Access it with:
 
 http://192.168.48.48/phpmyadmin/ - Login: **root**  Password: **root**
 
