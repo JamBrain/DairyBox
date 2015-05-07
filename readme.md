@@ -17,10 +17,14 @@ In the case of Scotch/Box, the important files (i.e. the website) lives on your 
 Since the files are NOT on the VM, you can safely `vagrant destroy` whenever you need to update DairyBox.
 
 ## Pre Setup (Part 0)
+Where possible, install the latest versions.
+
 * Install **GIT**
-* Install **Vagrant** (LATEST VERSION): http://vagrantup.com/
+* Install **Vagrant**: http://vagrantup.com/ (***)
 * Install **Vagrant-Exec** plugin: `vagrant plugin install vagrant-exec`
-* Install **Virtual Box** (LATEST VERSION): https://www.virtualbox.org/wiki/Downloads
+* Install **Virtual Box**: https://www.virtualbox.org/wiki/Downloads (***)
+
+If you're an Ubuntu/Debian user, **don't install Vagrant and Virtual Box using apt-get**! The repositories for these are very out of date. Most Vagrant setup problems on Linux are because you don't have the latest version.
 
 ## Setup Part 1: DairyBox
 * Clone the DairyBox repo. 
