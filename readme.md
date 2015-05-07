@@ -2,7 +2,7 @@
 <img align="right" src="https://raw.githubusercontent.com/povrazor/dairybox/master/docs/Logo.png">
 DairyBox is the Web Development Toolchain for Ludum Dare. To contribute to the core website development, you will be using this suite of tools.
 
-## DairyBox Uses
+### DairyBox Uses
 * **Vagrant** - A set of tools for automating and controlling Virtual Machines
 * **VirtualBox** - for hosting and running those Virtual Machines
 * **Scotch/Box** - a flexible preconfigured LAMP VM for Vagrant (Linux+Apache+MySQL+PHP)
