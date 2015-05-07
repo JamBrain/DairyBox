@@ -16,7 +16,7 @@ The Ludum Dare website runs LAMP, so for now we'll also use LAMP. In the future 
 
 ## Setup Part 1: DairyBox
 * Clone the DairyBox repos: `git clone https://github.com/povrazor/dairybox.git ludumdare`
-* **DON'T* do a `vagrant up` yet.
+* **DO NOT** do a `vagrant up` yet. We have one more step.
 
 ## Setup Part 2: Source
 Initialize a new repository in the `www` directory, and set the origin to your source repository.
