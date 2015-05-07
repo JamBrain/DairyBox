@@ -15,8 +15,9 @@ The Ludum Dare website runs LAMP, so for now we'll also use LAMP. In the future 
 * Install **Virtual Box** (LATEST VERSION): https://www.virtualbox.org/wiki/Downloads
 
 ## Setup Part 1: DairyBox
-* Clone the DairyBox repos: `git clone https://github.com/povrazor/dairybox.git ludumdare`
-* **DO NOT** do a `vagrant up` yet. We have one more step.
+* Clone the DairyBox repo. 
+  * Example: `git clone https://github.com/povrazor/dairybox.git ludumdare`
+* **DO NOT** do a `vagrant up` yet. We have one more step...
 
 ## Setup Part 2: Source
 Initialize a new repository in the `www` directory, and set the origin to your source repository.
@@ -29,13 +30,17 @@ git fetch
 git checkout -t origin/master
 ```
 
-**NOTE**: There should be no `/public/utils` directory and no `/config.php` in your source code (it's part of DairyBox).
-
 ## Setup Part 3: Vagrant Up
 * Do a `vagrant up`
 
 After setup, your server is here: http://192.168.48.48 (`www/public`).
 
+If you're running a standard Ludum Dare setup, additional services are here:
+* http://192.168.48.48:8080 - api.ludumdare.com
+* http://192.168.48.48:8081 - static.ludumdare.com
+* http://192.168.48.48:8082 - ldj.am
+* http://192.168.48.48:8083 - tv.ludumdare.com
+* http://192.168.48.48:8084 - ??? :)
 
 ## Tips
 * Files are in `www/public/`

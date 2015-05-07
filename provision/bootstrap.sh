@@ -7,3 +7,7 @@ printf "y" | apt-get install php5-dev
 
 # Install packages
 ./install-apcu.sh
+
+
+# Run source setup script (if available. Found in www/scripts/setup.sh)
+./setup.sh
