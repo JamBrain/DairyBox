@@ -1,13 +1,20 @@
 # DairyBox
 <img align="right" src="https://raw.githubusercontent.com/povrazor/dairybox/master/docs/Logo.png">
-DairyBox is the Web Development Toolchain for Ludum Dare. To contribute to the core development, you will be using this suite of tools.
+DairyBox is the Web Development Toolchain for Ludum Dare. To contribute to the core website development, you will be using this suite of tools.
 
-DairyBox uses: 
+## DairyBox Uses
 * **Vagrant** - A set of tools for automating and controlling Virtual Machines
 * **VirtualBox** - for hosting and running those Virtual Machines
 * **Scotch/Box** - a flexible preconfigured LAMP VM for Vagrant (Linux+Apache+MySQL+PHP)
 
 The Ludum Dare website runs LAMP, so for now we'll also use LAMP. In the future we may switch to a custom LEMP configuration. For details, check out [JuiceBox](https://github.com/povrazor/juicebox).
+
+## What is Vagrant with Scotch/Box?
+The key thing to understand about working with Vagrant boxes like Scotch/Box is that Vagrant boxes are temporary. Though you can connect to the Virtual Machine and install whatever you like, Vagrant boxes work best when you install things via setup scripts. That way, they can be *nuked from orbit* whenever you like, giving you fresh/clean install whenever you want one.
+
+In the case of Scotch/Box, the important files (i.e. the website) lives on your local machine. The Scotch/Box VM is pre-configured with a share to those files. You simply edit the files in the `www` folder, refresh your browser to see the changes, and commit/push your changes to your GIT repository once you're happy with them. Easy.
+
+Since the files are NOT on the VM, you can safely `vagrant destroy` whenever you need to update DairyBox.
 
 ## Pre Setup (Part 0)
 * Install **GIT**
@@ -18,7 +25,7 @@ The Ludum Dare website runs LAMP, so for now we'll also use LAMP. In the future 
 ## Setup Part 1: DairyBox
 * Clone the DairyBox repo. 
   * **EXAMPLE:** `git clone https://github.com/povrazor/dairybox.git ludumdare` where `ludumdare` is the directory you plan to work out of.
-  * **NOTE:** DairyBox is the toolchain. For convenience, we use GIT to download and install it.
+  * **NOTE:** DairyBox is the toolchain. For convenience, we use GIT to download and install it. Most people don't need a Fork of DairyBox, and it's easier to update everyone 
 * **DO NOT** do a `vagrant up` yet. We have one more step...
 
 ## Setup Part 2: Source
@@ -52,6 +59,12 @@ If you're running a standard Ludum Dare setup, additional #LDJAM services are he
 For details on the structure of the Ludum Dare source tree, go here:
 
 https://github.com/ludumdare/ludumdare
+
+## Upgrading DairyBox
+* Destroy your VM with `vagrant destroy`. This shuts down the server and removes the VM.
+* Pull the latest changes with `git pull -u`.
+* Update your Vagrant boxes with `vagrant box update`
+* Initialize a fresh VM with `vagrant up`.
 
 ## Tips
 * Files are in `www/public/`
