@@ -61,6 +61,7 @@ For details on the structure of the Ludum Dare source tree, go here:
 https://github.com/ludumdare/ludumdare
 
 ## Upgrading DairyBox
+From your root working directory (not `www`).
 * Destroy your VM with `vagrant destroy`. This shuts down the server and removes the VM.
 * Pull the latest changes with `git pull -u`.
 * Update your Vagrant boxes with `vagrant box update`
