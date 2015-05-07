@@ -9,17 +9,17 @@ DairyBox uses:
 
 The Ludum Dare website runs LAMP, so for now we'll also use LAMP. In the future we may switch to a custom LEMP configuration. For details, check out [JuiceBox](https://github.com/povrazor/juicebox).
 
-## DairyBox Setup
-* Install Vagrant (LATEST VERSION): http://vagrantup.com/
-* Install Vagrant-Exec plugin: `vagrant plugin install vagrant-exec`
-* Install Virtual Box (LATEST VERSION): https://www.virtualbox.org/wiki/Downloads
+## Pre Setup (Part 0)
+* Install **Vagrant** (LATEST VERSION): http://vagrantup.com/
+* Install **Vagrant-Exec** plugin: `vagrant plugin install vagrant-exec`
+* Install **Virtual Box** (LATEST VERSION): https://www.virtualbox.org/wiki/Downloads
+
+## Setup Part 1: DairyBox
 * Clone the DairyBox repos: `git clone https://github.com/povrazor/dairybox.git ludumdare`
-* Do a `vagrant up`
+* **DON'T* do a `vagrant up` yet.
 
-After setup, your server is here: http://192.168.48.48 (`www/public`).
-
-## Source Setup
-Initialize a new repository in the `www` directory, and set the origin to the source repository.
+## Setup Part 2: Source
+Initialize a new repository in the `www` directory, and set the origin to your source repository.
 
 ```
 cd www
@@ -29,7 +29,13 @@ git fetch
 git checkout -t origin/master
 ```
 
-**NOTE**: There should be no `/public/utils` directory and no `/config.php` in your source code.
+**NOTE**: There should be no `/public/utils` directory and no `/config.php` in your source code (it's part of DairyBox).
+
+## Setup Part 3: Vagrant Up
+* Do a `vagrant up`
+
+After setup, your server is here: http://192.168.48.48 (`www/public`).
+
 
 ## Tips
 * Files are in `www/public/`
