@@ -64,7 +64,7 @@ https://github.com/ludumdare/ludumdare
 From your root working directory (not `www`).
 * Destroy your VM with `vagrant destroy`. This shuts down the server and removes the VM.
 * Pull the latest changes with `git pull -u`.
-* Update your Vagrant boxes with `vagrant box update`
+* Update your Vagrant boxes (i.e. Scotch/Box) with `vagrant box update`.
 * Initialize a fresh VM with `vagrant up`.
 
 ## Tips
