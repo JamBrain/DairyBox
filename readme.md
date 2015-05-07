@@ -85,12 +85,13 @@ From your root working directory (not `www`).
 Things you can run from your shell.
 * **info.sh** - Get information about the VM. php.ini location, IP addresses, etc.
 * **log.sh** - Get the Apache+PHP Log (use PHP function "error_log" to send errors here).
+
 ### Remote Utilities
 Things you can run after doing a `vagrant ssh` to connect to the server.
 * **php-ini.sh** - returns the location of php.ini (often used with back-ticks when you need
 
-## Web Utilities
-These are some extras pre-installed on DairyBox. Helpful for debugging.
+### Web Utilities
+These are some extras pre-installed on DairyBox you can access with your browser. Helpful for debugging.
 * http://192.168.48.48/utils/ (`www/public/utils`)
 * **apcu.php** - Manage APCu state (fast RAM cache) - login: **root**  password: **root**
 * **ocp.php** - Manage Opcache state (PHP Opcache)
