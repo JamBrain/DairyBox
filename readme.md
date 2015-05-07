@@ -102,9 +102,9 @@ If you want PHPMyAdmin, simply download the latest version and unzip it in to th
 http://192.168.48.48/phpmyadmin/ - Login: **root**  Password: **root**
 
 ## Public Server
-By default, your DairyBox can only be accessed locally. To access it publicly, you need to enable the Public Server.
+By default, your DairyBox can only be accessed locally. To access it from another machine or device on yoru network, you need to enable the Public Server.
 
-To do this, remove the # in front of the `"public_network"` line in your **Vagrantfile**.
+To do this, remove the # in front of the `"public_network"` line in your **Vagrantfile** (`/Vagrantfile`).
 
 The next time you start your server with `vagrant up`, you may be prompted which of your Network Interfaces you want to bind (i.e. your Ethernet or your WiFi). Once setup completes, you can use the info script to get information about the server.
 
