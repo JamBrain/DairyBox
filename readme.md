@@ -17,8 +17,8 @@ The Ludum Dare website runs LAMP, so for now we'll also use LAMP. In the future 
 
 ## Setup Part 1: DairyBox
 * Clone the DairyBox repo. 
-  * Example: `git clone https://github.com/povrazor/dairybox.git ludumdare` where 'ludumdare' is your working folder.
-  * **NOTE:** DairyBox is the toolchain. For convenience, we're using GIT to download and install it.
+  * **EXAMPLE:** `git clone https://github.com/povrazor/dairybox.git ludumdare` where 'ludumdare' is the directory you plan to work out of.
+  * **NOTE:** DairyBox is the toolchain. For convenience, we use GIT to download and install it.
 * **DO NOT** do a `vagrant up` yet. We have one more step...
 
 ## Setup Part 2: Source
@@ -63,7 +63,7 @@ If you're running a standard Ludum Dare setup, additional services are here:
 * **ocp.php** - Manage Opcache state (PHP Opcache)
 * **phpinfo.php** - Simple script with a phpinfo() call.
 
-If you want PHPMyAdmin, simply download the latest version and unzip it in to the `public/phpmyadmin` folder. Access it with.
+If you want PHPMyAdmin, simply download the latest version and unzip it in to the `public/phpmyadmin` directory. Access it with.
 
 http://192.168.48.48/phpmyadmin/ - Login: **root**  Password: **root**
 
