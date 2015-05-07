@@ -46,7 +46,7 @@ git checkout -t origin/master
 cd ..
 ```
 
-You will be working in the `www` directory.
+You will be working in the `www` directory, but all Vagrant commands must be done from the root.
 
 ## Setup Part 3: Vagrant Up
 * Do a `vagrant up` (from the root directory, not `www`).
