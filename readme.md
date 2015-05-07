@@ -1,6 +1,6 @@
 # DairyBox
 <img align="right" src="https://raw.githubusercontent.com/povrazor/dairybox/master/docs/Logo.png">
-DairyBox is the Web Development Toolchain for Ludum Dare. To participate and contribute to the core development, you will be using this suite of tools.
+DairyBox is the Web Development Toolchain for Ludum Dare. To contribute to the core development, you will be using this suite of tools.
 
 DairyBox uses: 
 * **Vagrant** - A set of tools for automating and controlling Virtual Machines
@@ -17,7 +17,7 @@ The Ludum Dare website runs LAMP, so for now we'll also use LAMP. In the future 
 
 ## Setup Part 1: DairyBox
 * Clone the DairyBox repo. 
-  * **EXAMPLE:** `git clone https://github.com/povrazor/dairybox.git ludumdare` where 'ludumdare' is the directory you plan to work out of.
+  * **EXAMPLE:** `git clone https://github.com/povrazor/dairybox.git ludumdare` where `ludumdare` is the directory you plan to work out of.
   * **NOTE:** DairyBox is the toolchain. For convenience, we use GIT to download and install it.
 * **DO NOT** do a `vagrant up` yet. We have one more step...
 
@@ -33,17 +33,23 @@ git checkout -t origin/master
 cd ..
 ```
 
+You will be working in the `www` directory.
+
 ## Setup Part 3: Vagrant Up
-* Do a `vagrant up`
+* Do a `vagrant up` (from the root directory, not `www`).
 
 After setup, your server is here: http://192.168.48.48 (`www/public`).
 
-If you're running a standard Ludum Dare setup, additional services are here:
+If you're running a standard Ludum Dare setup, additional #LDJAM services are here:
 * http://192.168.48.48:8080 - api.ludumdare.com (`www/public-api`)
 * http://192.168.48.48:8081 - static.ludumdare.com (`www/public-static`)
 * http://192.168.48.48:8082 - ldj.am (`www/public-ldj.am`)
 * http://192.168.48.48:8083 - tv.ludumdare.com (`www/public-tv`)
 * http://192.168.48.48:8084 - ??? :)
+
+For details on the structure of the Ludum Dare source tree, go here:
+
+https://github.com/ludumdare/ludumdare
 
 ## Tips
 * Files are in `www/public/`
