@@ -28,7 +28,7 @@ If you're an Ubuntu/Debian user, **DON'T INSTALL VAGRANT AND VIRTUAL BOX USING A
 
 ## Setup Part 1: DairyBox
 * Clone the DairyBox repo. 
-  * **EXAMPLE:** `git clone https://github.com/povrazor/dairybox.git ludumdare` where `ludumdare` is the directory you plan to work out of.
+  * **EXAMPLE:** `git clone https://github.com/ludumdare/dairybox.git ludumdare` where `ludumdare` is the directory you plan to work out of.
   * **NOTE:** DairyBox is the toolchain. For convenience, we use GIT to download and install it. Most people don't need a Fork of DairyBox. Upgrades are MUCH simpler if you don't.
 * **DO NOT** do a `vagrant up` yet. We have one more step...
 
