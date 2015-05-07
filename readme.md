@@ -75,10 +75,7 @@ From your root working directory (not `www`).
 * `vagrant up` to initialize, start, or resume a server
 * `vagrant suspend` to put it to sleep
 * `vagrant destroy` to delete the VM (the files in www are fine, but everything else is lost)
-* `vagrant ssh` to connect to the VM
-  * ``sudo nano `./php-ini.sh` `` while SSH'ing to edit the php.ini file.
-    * **CTRL+O** to Save (a prompt. You'll have to push Enter)
-    * **CTRL+X** to Exit
+* `vagrant ssh` to connect to the VM with SSH
 
 ## Utilities
 ### Local Utilities
@@ -89,6 +86,9 @@ Things you can run from your shell.
 ### Remote Utilities
 Things you can run after doing a `vagrant ssh` to connect to the server.
 * **php-ini.sh** - returns the location of php.ini (often used with back-ticks when you want to edit it)
+  * **EXAMPLE**: ``sudo nano `./php-ini.sh` `` To edit the php.ini
+    * **CTRL+O** to Save (a prompt. You'll have to push Enter)
+    * **CTRL+X** to Exit
 
 ### Web Utilities
 These are some extras pre-installed on DairyBox you can access with your browser. Helpful for debugging.
