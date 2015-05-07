@@ -10,13 +10,15 @@ DairyBox uses:
 The Ludum Dare website runs LAMP, so for now we'll also use LAMP. In the future we may switch to a custom LEMP configuration. For details, check out [JuiceBox](https://github.com/povrazor/juicebox).
 
 ## Pre Setup (Part 0)
+* Install **GIT**
 * Install **Vagrant** (LATEST VERSION): http://vagrantup.com/
 * Install **Vagrant-Exec** plugin: `vagrant plugin install vagrant-exec`
 * Install **Virtual Box** (LATEST VERSION): https://www.virtualbox.org/wiki/Downloads
 
 ## Setup Part 1: DairyBox
 * Clone the DairyBox repo. 
-  * Example: `git clone https://github.com/povrazor/dairybox.git ludumdare`
+  * Example: `git clone https://github.com/povrazor/dairybox.git ludumdare` where 'ludumdare' is your working folder.
+  * **NOTE:** DairyBox is the toolchain. For convenience, we're using GIT to download and install it.
 * **DO NOT** do a `vagrant up` yet. We have one more step...
 
 ## Setup Part 2: Source
@@ -28,6 +30,7 @@ git init
 git remote add origin https://github.com/ludumdare/ludumdare.git
 git fetch
 git checkout -t origin/master
+cd ..
 ```
 
 ## Setup Part 3: Vagrant Up
@@ -36,10 +39,10 @@ git checkout -t origin/master
 After setup, your server is here: http://192.168.48.48 (`www/public`).
 
 If you're running a standard Ludum Dare setup, additional services are here:
-* http://192.168.48.48:8080 - api.ludumdare.com
-* http://192.168.48.48:8081 - static.ludumdare.com
-* http://192.168.48.48:8082 - ldj.am
-* http://192.168.48.48:8083 - tv.ludumdare.com
+* http://192.168.48.48:8080 - api.ludumdare.com (`www/public-api`)
+* http://192.168.48.48:8081 - static.ludumdare.com (`www/public-static`)
+* http://192.168.48.48:8082 - ldj.am (`www/public-ldj.am`)
+* http://192.168.48.48:8083 - tv.ludumdare.com (`www/public-tv`)
 * http://192.168.48.48:8084 - ??? :)
 
 ## Tips
