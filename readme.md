@@ -1,13 +1,13 @@
 # DairyBox
 <img align="right" src="https://raw.githubusercontent.com/povrazor/dairybox/master/docs/Logo.png">
-DairyBox is the Web Development Toolchain for Ludum Dare. To contribute to the core website development, you will be using this suite of tools.
+DairyBox is the Web Development Toolchain for **Ludum Dare**. To contribute to the core website development, you will be using this suite of tools.
 
 ### DairyBox Uses
 * **Vagrant** - A set of tools for automating and controlling Virtual Machines
 * **VirtualBox** - for hosting and running those Virtual Machines
 * **Scotch/Box** - a flexible preconfigured LAMP VM for Vagrant (Linux+Apache+MySQL+PHP)
 
-The Ludum Dare website runs LAMP, so for now we'll also use LAMP. In the future we may switch to a custom LEMP configuration. For details, check out [JuiceBox](https://github.com/povrazor/juicebox).
+The **Ludum Dare** website runs LAMP, so for now we'll also use LAMP. In the future we may switch to a custom LEMP configuration. For details, check out [JuiceBox](https://github.com/povrazor/juicebox).
 
 ## What is Vagrant with Scotch/Box?
 The key thing to understand about working with Vagrant boxes like Scotch/Box is that Vagrant boxes are temporary. Though you can connect to the Virtual Machine and install whatever you like, Vagrant boxes work best when you install things via setup scripts. That way, they can be *nuked from orbit* whenever you like, giving you fresh/clean install whenever you want one.
@@ -49,14 +49,14 @@ You will be working in the `www` directory.
 
 After setup, your server is here: http://192.168.48.48 (`www/public`).
 
-If you're running a standard Ludum Dare setup, additional #LDJAM services are here:
+If you're running a standard **Ludum Dare** setup, additional #LDJAM services are here:
 * http://192.168.48.48:8080 - api.ludumdare.com (`www/public-api`)
 * http://192.168.48.48:8081 - static.ludumdare.com (`www/public-static`)
 * http://192.168.48.48:8082 - ldj.am (`www/public-ldj.am`)
 * http://192.168.48.48:8083 - tv.ludumdare.com (`www/public-tv`)
 * http://192.168.48.48:8084 - ??? :)
 
-For details on the structure of the Ludum Dare source tree, go here:
+For details on the structure of the **Ludum Dare** source tree, visit:
 
 https://github.com/ludumdare/ludumdare
 
@@ -101,7 +101,7 @@ The next time you start your server with `vagrant up`, you may be prompted which
 The public IP is usually the IP listed under **eth2**.
 
 ## Enabling OpCache
-You should only enable OpCache if you need to better simulate the active Ludum Dare server environment, or test OpCache aware features. For most development, it's preferred that your PHP scripts aren't cached.
+You should only enable OpCache if you need to better simulate the active **Ludum Dare** server environment, or test OpCache aware features. For most development, it's preferred that your PHP scripts aren't cached.
 
 TODO
 
