@@ -115,9 +115,25 @@ The public IP is usually the IP listed under **eth2**.
 Once you know your public IP address, all URLs like the http://192.168.48.48 ones above be accessed with your remote devices by using the correct IP.
 
 ## Enabling OpCache
-You should only enable OpCache if you need to better simulate the active **Ludum Dare** server environment, or test OpCache aware features. For most development, it's preferred that your PHP scripts aren't cached.
+You should only enable OpCache if you need to better simulate the active **Ludum Dare** server environment, or test OpCache aware features. For most developers, it's preferred that your PHP scripts aren't cached. That way, they reload whenever you refresh your browser.
+
+You can clear the OpCache cache and look-up other details using the OCP tool:
+
+http://192.168.48.48/utils/ocp.php
+
+To Enable OpCache, do the following:
 
 TODO
 
 ## Configuring APCu
+APCu comes pre-configured in DairyBox.
+
+The **Ludum Dare** website requires APCu. APCu is faster than Memcached (shared data is written directly to RAM instead of piped over TCP to a client that reads/writes to RAM), but is unreliable when it comes to scaling across multiple servers. Data that must be real-time accurate across multiple servers should not be cached by APCu, but frankly, a lot of Ludum Dare can safely be wrong and out of date by a minute. Changes to data must be read and written to the database, but data fetched by users browsing the website can be slightly wrong.
+
+You can check what's cached and how much memory is used with the ACPu tool:
+
+http://192.168.48.48/utils/apcu.php
+
+To change setting (memory usage, etc), do the following:
+
 TODO
