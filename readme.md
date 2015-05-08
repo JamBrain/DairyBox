@@ -125,7 +125,7 @@ To Enable OpCache, do the following:
 
 TODO
 
-## Configuring APCu
+## Configuring APCu (Memory Cache)
 APCu comes pre-configured in DairyBox.
 
 The **Ludum Dare** website requires APCu. APCu is faster than Memcached (shared data is written directly to RAM instead of being piped over TCP), but is unreliable when it comes to scaling across multiple servers. Data that must be real-time accurate across multiple servers should not be cached by APCu. That said, a lot of **Ludum Dare** data can safely be wrong and out of date. For example: Changes to data **must** be read and written to the database, but data fetched by users browsing the website (comments, posts, likes, links, etc) can safely be out-of-date. In practice, we are talking at most a minute or two out-of-date. For caching advice, see the Development Guide. 
