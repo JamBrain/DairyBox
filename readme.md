@@ -121,7 +121,7 @@ The next time you start your server with `vagrant up`, you may be prompted which
 
 The public IP is usually the IP listed under **eth2**.
 
-Once you know your public IP address, all URLs like the http://192.168.48.48 ones above be accessed with your remote devices by using the correct IP.
+Once you know the public IP address, all URLs like the ones above (http://192.168.48.48) can be accessed from your remote devices using the public IP.
 
 ## Enabling OpCache
 You should only enable OpCache if you need to better simulate the active **Ludum Dare** server environment, or test OpCache aware features. For most developers, it's preferred that your PHP scripts aren't cached. That way, they reload whenever you refresh your browser.
