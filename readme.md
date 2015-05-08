@@ -23,7 +23,7 @@ Once set up, DairyBox will auto-magically serve web pages to you. All you have t
 
 We call that editing and clicking the *workflow*. 
 
-We call this thing you download and install the *toolchain*.
+We call the stuff you download and install the *toolchain*.
 
 ## Pre Setup (Part 0)
 Where possible, install the latest versions.
