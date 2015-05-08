@@ -130,7 +130,7 @@ APCu comes pre-configured in DairyBox.
 
 The **Ludum Dare** website requires APCu. APCu is faster than Memcached (shared data is written directly to RAM instead of being piped over TCP), but is unreliable when it comes to scaling across multiple servers. Data that must be real-time accurate across multiple servers should not be cached by APCu. That said, a lot of **Ludum Dare** data can safely be wrong and out of date. For example: Changes to data **must** be read and written to the database, but data fetched by users browsing the website (comments, posts, likes, links, etc) can safely be out-of-date. In practice, the worst case has data out-of-date for a few minutes, but in many cases it wont even be a second.
 
-**Ludum Dare** is currently run from a single dedicated server, so APCu's flaws are not a problem.
+**Ludum Dare** is currently run from a single dedicated server, so APCu's flaws are currently not an issue.
 
 For caching advice, see the Development Guide.
 
