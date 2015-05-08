@@ -36,10 +36,11 @@ Where possible, install the latest versions.
 If you're an Ubuntu/Debian user, **DON'T INSTALL VAGRANT AND VIRTUAL BOX USING APT-GET**! The repositories for these are **VERY** out of date. Most Vagrant setup problems on Linux are because you don't have the latest version.
 
 ## Setup Part 1: DairyBox
-* Clone the DairyBox repo. 
-  * **EXAMPLE:** `git clone https://github.com/ludumdare/dairybox.git ludumdare` where `ludumdare` is the directory you plan to work out of.
-  * **NOTE:** DairyBox is the toolchain. For convenience, we use GIT to download and install it. Most people don't need a Fork of DairyBox. Upgrades are MUCH simpler if you don't.
-* **DO NOT** do a `vagrant up` yet. We have one more step...
+Clone the DairyBox repo. 
+* **EXAMPLE:** `git clone https://github.com/ludumdare/dairybox.git ludumdare` where `ludumdare` is the directory you plan to work out of.
+* **NOTE:** DairyBox is the toolchain. For convenience, we use GIT to download and install it. Most people don't need a Fork of DairyBox. Upgrades are MUCH simpler if you don't.
+
+**DO NOT** do a `vagrant up` yet. We have one more step...
 
 ## Setup Part 2: Source
 Initialize a new repository in the `www` directory, and set the origin to your source repository.
@@ -58,7 +59,7 @@ cd ..
 You will be working in the `www` directory, but all Vagrant commands must be done from the root.
 
 ## Setup Part 3: Vagrant Up
-* Do a `vagrant up` (from the root directory, not `www`).
+Do a `vagrant up` (from the root directory, not `www`).
 
 After setup, your server is here: http://192.168.48.48 (`www/public`). It may take a moment to connect.
 
