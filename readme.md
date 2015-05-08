@@ -21,9 +21,9 @@ You're running a fake computer on your computer. That fake computer runs Linux. 
 
 Once set up, DairyBox will serve web pages to you. All you have to do is edit files and refresh your browser any time you change something. And if it ever stops working, you can blow up your fake computer using *the button* (Vagrant) and get a new one (though you probably just need to restart it).
 
-We call that editing and clicking the *workflow*. 
+We call that editing, clicking, and blowing up computers *the workflow*. 
 
-We call the stuff you download and install the *toolchain*.
+We call the stuff you download and install *the toolchain*.
 
 ## Pre Setup (Part 0)
 Where possible, install the latest versions.
