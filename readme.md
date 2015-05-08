@@ -16,6 +16,9 @@ In the case of Scotch/Box, the important files (i.e. the website) lives on your 
 
 Since the files are NOT on the VM, you can safely `vagrant destroy` whenever you need to update DairyBox.
 
+## I still don't understand
+You're running a fake computer on your computer. That fake computer runs Linux. We installed everything for you. Once set up, it'll auto-magically sereve web pages to you. All you have to do is edit files and refresh your browser.
+
 ## Pre Setup (Part 0)
 Where possible, install the latest versions.
 
