@@ -124,6 +124,18 @@ The public IP is usually the IP listed under **eth2**.
 
 Once you know the public IP address, all URLs like the ones above (http://192.168.48.48) can be accessed from your remote devices using the public IP.
 
+### Giving the Public Server a name
+??? TODO: Figure out the right way to do this.
+
+Edit your hosts file (`/etc/hosts`) on the local machine (??), and add an entry for the IPs.
+
+```
+192.168.1.22 publicserver.local
+192.168.48.48 localserver.local
+```
+
+http://unix.stackexchange.com/a/82456
+
 ## Enabling OpCache
 You should only enable OpCache if you need to better simulate the active **Ludum Dare** server environment, or test OpCache aware features. For most developers, it's preferred that your PHP scripts aren't cached. That way, they reload whenever you refresh your browser.
 
@@ -149,5 +161,9 @@ You can check what's cached and how much memory is used with the ACPu tool:
 http://192.168.48.48/utils/apcu.php
 
 To change setting (memory usage, etc), do the following:
+
+TODO
+
+## Configuring e-mail for testing
 
 TODO
