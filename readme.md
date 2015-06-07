@@ -84,6 +84,8 @@ From your root working directory (not `www`).
 ## Tips
 * `vagrant up` to initialize, start, or resume a server (after suspending or rebooting)
 * `vagrant suspend` to put it to sleep
+* `vagrant reload` to restart it
+* `vagrant halt` to shut it down (power button)
 * `vagrant destroy` to delete the VM (the files in www are fine, but everything else is lost)
 * `vagrant ssh` to connect to the VM with SSH
 
