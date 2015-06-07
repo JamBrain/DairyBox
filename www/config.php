@@ -1,17 +1,18 @@
 <?php
 
 // Database Configuration //
-$cfg_db_host = "localhost";
-$cfg_db_name = "scotchbox";
-$cfg_db_login = "root";
-$cfg_db_password = "root";
-
+const CFG_DB_HOST = "localhost";
+const CFG_DB_NAME = "scotchbox";
+const CFG_DB_LOGIN = "root";
+const CFG_DB_PASSWORD = "root";
 
 // Disable Debug Mode //
-//$cfg_no_debug = true;
-
+//const CFG_NO_DEBUG = true;
 
 // By default we use MySQL. Enable this flag to use PDO. //
-//$cfg_uses_pdo = true;
+//const CFG_USES_PDO = true;
+
+// Paths //
+const CFG_STATIC_URL = "/static";
 
 ?>
