@@ -8,6 +8,7 @@ Vagrant.configure("2") do |config|
 	config.vm.hostname = "dairybox"
 	config.vm.synced_folder "www", "/var/www", :mount_options => ["dmode=777", "fmode=666"]
 	config.vm.synced_folder "www/public-static", "/var/www/public/static", :mount_options => ["dmode=775", "fmode=664"]
+	config.vm.synced_folder "dev", "/var/www/public/dev", :mount_options => ["dmode=775", "fmode=664"]
 	
 	config.vm.provision "file", source: "provision/bootstrap.sh", destination: "bootstrap.sh"
 	config.vm.provision "file", source: "provision/install-apcu.sh", destination: "install-apcu.sh"
