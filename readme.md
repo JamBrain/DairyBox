@@ -30,10 +30,12 @@ Where possible, install the latest versions.
 
 1. Install **GIT**: http://git-scm.com/downloads
 2. Install **Vagrant**: http://vagrantup.com/ (***)
-3. Install **Vagrant-Exec** plugin: 
-```
-vagrant plugin install vagrant-exec
-```
+3. Install **Vagrant-Exec** plugin:
+
+    ```
+    vagrant plugin install vagrant-exec
+    ```
+    
 4. Install **Virtual Box**: https://www.virtualbox.org/wiki/Downloads (***)
 
 If you're an Ubuntu/Debian user, **DON'T INSTALL VAGRANT AND VIRTUAL BOX USING APT-GET**! The repositories for these are **VERY** out of date. Most Vagrant setup problems on Linux are because you don't have the latest version.
