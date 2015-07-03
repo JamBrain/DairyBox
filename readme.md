@@ -28,13 +28,13 @@ We call the stuff you download and install *the toolchain*.
 ## Pre Setup (Part 0)
 Where possible, install the latest versions.
 
-# Install **GIT**: http://git-scm.com/downloads
-# Install **Vagrant**: http://vagrantup.com/ (***)
-# Install **Vagrant-Exec** plugin: 
+1. Install **GIT**: http://git-scm.com/downloads
+2. Install **Vagrant**: http://vagrantup.com/ (***)
+3. Install **Vagrant-Exec** plugin: 
 ```
 vagrant plugin install vagrant-exec
 ```
-# Install **Virtual Box**: https://www.virtualbox.org/wiki/Downloads (***)
+4. Install **Virtual Box**: https://www.virtualbox.org/wiki/Downloads (***)
 
 If you're an Ubuntu/Debian user, **DON'T INSTALL VAGRANT AND VIRTUAL BOX USING APT-GET**! The repositories for these are **VERY** out of date. Most Vagrant setup problems on Linux are because you don't have the latest version.
 
