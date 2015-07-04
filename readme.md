@@ -76,8 +76,8 @@ Do a `vagrant up` (from the root directory, not `www`).
 After setup, your server is here: http://192.168.48.48 (`www/public`). It may take a moment to connect.
 
 If you're running a standard **Ludum Dare** setup, additional #LDJAM services are here:
-* http://192.168.48.48:8080 - api.ludumdare.com (`www/public-api`)
-* http://192.168.48.48:8081 - static.ludumdare.com (`www/public-static`)
+* http://192.168.48.48:8080 - static.ludumdare.com (`www/public-static`)
+* http://192.168.48.48:8081 - api.ludumdare.com (`www/public-api`)
 * http://192.168.48.48:8082 - ldj.am (`www/public-ldj.am`)
 * http://192.168.48.48:8083 - jammer.bio (`www/public-jammer.bio`)
 * http://192.168.48.48:8084 - tv.ludumdare.com (`www/public-tv`)
