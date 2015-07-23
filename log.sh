@@ -1,3 +1,3 @@
 #!/bin/sh
 
-vagrant exec "cat /var/log/apache2/error.log"
+vagrant exec "sudo cat /var/log/apache2/error.log"

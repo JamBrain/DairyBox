@@ -82,7 +82,7 @@ If you're running a standard **Ludum Dare** setup, additional #LDJAM services ar
 * http://192.168.48.48:8083 - jammer.bio (`www/public-jammer.bio`)
 * http://192.168.48.48:8084 - tv.ludumdare.com (`www/public-tv`)
 * http://192.168.48.48:8085 - jamga.me (`www/public-jamga.me`)
-* http://192.168.48.48:8086 - ??? :)
+* http://192.168.48.48:8086 - ??? :) (`www/public-scene`)
 
 For details on the structure of the **Ludum Dare** source tree, visit:
 
@@ -106,15 +106,8 @@ From your root working directory (not `www`).
 ## Utilities
 ### Local Utilities
 Things you can run from your shell.
-* **info.sh** - Get information about the VM. php.ini location, IP addresses, etc.
+* **info.sh** - Get information about the VM. IP addresses, etc.
 * **log.sh** - Get the Apache+PHP Log (use PHP function "error_log" to send errors here).
-
-### Remote Utilities
-Things you can run after doing a `vagrant ssh` to connect to the server.
-* **php-ini.sh** - returns the location of php.ini (often used with back-ticks when you want to edit it)
-  * **EXAMPLE**: ``sudo nano `./php-ini.sh` `` To edit the php.ini
-    * **CTRL+O** to Save (a prompt. You'll have to push Enter)
-    * **CTRL+X** to Exit
 
 ### Web Utilities
 These are some extras pre-installed on DairyBox you can access with your browser. Helpful for debugging.
