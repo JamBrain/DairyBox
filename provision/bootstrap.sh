@@ -1,13 +1,21 @@
 #!/bin/sh
-# This is the bootstrapping script run to provision the Vagrant install of Scotch Box.
+# This is the bootstrapping script that provisions Scotch Box for us
+
+cd /home/vagrant
 
 # To correctly use pecl and other packages, we need a few prerequisites
 apt-get update
 printf "y" | apt-get install php5-dev
 
+# Tell Pear/Pecl packages where to find php.ini
+pear config-set php_ini /etc/php5/apache2/php.ini
+
 # Install packages
-./install-apcu.sh
+echo "Installing APCu..."
+printf "no\nno" | pecl install APCu-beta
 
+# Run codebase specific setup scripts
+sh /var/www/scripts/setup.sh || true
 
-# Run source setup script (if available. Found in www/scripts/setup.sh)
-./setup.sh
+# Done
+exit
