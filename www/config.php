@@ -1,5 +1,11 @@
 <?php
 
+// General Config Information //
+const CMW_USING_DB = true;
+const CMW_USING_APCU = true;
+const CMW_USING_MEMCACHED = true;
+const CMW_USING_REDIS = true;
+
 // Database Config //
 const CMW_DB_HOST = 'localhost';
 const CMW_DB_NAME = 'scotchbox';
@@ -7,6 +13,13 @@ const CMW_DB_LOGIN = 'root';
 const CMW_DB_PASSWORD = 'root';
 const CMW_TABLE_PREFIX = 'cmw_';
 //const CMW_USES_PDO = true;		// Default Database is MySQL. Enable this to use PDO.
+
+// Memcached Config //
+const CMW_MEMCACHED_HOST = 'localhost';
+const CMW_MEMCACHED_PORT = 11211;
+
+// Redis Config //
+const CMW_REDIS_HOST = 'localhost';
 
 // Debug Flags //
 const CMW_PHP_DEBUG = true;			// PHP Debug Mode: Extra logging, query debug features.
@@ -17,6 +30,9 @@ const CMW_CSS_DEBUG = true;			// CSS Debug Mode: Not minified, src includes.
 const CMW_STATIC_DIR = '/public-static';
 const CMW_STATIC_URL = '//192.168.48.48:8080';
 const CMW_THEME_BASE = '/themes';
+
+// Access Permission Whitelist //
+const CMW_ACCESS_DATA = "127.0.0.1";
 
 // API Keys //
 const GOOGLE_API_KEY = '';
