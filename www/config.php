@@ -31,8 +31,8 @@ const CMW_STATIC_DIR = '/public-static';
 const CMW_STATIC_URL = '//192.168.48.48:8080';
 const CMW_THEME_BASE = '/themes';
 
-// Access Permission Whitelist //
-const CMW_ACCESS_DATA = "127.0.0.1";
+// Access Permission Whitelist (Can be arrays on PHP 5.6+) //
+const CMW_ACCESS_DATA = "192.168.48.1";
 
 // API Keys //
 const GOOGLE_API_KEY = '';
