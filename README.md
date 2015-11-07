@@ -76,13 +76,16 @@ Do a `vagrant up` (from the root directory, not `www`).
 After setup, your server is here: http://192.168.48.48 (`www/public`). It may take a moment to connect.
 
 If you're running a standard **Ludum Dare** setup, additional #LDJAM services are here:
-* http://192.168.48.48:8080 - static.ludumdare.com (`www/public-static`)
-* http://192.168.48.48:8081 - api.ludumdare.com (`www/public-api`)
-* http://192.168.48.48:8082 - ldj.am (`www/public-ldj.am`)
-* http://192.168.48.48:8083 - jammer.bio (`www/public-jammer.bio`)
-* http://192.168.48.48:8084 - tv.ludumdare.com (`www/public-tv`)
-* http://192.168.48.48:8085 - jamga.me (`www/public-jamga.me`)
-* http://192.168.48.48:8086 - ??? :) (`www/public-scene`)
+* http://192.168.48.48:8080 - static.ldjam.org (`www/public-static`)
+* http://192.168.48.48:8081 - pusher.ldjam.com (`www/public-pusher`)
+* http://192.168.48.48:8082 - theme.ludumdare.com (`www/public-theme`)
+* http://192.168.48.48:8083 - api.ldjam.org (`www/public-api`)
+* http://192.168.48.48:8084 - ldj.am (`www/public-ldj.am`)
+* http://192.168.48.48:8085 - jammer.bio (`www/public-jammer.bio`)
+* http://192.168.48.48:8090 - jam.host (`www/public-jam.host`)
+* http://192.168.48.48:8091 - jammer.tv (`www/public-tv`)
+* http://192.168.48.48:8092 - jamga.me (`www/public-jamga.me`)
+* http://192.168.48.48:8093 - ??? :) (`www/public-scene`)
 
 For details on the structure of the **Ludum Dare** source tree, visit:
 
