@@ -35,7 +35,7 @@ const CMW_JS_DEBUG = true;			// JavaScript Debug Mode: Not minified, src include
 
 // Paths //
 const CMW_STATIC_DIR = '/public-static';
-define("CMW_STATIC_URL",'//'.$_SERVER['SERVER_ADDR'].':8080');
+if ( isset($_SERVER['SERVER_ADDR']) ) define("CMW_STATIC_URL",'//'.$_SERVER['SERVER_ADDR'].':8080');
 const CMW_THEME_BASE = '/themes';
 
 // Access Permission Whitelist (Can be arrays on PHP 5.6+) //

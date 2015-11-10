@@ -17,5 +17,14 @@ printf "no\nno" | pecl install APCu-beta
 # Run codebase specific setup scripts
 sh /var/www/scripts/setup.sh || true
 
+# Create symlinks to useful folders
+ln -s /var/www www
+ln -s /vagrant vagrant
+ln -s /etc/php5/apache2/php.ini php.ini
+ln -s /etc/apache2/apache2.conf apache2.conf
+ln -s /etc/mysql/my.cnf mysql.conf
+ln -s /etc/redis/6379.conf redis.conf
+ln -s /etc/memcached.conf memcached.conf
+
 # Done
 exit
