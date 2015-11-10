@@ -82,6 +82,8 @@ If you're running a standard **Ludum Dare** setup, additional #LDJAM services ar
 * http://192.168.48.48:8083 - api.ldjam.org (`www/public-api`)
 * http://192.168.48.48:8084 - ldj.am (`www/public-ldj.am`)
 * http://192.168.48.48:8085 - jammer.bio (`www/public-jammer.bio`)
+
+Potential future sevices are here:
 * http://192.168.48.48:8090 - jam.host (`www/public-jam.host`)
 * http://192.168.48.48:8091 - jammer.tv (`www/public-tv`)
 * http://192.168.48.48:8092 - jamga.me (`www/public-jamga.me`)
