@@ -115,13 +115,13 @@ Things you can run from your shell.
 * **log.sh** - Get the Apache+PHP Log (use PHP function "error_log" to send errors here).
 
 ### Config File Symlinks
-Inside your home directory (`~`), you can find symlinks to configuration files for the various software run on the webserver.
+If you do a `vagrant ssh`, inside your home directory (`~`), you'll find symlinks to configuration files for the various software run on the webserver.
 * **~/php.ini**
 * **~/apache2.conf**
-* **~/mysql.conf** (actually my.cnf)
-* **~/memcached.conf**
-* **~/redis.conf**
-* 
+* **~/mysql.conf** (file is actually `my.cnf`)
+* **~/memcached.conf** (not used)
+* **~/redis.conf** (not used)
+
 Also, for convenience, there are symlinks to two helpful folders:
 * **~/www/** - to the WWW root folder
 * **~/vagrant/** - to the Vagrant root folder
