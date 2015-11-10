@@ -20,6 +20,7 @@ sh /var/www/scripts/setup.sh || true
 # Create symlinks to useful folders
 ln -s /var/www www
 ln -s /vagrant vagrant
+ln -s /vagrant/provision/start_mailcatcher.sh start_mailcatcher.sh
 ln -s /etc/php5/apache2/php.ini php.ini
 ln -s /etc/apache2/apache2.conf apache2.conf
 ln -s /etc/mysql/my.cnf mysql.conf
