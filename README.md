@@ -175,11 +175,11 @@ TODO
 
 but it's either enable this in `php.ini`:
 
-```opcache.enable=1```
+`opcache.enable=1`
 
 or add this:
 
-```zend_extension=opcache.so```
+`zend_extension=opcache.so`
 
 (or both)
 
