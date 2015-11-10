@@ -71,7 +71,7 @@ cd ..
 You will be working in the `www` directory, but all Vagrant commands must be done from the root.
 
 ## Setup Part 3: Vagrant Up
-Do a `vagrant up` (from the root directory, not `www`).
+Do a `vagrant up`.
 
 After setup, your server is here: http://192.168.48.48 (`www/public`). It may take a moment to connect.
 
