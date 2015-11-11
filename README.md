@@ -7,7 +7,7 @@ DairyBox is the Web Development Toolchain for **Ludum Dare**. To contribute to t
 * **Virtual Box** - for hosting and running those Virtual Machines
 * **Scotch/Box** - a flexible preconfigured LAMP VM for Vagrant (Linux+Apache+MySQL+PHP)
 
-The **Ludum Dare** website runs LAMP, so for now we'll also use LAMP. In the future we may switch to a custom LEMP configuration. For details, check out [JuiceBox](https://github.com/povrazor/juicebox).
+The **Ludum Dare** website **doesn't** run LAMP, but instead runs a similar bleeding-edge configuration (Linux+OpenLiteSpeed+MariaDB+PHP7). In the future we may switch to a custom VM that better mirrors what is run on the servers. For details, check out [JuiceBox](https://github.com/povrazor/juicebox).
 
 ## What? Explain working with Vagrant and Scotch/Box
 The key thing to understand about working with Vagrant boxes (VMs) like Scotch/Box is that Vagrant boxes are temporary. Though you can connect to the Virtual Machine and install whatever you like, Vagrant boxes work best when you install things via setup scripts. That way, they can be *nuked from orbit* whenever you like, giving you fresh/clean install whenever you want one.
@@ -26,7 +26,7 @@ We call that editing, clicking, and blowing up computers *the workflow*.
 We call the stuff you download and install *the toolchain*.
 
 ## Pre Setup (Part 0)
-Where possible, install the latest versions.
+**ALWAYS** install the latest versions. If something ever stops working, make sure you **are** running the absolute latest version.
 
 1. Install **GIT**: http://git-scm.com/downloads
 2. Install **Vagrant**: http://vagrantup.com/ (***)
@@ -71,7 +71,7 @@ cd ..
 You will be working in the `www` directory, but all Vagrant commands must be done from the root.
 
 ## Setup Part 3: Vagrant Up
-Do a `vagrant up` (from the root directory, not `www`).
+Do a `vagrant up`.
 
 After setup, your server is here: http://192.168.48.48 (`www/public`). It may take a moment to connect.
 
@@ -82,6 +82,8 @@ If you're running a standard **Ludum Dare** setup, additional #LDJAM services ar
 * http://192.168.48.48:8083 - api.ldjam.org (`www/public-api`)
 * http://192.168.48.48:8084 - ldj.am (`www/public-ldj.am`)
 * http://192.168.48.48:8085 - jammer.bio (`www/public-jammer.bio`)
+
+Potential future sevices are here:
 * http://192.168.48.48:8090 - jam.host (`www/public-jam.host`)
 * http://192.168.48.48:8091 - jammer.tv (`www/public-tv`)
 * http://192.168.48.48:8092 - jamga.me (`www/public-jamga.me`)
@@ -112,16 +114,28 @@ Things you can run from your shell.
 * **info.sh** - Get information about the VM. IP addresses, etc.
 * **log.sh** - Get the Apache+PHP Log (use PHP function "error_log" to send errors here).
 
+### Config File Symlinks
+If you do a `vagrant ssh`, inside your home directory (`~`), you'll find symlinks to configuration files for the various software run on the webserver.
+* **~/php.ini**
+* **~/apache2.conf**
+* **~/mysql.conf** (file is actually `my.cnf`)
+* **~/memcached.conf** (not used)
+* **~/redis.conf** (not used)
+
+Also, for convenience, there are symlinks to two helpful folders:
+* **~/www/** - to the WWW root folder
+* **~/vagrant/** - to the Vagrant root folder
+
 ### Web Utilities
 These are some extras pre-installed on DairyBox you can access with your browser. Helpful for debugging.
-* http://192.168.48.48/utils/ (`www/public/utils`)
+* http://192.168.48.48/dev/utils (`../dev/utils`)
 * **apcu.php** - Manage APCu state (fast RAM cache) - login: **root**  password: **root**
 * **ocp.php** - Manage Opcache state (PHP Opcache)
 * **phpinfo.php** - Simple script with a phpinfo() call.
 
-If you want PHPMyAdmin, simply download the latest version and unzip it in to the `public/phpmyadmin` directory. Access it with:
+If you want PHPMyAdmin, simply download the latest version and unzip it in to the `../dev/phpmyadmin` directory. Access it with:
 
-http://192.168.48.48/phpmyadmin/ - Login: **root**  Password: **root**
+http://192.168.48.48/dev/phpmyadmin/ - Login: **root**  Password: **root**
 
 ## Public Server
 By default, your DairyBox can only be accessed locally. To access it from another machine or device on your network, you need to enable the Public Server.
@@ -153,29 +167,45 @@ You should only enable OpCache if you need to better simulate the active **Ludum
 
 You can clear the OpCache cache and look-up other details using the OCP tool:
 
-http://192.168.48.48/utils/ocp.php
+http://192.168.48.48/dev/utils/ocp.php
 
 To Enable OpCache, do the following:
 
 TODO
+
+but it's either enable this in `php.ini`:
+
+`opcache.enable=1`
+
+or add this:
+
+`zend_extension=opcache.so`
+
+(or both)
 
 ## Configuring APCu (Memory Cache)
 APCu comes pre-configured in DairyBox.
 
 The **Ludum Dare** website requires APCu. APCu is faster than Memcached (shared data is written directly to RAM instead of being piped over TCP), but is unreliable when it comes to scaling across multiple servers. Data that must be real-time accurate across multiple servers should not be cached by APCu. That said, a lot of **Ludum Dare** data can safely be wrong and out of date. For example: Changes to data **must** be read and written to the database, but data fetched by users browsing the website (comments, posts, likes, links, etc) can safely be out-of-date. In practice, the worst case has data out-of-date for a few minutes, but in many cases it wont even be a second.
 
-**Ludum Dare** is currently run from a single dedicated server, so APCu's flaws are not an issue.
+**NOTE**: APCu for PHP 7.0 may be less fragile, but we currently run PHP 5.6 on the VM.
 
 For caching advice, see the Development Guide.
 
 You can check what's cached and how much memory is used with the ACPu tool:
 
-http://192.168.48.48/utils/apcu.php
+http://192.168.48.48/dev/utils/apcu.php
 
-To change setting (memory usage, etc), do the following:
+To change setting (memory usage, etc), do edit `php.ini`:
 
 TODO
 
 ## Configuring e-mail for testing
 
-TODO
+Run the shell script `~/start_mailcatcher.sh`.
+
+This starts Mailcatcher on Port 1080.
+
+http://192.168.48.48:1080/
+
+Any emails generated by the server will be caught and displayed inside Mailcatcher.
