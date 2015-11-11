@@ -1,5 +1,8 @@
 .DS_STORE
 .vagrant
-www
-dev/phpmyadmin*
-dev/phpredmin*
+.ftpquota
+.svn
+.hg
+/www
+/dev/phpmyadmin*
+/dev/phpredmin*
