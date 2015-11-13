@@ -19,7 +19,7 @@ sh /var/www/scripts/setup.sh || true
 
 # Create symlinks to useful folders
 ln -s /var/www www
-ln -s /vagrant vagrant
+#ln -s /vagrant vagrant		# disabled, beacuse it confuses vagrant
 ln -s /vagrant/www vvv
 ln -s /vagrant/provision/start_mailcatcher.sh start_mailcatcher.sh
 ln -s /etc/php5/apache2/php.ini php.ini
