@@ -985,6 +985,7 @@ EOB;
 	if($fieldname=='info') {
 		$cols+=2;
 		 echo '<th>',sortheader('T','Timeout',"&OB=".$MYREQUEST['OB']),'</th>';
+		 echo '<th>','Expires in','</th>';
 	}
 	echo '<th>',sortheader('D','Deleted at',"&OB=".$MYREQUEST['OB']),'</th></tr>';
 
@@ -1035,10 +1036,20 @@ EOB;
           '<td class="td-n center">',date(DATE_FORMAT,$entry['creation_time']),'</td>';
 
         if($fieldname=='info') {
-          if($entry['ttl'])
+          if($entry['ttl']) {
             echo '<td class="td-n center">'.$entry['ttl'].' seconds</td>';
-          else
+            $time_left = ($entry['creation_time'] + $entry['ttl']) - time();
+            if ( $time_left >= 0 ) {
+                echo '<td class="td-n center">'.$time_left.' seconds</td>';
+            }
+            else {
+                echo '<td class="td-n center">Expired</td>';
+            }
+          }
+          else {
             echo '<td class="td-n center">None</td>';
+            echo '<td class="td-n center">-</td>';
+          }
         }
         if ($entry['deletion_time']) {
 
