@@ -12,7 +12,7 @@ pear config-set php_ini /etc/php5/apache2/php.ini
 
 # Install packages
 echo "Installing APCu..."
-printf "no\nno" | pecl install APCu
+printf "no\nno" | pecl install APCu-4.0.10
 
 # Run codebase specific setup scripts
 sh /var/www/scripts/setup.sh || true
