@@ -56,7 +56,7 @@ where `ludumdare` is the directory you plan to work out of.
 ## Setup Part 2: Source
 Initialize a new repository in the `www` directory, and set the origin to your source repository.
 
-**NOTE:** You may want to fork the `ludumdare/ludumdare` repository to your own GitHub account. If you do, adjust the `git remote` command below accordingly.
+If you just want to try it out, or don't yet have a GitHub account, you can do the following.
 
 ```
 cd www
@@ -66,7 +66,29 @@ git fetch
 git checkout -t origin/master
 ```
 
-You will be working in the `www` directory.
+Alternatively, if you do plan to contribute changes, you should fork the `/ludumdare/ludumdare` repostiory, and check it out like so:
+
+```
+cd www
+git init
+git remote add origin https://github.com/MY-USER-NAME-ON-GIT/ludumdare.git
+git remote add upstream https://github.com/ludumdare/ludumdare.git
+git fetch
+git checkout -t origin/master
+```
+
+Or even better, once you have SSL configured:
+
+```
+cd www
+git init
+git remote add origin git@github.com:MY-USER-NAME-ON-GIT/ludumdare.git
+git remote add upstream https://github.com/ludumdare/ludumdare.git
+git fetch
+git checkout -t origin/master
+```
+
+We will be working in the `www` directory.
 
 ## Setup Part 3: Vagrant Up
 Do a `vagrant up`.
