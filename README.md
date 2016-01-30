@@ -29,15 +29,14 @@ We call the stuff you download and install *the toolchain*.
 **ALWAYS** install the latest versions. If something ever stops working, make sure you **are** running the absolute latest version.
 
 1. Install **GIT**: http://git-scm.com/downloads
-2. Install **Vagrant**: http://vagrantup.com/ (***)
-3. Install **Vagrant-Exec** plugin:
+2. Install **Virtual Box**: https://www.virtualbox.org/wiki/Downloads (***)
+3. Install **Vagrant**: http://vagrantup.com/ (***)
+4. Install **Vagrant-Exec** plugin:
 
     ```
     vagrant plugin install vagrant-exec
     ```
     
-4. Install **Virtual Box**: https://www.virtualbox.org/wiki/Downloads (***)
-
 If you're an Ubuntu/Debian user, **DON'T INSTALL VAGRANT AND VIRTUAL BOX USING APT-GET**! The repositories for these are **VERY** out of date. Most Vagrant setup problems on Linux are because you don't have the latest version.
 
 ## Setup Part 1: DairyBox
@@ -65,10 +64,9 @@ git init
 git remote add origin https://github.com/ludumdare/ludumdare.git
 git fetch
 git checkout -t origin/master
-cd ..
 ```
 
-You will be working in the `www` directory, but all Vagrant commands must be done from the root.
+You will be working in the `www` directory.
 
 ## Setup Part 3: Vagrant Up
 Do a `vagrant up`.
