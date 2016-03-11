@@ -1,5 +1,5 @@
 # DairyBox
-<img align="right" src="https://raw.githubusercontent.com/povrazor/dairybox/master/docs/Logo.png">
+<img align="right" src="https://raw.githubusercontent.com/ludumdare/dairybox/gh-pages/assets/Logo.png">
 DairyBox is the Web Development Toolchain for **Ludum Dare**. To contribute to the core website development, you will be using this suite of tools.
 
 ### DairyBox Uses
