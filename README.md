@@ -39,6 +39,15 @@ We call the stuff you download and install *the toolchain*.
     
 If you're an Ubuntu/Debian user, **DON'T INSTALL VAGRANT AND VIRTUAL BOX USING APT-GET**! The repositories for these are **VERY** out of date. Most Vagrant setup problems on Linux are because you don't have the latest version.
 
+
+5. [optional] Install **Vagrant Cachier** plugin:
+
+If you're working on DairyBox, and find yourself doing a lot of `vagrant up; vagrant destroy; vagrant up`'s, this plugin will cache packages between destroy's. The trade off is it will take more hard drive space (since it has to keep copies of packages).
+
+    ```
+    vagrant plugin install vagrant-cachier
+    ```
+
 ## Setup Part 1: DairyBox
 Clone the **DairyBox** repo. 
 
