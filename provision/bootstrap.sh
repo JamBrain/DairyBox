@@ -6,6 +6,9 @@ cd /home/vagrant
 # Needed by Ubuntu 14.04 to get FFMPEG packages (remove this for Ubuntu 16.04) 
 add-apt-repository -y ppa:mc3man/trusty-media
 
+# Newer version of ImageMagick on Ubuntu 14.04 (needed for correct webp support)
+add-apt-repository -y ppa:jamedjo/ppa
+
 # To correctly use pecl and other packages, we need a few prerequisites
 apt-get update
 apt-get -y install php5-dev
@@ -18,7 +21,7 @@ echo "Installing APCu..."
 printf "no\nno" | pecl install APCu-4.0.10
 
 # Install other packages
-apt-get -y install ffmpeg imagemagick pngquant gifsicle
+apt-get -y install ffmpeg imagemagick pngquant gifsicle webp
 
 # MariaDB
 #apt-get -y remove mysql-server
