@@ -1,4 +1,6 @@
 # DairyBox
+
+[![Join the chat at https://gitter.im/ludumdare/dairybox](https://badges.gitter.im/ludumdare/dairybox.svg)](https://gitter.im/ludumdare/dairybox?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 <img align="right" src="https://raw.githubusercontent.com/ludumdare/dairybox/gh-pages/assets/Logo.png">
 DairyBox is the Web Development Toolchain for **Ludum Dare**. To contribute to the core website development, you will be using this suite of tools.
 
