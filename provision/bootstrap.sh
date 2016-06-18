@@ -18,7 +18,7 @@ pear config-set php_ini /etc/php5/apache2/php.ini
 
 # Install PHP packages
 echo "Installing APCu..."
-printf "no\nno" | pecl install APCu-4.0.10
+printf "no\nno" | pecl install APCu-4.0.11
 
 # Install other packages
 apt-get -y install ffmpeg imagemagick pngquant gifsicle webp
