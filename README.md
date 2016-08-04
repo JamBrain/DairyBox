@@ -125,6 +125,8 @@ gulp
 
 I forget the exact syntax, but it's something like the above.
 
+Once properly configured, this wont be necessary (watches).
+
 ## Upgrading DairyBox
 From your root working directory (not `www`).
 * Destroy your VM with `vagrant destroy`. This shuts down the server and removes the VM.
