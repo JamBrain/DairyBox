@@ -96,23 +96,20 @@ We will be working in the `www` directory.
 ## Setup Part 3: Vagrant Up
 Do a `vagrant up`.
 
-After setup, your server is here: http://192.168.48.48 (`www/public`). It may take a moment to connect.
+After setup, you'll be able to access VM server here: http://192.168.48.48. It may take a moment to connect.
 
-If you're running a standard **Ludum Dare** setup, additional #LDJAM services are here:
-* http://192.168.48.48:8080 - static.ldjam.org (`www/public-static`)
-* http://192.168.48.48:8081 - pusher.ldjam.com (`www/public-pusher`)
-* http://192.168.48.48:8082 - theme.ludumdare.com (`www/public-theme`)
-* http://192.168.48.48:8083 - api.ldjam.org (`www/public-api`)
-* http://192.168.48.48:8084 - ldj.am (`www/public-ldj.am`)
-* http://192.168.48.48:8085 - jammer.bio (`www/public-jammer.bio`)
+If you're running a standard **Jammer/Ludum Dare** setup, the following domains have been configured to point to the VM running on your local machine:
+* http://ludumdare.org (http://192.168.48.48:8084) - ludumdare.com (`www/public-ludumdare.com`)
+* http://jammer.work (http://192.168.48.48:8085) - jammer.vg (`www/public-jammer.vg`)
+* http://bio.jammer.work (http://192.168.48.48:8086) - jammer.bio (`www/public-jammer.bio`)
+* http://static.jammer.work (http://192.168.48.48:8080) - static.jam.vg (`www/public-static`)
+* http://api.jammer.work (http://192.168.48.48:8081) - api.jammer.vg (`www/public-api`)
 
-Potential future sevices are here:
-* http://192.168.48.48:8090 - jam.host (`www/public-jam.host`)
-* http://192.168.48.48:8091 - jammer.tv (`www/public-tv`)
-* http://192.168.48.48:8092 - jamga.me (`www/public-jamga.me`)
-* http://192.168.48.48:8093 - ??? :) (`www/public-scene`)
+To test locally on a mobile device, you can find details on advanced configurations here: 
 
-For details on the structure of the **Ludum Dare** source tree, visit:
+https://github.com/ludumdare/ludumdare/wiki/Testing-on-Mobile
+
+For details on the structure of the **Jammer/Ludum Dare** source tree, visit:
 
 https://github.com/ludumdare/ludumdare
 
@@ -172,18 +169,6 @@ The next time you start your server with `vagrant up`, you may be prompted which
 The public IP is usually the IP listed under **eth2**.
 
 Once you know the public IP address, all URLs like the ones above (http://192.168.48.48) can be accessed from your remote devices using the public IP.
-
-### Giving the Public Server a name
-??? TODO: Figure out the right way to do this.
-
-Edit your hosts file (`/etc/hosts`) on the local machine (??), and add an entry for the IPs.
-
-```
-192.168.1.22 publicserver.local
-192.168.48.48 localserver.local
-```
-
-http://unix.stackexchange.com/a/82456
 
 ## Enabling OpCache
 You should only enable OpCache if you need to better simulate the active **Ludum Dare** server environment, or test OpCache aware features. For most developers, it's preferred that your PHP scripts aren't cached. That way, they reload whenever you refresh your browser.
