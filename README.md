@@ -103,7 +103,7 @@ If you're running a standard **Jammer/Ludum Dare** setup, the following domains 
 * http://jammer.work (http://192.168.48.48:8085) - **jammer.vg** (`www/public-jammer.vg`)
 * http://bio.jammer.work (http://192.168.48.48:8086) - **jammer.bio** (`www/public-jammer.bio`)
 * http://static.jammer.work (http://192.168.48.48:8080) - **static.jam.vg** (`www/public-static`)
-* http://api.jammer.work (http://192.168.48.48:8081) - **api.jammer.vg** **api.ludumdare.com** (`www/public-api`)
+* http://api.jammer.work (http://192.168.48.48:8081) - **api.jammer.vg** and **api.ludumdare.com** (`www/public-api`)
 
 To test locally on a mobile device, you can find details on advanced configurations here: 
 
