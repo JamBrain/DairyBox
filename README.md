@@ -119,7 +119,7 @@ TODO: this
 ```
 vagrant ssh
 cd vvv
-npm init
+npm install
 gulp
 ```
 
