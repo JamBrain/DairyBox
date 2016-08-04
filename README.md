@@ -40,7 +40,7 @@ We call the stuff you download and install *the toolchain*.
     
 If you're an Ubuntu/Debian user, **DON'T INSTALL VAGRANT AND VIRTUAL BOX USING APT-GET**! The repositories for these are **VERY** out of date. Most Vagrant setup problems on Linux are because you don't have the latest version.
 
-If you're on a computer that needs to save hard drive space, **Vagrant Cachier** can be omitted.
+If you're on a computer that needs to save hard drive space, **Vagrant Cachier** can be omitted. The plugin is used to keep cached copies of Ubuntu packages, so you don't need to reinstall them.
 
 ## Setup Part 1: DairyBox
 Clone the **DairyBox** repo. 
@@ -99,11 +99,11 @@ Do a `vagrant up`.
 After setup, you'll be able to access VM server here: http://192.168.48.48. It may take a moment to connect.
 
 If you're running a standard **Jammer/Ludum Dare** setup, the following domains have been configured to point to the VM running on your local machine:
-* http://ludumdare.org (http://192.168.48.48:8084) - ludumdare.com (`www/public-ludumdare.com`)
-* http://jammer.work (http://192.168.48.48:8085) - jammer.vg (`www/public-jammer.vg`)
-* http://bio.jammer.work (http://192.168.48.48:8086) - jammer.bio (`www/public-jammer.bio`)
-* http://static.jammer.work (http://192.168.48.48:8080) - static.jam.vg (`www/public-static`)
-* http://api.jammer.work (http://192.168.48.48:8081) - api.jammer.vg (`www/public-api`)
+* http://ludumdare.org (http://192.168.48.48:8084) - **ludumdare.com** (`www/public-ludumdare.com`)
+* http://jammer.work (http://192.168.48.48:8085) - **jammer.vg** (`www/public-jammer.vg`)
+* http://bio.jammer.work (http://192.168.48.48:8086) - **jammer.bio** (`www/public-jammer.bio`)
+* http://static.jammer.work (http://192.168.48.48:8080) - **static.jam.vg** (`www/public-static`)
+* http://api.jammer.work (http://192.168.48.48:8081) - **api.jammer.vg** **api.ludumdare.com** (`www/public-api`)
 
 To test locally on a mobile device, you can find details on advanced configurations here: 
 
@@ -112,6 +112,18 @@ https://github.com/ludumdare/ludumdare/wiki/Testing-on-Mobile
 For details on the structure of the **Jammer/Ludum Dare** source tree, visit:
 
 https://github.com/ludumdare/ludumdare
+
+## Setup Part 4: Gulp Build
+TODO: this
+
+```
+vagrant ssh
+cd vvv
+npm init
+gulp
+```
+
+I forget the exact syntax, but it's something like the above.
 
 ## Upgrading DairyBox
 From your root working directory (not `www`).
