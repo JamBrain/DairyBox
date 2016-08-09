@@ -102,7 +102,8 @@ If you're running a standard **Jammer/Ludum Dare** setup, the following domains 
 * http://ludumdare.org (http://192.168.48.48:8084) - **ludumdare.com** (`www/public-ludumdare.com`)
 * http://jammer.work (http://192.168.48.48:8085) - **jammer.vg** (`www/public-jammer.vg`)
 * http://bio.jammer.work (http://192.168.48.48:8086) - **jammer.bio** (`www/public-jammer.bio`)
-* http://192.168.48.48:8089 - **ldj.am** and **jam.mr** (`www/public-url.shortener`)
+* http://url.ludumdare.org (http://192.168.48.48:8089) - **ldj.am** (`www/public-url.shortener`)
+* http://url.jammer.work (http://192.168.48.48:8089) - **jam.mr** (`www/public-url.shortener`)
 * http://static.jammer.work (http://192.168.48.48:8080) - **static.jam.vg** (`www/public-static`)
 * http://api.jammer.work (http://192.168.48.48:8081) - **api.ludumdare.com** and **api.jammer.vg** (`www/public-api`)
 
