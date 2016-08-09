@@ -139,6 +139,7 @@ From your root working directory (not `www`).
 * Initialize a fresh VM with `vagrant up`.
 
 ## Tips
+You should **suspend** the VM before put it to sleep (or close the lid). If you forget, do a `vagrant suspend` then a `vagrant up` to resume the server.
 * `vagrant up` to initialize, start, or resume a server (after suspending or rebooting)
 * `vagrant suspend` to put it to sleep
 * `vagrant reload` to restart it
