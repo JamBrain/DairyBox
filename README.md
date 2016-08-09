@@ -142,8 +142,8 @@ From your root working directory (not `www`).
 You should **suspend** the VM before put it to sleep (or close the lid). If you forget, do a `vagrant suspend` then a `vagrant up` to resume the server.
 * `vagrant up` to initialize, start, or resume a server (after suspending or rebooting)
 * `vagrant suspend` to put it to sleep
-* `vagrant reload` to restart it
 * `vagrant halt` to shut it down (power button)
+* `vagrant reload` to restart it
 * `vagrant destroy` to delete the VM (the files in www are fine, but everything else is lost)
 * `vagrant ssh` to connect to the VM with SSH
 
