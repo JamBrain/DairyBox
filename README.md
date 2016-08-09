@@ -149,7 +149,7 @@ You should **suspend** the VM before put it to sleep (or close the lid). If you 
 
 ## Utilities
 ### Local Utilities
-Things you can run from your shell.
+With **Vagrant-Exec** installed, these shell scripts are available in the Dairybox folder.
 * **info.sh** - Get information about the VM. IP addresses, etc.
 * **log.sh** - Get the Apache+PHP Log (use PHP function "error_log" to send errors here).
 
