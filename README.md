@@ -69,7 +69,7 @@ git fetch
 git checkout -t origin/master
 ```
 
-Alternatively, if you do plan to contribute changes, you should fork the `/ludumdare/ludumdare` repostiory, and check it out like so:
+If you do plan to contribute changes, **fork** the `/ludumdare/ludumdare` repostiory, and check it out like so:
 
 ```
 cd www
@@ -80,16 +80,9 @@ git fetch
 git checkout -t origin/master
 ```
 
-Or even better, once you have SSL configured:
+Or even better, configure SSH, and use `git@github.com:YOUR-USER-NAME-ON-GIT/ludumdare.git` as your origin.
 
-```
-cd www
-git init
-git remote add origin git@github.com:MY-USER-NAME-ON-GIT/ludumdare.git
-git remote add upstream https://github.com/ludumdare/ludumdare.git
-git fetch
-git checkout -t origin/master
-```
+https://help.github.com/categories/ssh/
 
 We will be working in the `www` directory.
 
