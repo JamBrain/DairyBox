@@ -74,7 +74,7 @@ If you do plan to contribute changes, **fork** the `/ludumdare/ludumdare` repost
 ```
 cd www
 git init
-git remote add origin https://github.com/MY-USER-NAME-ON-GIT/ludumdare.git
+git remote add origin https://github.com/YOUR-USER-NAME-ON-GIT/ludumdare.git
 git remote add upstream https://github.com/ludumdare/ludumdare.git
 git fetch
 git checkout -t origin/master
