@@ -155,15 +155,16 @@ With **Vagrant-Exec** installed, these shell scripts are available in the Dairyb
 
 ### Config File Symlinks
 If you do a `vagrant ssh`, inside your home directory (`~`), you'll find symlinks to configuration files for the various software run on the webserver.
-* **~/php.ini**
-* **~/apache2.conf**
-* **~/mysql.conf** (file is actually `my.cnf`)
+* **~/php.ini** - PHP Configuration
+* **~/user.ini** - **OTHER** PHP Configuration. This is the config that enables debugging, etc.
+* **~/apache2.conf** - Apache Configuration
+* **~/mysql.conf** - MySQL Configuration (NB. file is actually named `my.cnf`, but symlinked with a better name)
 * **~/memcached.conf** (not used)
 * **~/redis.conf** (not used)
 
 Also, for convenience, there are symlinks to two helpful folders:
 * **~/www/** - to the WWW root folder
-* **~/vagrant/** - to the Vagrant root folder
+* **~/vvv/** - like WWW, but you can actually execute scripts in it.
 
 ### Web Utilities
 These are some extras pre-installed on DairyBox you can access with your browser. Helpful for debugging.
