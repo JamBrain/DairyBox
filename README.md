@@ -198,17 +198,22 @@ http://192.168.48.48/dev/utils/ocp.php
 
 To Enable OpCache, do the following:
 
-TODO
+```
+vagrant ssh
+sudo nano ~/user.ini
+```
 
-but it's either enable this in `php.ini`:
+Enable it by changing the `opcache.enable` line like so:
 
-`opcache.enable=1`
+```
+opcache.enable=1
+```
 
-or add this:
+Save and close the file (`CTRL+O, ENTER, CTRL+X`). Restart Apache.
 
-`zend_extension=opcache.so`
-
-(or both)
+```
+sudo service apache2 restart
+```
 
 ## Configuring APCu (Memory Cache)
 APCu comes pre-configured in DairyBox.
