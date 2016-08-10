@@ -1,13 +1,13 @@
 # DairyBox
 <img align="right" src="https://raw.githubusercontent.com/ludumdare/dairybox/gh-pages/assets/Logo.png">
-DairyBox is the Web Development Toolchain for **Ludum Dare**. To contribute to the core website development, you will be using this suite of tools.
+DairyBox is the Web Development Toolchain for **Jammer** and **Ludum Dare**. To make contributions to the website, you will be using this suite of tools.
 
 ### DairyBox Uses
 * **Vagrant** - A set of tools for automating and controlling Virtual Machines (VMs)
 * **Virtual Box** - for hosting and running those Virtual Machines
 * **Scotch/Box** - a flexible preconfigured LAMP VM for Vagrant (Linux+Apache+MySQL+PHP)
 
-The **Ludum Dare** website **doesn't** run LAMP, but instead runs a similar bleeding-edge configuration (Linux+OpenLiteSpeed+MariaDB+PHP7). In the future we may switch to a custom VM that better mirrors what is run on the servers. For details, check out [JuiceBox](https://github.com/povrazor/juicebox).
+The live servers **don't** run LAMP, but instead runs a similar bleeding-edge configuration (Linux+OpenLiteSpeed+MariaDB+PHP7). In the future we may switch to a custom VM that better mirrors what is run on the servers. For details, check out [JuiceBox](https://github.com/povrazor/juicebox).
 
 ## What? Explain working with Vagrant and Scotch/Box
 The key thing to understand about working with Vagrant boxes (VMs) like Scotch/Box is that Vagrant boxes are temporary. Though you can connect to the Virtual Machine and install whatever you like, Vagrant boxes work best when you install things via setup scripts. That way, they can be *nuked from orbit* whenever you like, giving you fresh/clean install whenever you want one.
@@ -31,22 +31,16 @@ We call the stuff you download and install *the toolchain*.
 1. Install **GIT**: http://git-scm.com/downloads
 2. Install **Virtual Box**: https://www.virtualbox.org/wiki/Downloads (***)
 3. Install **Vagrant**: http://vagrantup.com/ (***)
-4. Install **Vagrant-Exec** plugin:
+4. Install **Vagrant-Exec** and **Vagrant Cachier** plugins:
 
     ```
     vagrant plugin install vagrant-exec
+    vagrant plugin install vagrant-cachier
     ```
     
 If you're an Ubuntu/Debian user, **DON'T INSTALL VAGRANT AND VIRTUAL BOX USING APT-GET**! The repositories for these are **VERY** out of date. Most Vagrant setup problems on Linux are because you don't have the latest version.
 
-
-#### [optional] Install **Vagrant Cachier** plugin:
-
-If you're working on DairyBox, and find yourself doing a lot of `vagrant up; vagrant destroy; vagrant up`'s, this plugin will cache packages between destroy's. The trade off is it will take more hard drive space (since it has to keep copies of packages).
-
-```
-vagrant plugin install vagrant-cachier
-```
+If you're on a computer that needs to save hard drive space, **Vagrant Cachier** can be omitted. The plugin is used to keep cached copies of Ubuntu packages, so you don't need to redownload them.
 
 ## Setup Part 1: DairyBox
 Clone the **DairyBox** repo. 
@@ -75,52 +69,71 @@ git fetch
 git checkout -t origin/master
 ```
 
-Alternatively, if you do plan to contribute changes, you should fork the `/ludumdare/ludumdare` repostiory, and check it out like so:
+If you do plan to contribute changes, **fork** the `/ludumdare/ludumdare` repostiory, and check it out like so:
 
 ```
 cd www
 git init
-git remote add origin https://github.com/MY-USER-NAME-ON-GIT/ludumdare.git
+git remote add origin https://github.com/YOUR-USER-NAME-ON-GIT/ludumdare.git
 git remote add upstream https://github.com/ludumdare/ludumdare.git
 git fetch
 git checkout -t origin/master
 ```
 
-Or even better, once you have SSL configured:
+Or even better, configure SSH, and use `git@github.com:YOUR-USER-NAME-ON-GIT/ludumdare.git` as your origin.
 
-```
-cd www
-git init
-git remote add origin git@github.com:MY-USER-NAME-ON-GIT/ludumdare.git
-git remote add upstream https://github.com/ludumdare/ludumdare.git
-git fetch
-git checkout -t origin/master
-```
+https://help.github.com/categories/ssh/
 
 We will be working in the `www` directory.
 
 ## Setup Part 3: Vagrant Up
 Do a `vagrant up`.
 
-After setup, your server is here: http://192.168.48.48 (`www/public`). It may take a moment to connect.
+After setup, you'll be able to access VM server here: http://192.168.48.48. It may take a moment to connect.
 
-If you're running a standard **Ludum Dare** setup, additional #LDJAM services are here:
-* http://192.168.48.48:8080 - static.ldjam.org (`www/public-static`)
-* http://192.168.48.48:8081 - pusher.ldjam.com (`www/public-pusher`)
-* http://192.168.48.48:8082 - theme.ludumdare.com (`www/public-theme`)
-* http://192.168.48.48:8083 - api.ldjam.org (`www/public-api`)
-* http://192.168.48.48:8084 - ldj.am (`www/public-ldj.am`)
-* http://192.168.48.48:8085 - jammer.bio (`www/public-jammer.bio`)
+If you're running a standard **Jammer/Ludum Dare** setup, the following domains have been configured to point to the VM running on your local machine:
+* http://ludumdare.org (http://192.168.48.48:8084 [Port **8084**]) - **ludumdare.com** (`www/public-ludumdare.com`)
+  * http://api.ludumdare.org (http://192.168.48.48:8081 [Port **8081**]) - **api.ludumdare.com** (`www/public-api`)
+  * http://url.ludumdare.org (http://192.168.48.48:8089 [Port **8089**]) - **ldj.am** (`www/public-url.shortener`)
+* http://jammer.work (http://192.168.48.48:8085 [Port **8085**]) - **jammer.vg** (`www/public-jammer.vg`)
+  * http://api.jammer.work (http://192.168.48.48:8081 [Port **8081**]) - **api.jammer.vg** (`www/public-api`)
+  * http://url.jammer.work (http://192.168.48.48:8089 [Port **8089**]) - **jam.mr** (`www/public-url.shortener`)
+* http://bio.jammer.work (http://192.168.48.48:8086 [Port **8086**]) - **jammer.bio** (`www/public-jammer.bio`)
+  * http://api.bio.jammer.work (http://192.168.48.48:8081 [Port **8081**]) - **api.jammer.bio** (`www/public-api`)
+* http://static.jammer.work (http://192.168.48.48:8080 [Port **8080**]) - **static.jam.vg** (`www/public-static`)
 
-Potential future sevices are here:
-* http://192.168.48.48:8090 - jam.host (`www/public-jam.host`)
-* http://192.168.48.48:8091 - jammer.tv (`www/public-tv`)
-* http://192.168.48.48:8092 - jamga.me (`www/public-jamga.me`)
-* http://192.168.48.48:8093 - ??? :) (`www/public-scene`)
+Testing on remote machines and mobile devices is a bit more effort. See the [Public Server](#setup-part-3-vagrant-up) section below.
 
-For details on the structure of the **Ludum Dare** source tree, visit:
+For details on the structure of the **Jammer/Ludum Dare** source tree, visit:
 
 https://github.com/ludumdare/ludumdare
+
+## Setup Part 4: Gulp Build
+TODO: this
+
+```
+vagrant ssh
+cd vvv
+npm install
+gulp
+```
+
+I forget the exact syntax, but it's something like the above.
+
+Once properly configured, this wont be necessary (watches).
+
+## Merging Upstream
+TODO
+
+```
+git fetch upstream
+git checkout master
+git merge upstream/master
+```
+
+https://help.github.com/articles/syncing-a-fork/
+
+https://help.github.com/articles/merging-an-upstream-repository-into-your-fork/
 
 ## Upgrading DairyBox
 From your root working directory (not `www`).
@@ -130,87 +143,90 @@ From your root working directory (not `www`).
 * Initialize a fresh VM with `vagrant up`.
 
 ## Tips
+You should **suspend** the VM before put it to sleep (or close the lid). If you forget, do a `vagrant suspend` then a `vagrant up` to resume the server.
 * `vagrant up` to initialize, start, or resume a server (after suspending or rebooting)
 * `vagrant suspend` to put it to sleep
-* `vagrant reload` to restart it
 * `vagrant halt` to shut it down (power button)
+* `vagrant reload` to restart it
 * `vagrant destroy` to delete the VM (the files in www are fine, but everything else is lost)
 * `vagrant ssh` to connect to the VM with SSH
 
 ## Utilities
 ### Local Utilities
-Things you can run from your shell.
+With **Vagrant-Exec** installed, these shell scripts are available in the Dairybox folder.
 * **info.sh** - Get information about the VM. IP addresses, etc.
 * **log.sh** - Get the Apache+PHP Log (use PHP function "error_log" to send errors here).
 
 ### Config File Symlinks
 If you do a `vagrant ssh`, inside your home directory (`~`), you'll find symlinks to configuration files for the various software run on the webserver.
-* **~/php.ini**
-* **~/apache2.conf**
-* **~/mysql.conf** (file is actually `my.cnf`)
+* **~/php.ini** - PHP Configuration
+* **~/user.ini** - **OTHER** PHP Configuration. This is the config that enables debugging, etc.
+* **~/apache2.conf** - Apache Configuration
+* **~/mysql.conf** - MySQL Configuration (NB. file is actually named `my.cnf`, but symlinked with a better name)
 * **~/memcached.conf** (not used)
 * **~/redis.conf** (not used)
 
 Also, for convenience, there are symlinks to two helpful folders:
 * **~/www/** - to the WWW root folder
-* **~/vagrant/** - to the Vagrant root folder
+* **~/vvv/** - like WWW, but you can actually execute scripts in it.
 
 ### Web Utilities
-These are some extras pre-installed on DairyBox you can access with your browser. Helpful for debugging.
-* http://192.168.48.48/dev/utils (`../dev/utils`)
-* **apcu.php** - Manage APCu state (fast RAM cache) - login: **root**  password: **root**
-* **ocp.php** - Manage Opcache state (PHP Opcache)
-* **phpinfo.php** - Simple script with a phpinfo() call.
+These are some pre-installed tools you can access with your browser. Helpful for debugging.
+* http://192.168.48.48/dev/ (`../dev/`)
+  * **apcu.php** - Manage APCu state (fast RAM cache) - login: **root**  password: **root**
+  * **ocp.php** - Manage Opcache state (PHP Opcache)
+  * **phpinfo.php** - Simple script with a phpinfo() call.
 
-If you want PHPMyAdmin, simply download the latest version and unzip it in to the `../dev/phpmyadmin` directory. Access it with:
+You can also find **PHPMyAdmin** (for MySQL DB viewing/editing) installed here:
 
-http://192.168.48.48/dev/phpmyadmin/ - Login: **root**  Password: **root**
+http://192.168.48.48/phpmyadmin/ - Login: **root**  Password: **root**
+
+Data can be found in the `scotchbox` database.
 
 ## Public Server
-By default, your DairyBox can only be accessed locally. To access it from another machine or device on your network, you need to enable the Public Server.
+By default, your DairyBox can only be accessed on the local machine. To access it from another machine or device on your network, you need to enable the Public Server.
 
 To do this, remove the # in front of the `"public_network"` line in your **Vagrantfile** (`/Vagrantfile`).
 
-The next time you start your server with `vagrant up`, you may be prompted which of your Network Interfaces you want to bind (i.e. your Ethernet or your WiFi). Once setup completes, you can use the info script to get information about the server.
+The next time you start your server with `vagrant up`, you may be prompted which of your Network Interfaces you want to bind (i.e. your Ethernet or your WiFi). For me I choose the ``1`` option, but YMMV.
+
+Once setup completes, you can use the info script to fetch the public IP address of the server.
 
 `./info.sh`
 
 The public IP is usually the IP listed under **eth2**.
 
-Once you know the public IP address, all URLs like the ones above (http://192.168.48.48) can be accessed from your remote devices using the public IP.
+The public IP address is needed to connect to the VM remotely. The domains, `jammer.work` and `ludumdare.org` are configured for the default local IP address (`192.168.48.48`), and can't be used for this. You **must** use the IP addresses and **ports** to access the site. Both are detailed above.
 
-### Giving the Public Server a name
-??? TODO: Figure out the right way to do this.
+Alternatively, you can change the `.hosts` file of your local internet router. For details, go here:
 
-Edit your hosts file (`/etc/hosts`) on the local machine (??), and add an entry for the IPs.
-
-```
-192.168.1.22 publicserver.local
-192.168.48.48 localserver.local
-```
-
-http://unix.stackexchange.com/a/82456
+https://github.com/ludumdare/ludumdare/wiki/Testing-on-Mobile
 
 ## Enabling OpCache
 You should only enable OpCache if you need to better simulate the active **Ludum Dare** server environment, or test OpCache aware features. For most developers, it's preferred that your PHP scripts aren't cached. That way, they reload whenever you refresh your browser.
 
 You can clear the OpCache cache and look-up other details using the OCP tool:
 
-http://192.168.48.48/dev/utils/ocp.php
+http://192.168.48.48/dev/ocp.php
 
 To Enable OpCache, do the following:
 
-TODO
+```
+vagrant ssh
+sudo nano ~/user.ini
+```
 
-but it's either enable this in `php.ini`:
+Enable it by changing the `opcache.enable` line like so:
 
-`opcache.enable=1`
+```
+opcache.enable=1
+```
 
-or add this:
+Save and close the file (`CTRL+O, ENTER, CTRL+X`). Restart Apache.
 
-`zend_extension=opcache.so`
-
-(or both)
+```
+sudo service apache2 restart
+```
 
 ## Configuring APCu (Memory Cache)
 APCu comes pre-configured in DairyBox.
@@ -223,11 +239,11 @@ For caching advice, see the Development Guide.
 
 You can check what's cached and how much memory is used with the ACPu tool:
 
-http://192.168.48.48/dev/utils/apcu.php
+http://192.168.48.48/dev/apcu.php
 
 To change setting (memory usage, etc), do edit `php.ini`:
 
-TODO
+TODO: Add a file in conf.d instead of doing things to php.ini
 
 ## Configuring e-mail for testing
 
@@ -238,3 +254,17 @@ This starts Mailcatcher on Port 1080.
 http://192.168.48.48:1080/
 
 Any emails generated by the server will be caught and displayed inside Mailcatcher.
+
+## Testing legacy Internet Explorer versions
+
+Microsoft offers a variety of Virtual Machines for testing Internet Explorer 8-11 on Windows 7 and 8, as well as Microsoft Edge on Windows 10. The toolchain is already using VirtualBox, so it makes sense to grab VirtualBox images.
+
+https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/
+
+Unzip the downloads, and double click the `.ova` files to install them in VirtualBox.
+
+Windows XP and Vista VM downloads are no longer officially available (with IE7 and IE8), but can be downloaded here:
+
+https://github.com/magnetikonline/linuxmicrosoftievirtualmachines#ie8---xp
+
+**NOTE**: Be sure to snapshot the VMs **BEFORE** starting them for the first time. The VMs use un-activated versions of Windows, and will expire after 30-90 days. With a snapshot, you can roll-back the VM and get a new 30-90 days.
