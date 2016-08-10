@@ -165,15 +165,17 @@ Also, for convenience, there are symlinks to two helpful folders:
 * **~/vvv/** - like WWW, but you can actually execute scripts in it.
 
 ### Web Utilities
-These are some extras pre-installed on DairyBox you can access with your browser. Helpful for debugging.
-* http://192.168.48.48/dev/utils (`../dev/utils`)
-* **apcu.php** - Manage APCu state (fast RAM cache) - login: **root**  password: **root**
-* **ocp.php** - Manage Opcache state (PHP Opcache)
-* **phpinfo.php** - Simple script with a phpinfo() call.
+These are some pre-installed tools you can access with your browser. Helpful for debugging.
+* http://192.168.48.48/dev/ (`../dev/`)
+  * **apcu.php** - Manage APCu state (fast RAM cache) - login: **root**  password: **root**
+  * **ocp.php** - Manage Opcache state (PHP Opcache)
+  * **phpinfo.php** - Simple script with a phpinfo() call.
 
-If you want PHPMyAdmin, simply download the latest version and unzip it in to the `../dev/phpmyadmin` directory. Access it with:
+You can also find **PHPMyAdmin** (for MySQL DB viewing/editing) installed here:
 
-http://192.168.48.48/dev/phpmyadmin/ - Login: **root**  Password: **root**
+http://192.168.48.48/phpmyadmin/ - Login: **root**  Password: **root**
+
+Data can be found in the `scotchbox` database.
 
 ## Public Server
 By default, your DairyBox can only be accessed on the local machine. To access it from another machine or device on your network, you need to enable the Public Server.
