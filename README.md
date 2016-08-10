@@ -201,7 +201,7 @@ You should only enable OpCache if you need to better simulate the active **Ludum
 
 You can clear the OpCache cache and look-up other details using the OCP tool:
 
-http://192.168.48.48/dev/utils/ocp.php
+http://192.168.48.48/dev/ocp.php
 
 To Enable OpCache, do the following:
 
@@ -233,7 +233,7 @@ For caching advice, see the Development Guide.
 
 You can check what's cached and how much memory is used with the ACPu tool:
 
-http://192.168.48.48/dev/utils/apcu.php
+http://192.168.48.48/dev/apcu.php
 
 To change setting (memory usage, etc), do edit `php.ini`:
 
