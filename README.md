@@ -122,7 +122,7 @@ I forget the exact syntax, but it's something like the above.
 
 Once properly configured, this wont be necessary (watches).
 
-## Merging with Upstream
+## Merging Upstream
 TODO
 
 ```
@@ -132,6 +132,8 @@ git merge upstream/master
 ```
 
 https://help.github.com/articles/syncing-a-fork/
+
+https://help.github.com/articles/merging-an-upstream-repository-into-your-fork/
 
 ## Upgrading DairyBox
 From your root working directory (not `www`).
