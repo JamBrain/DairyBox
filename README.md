@@ -243,7 +243,7 @@ http://192.168.48.48/dev/apcu.php
 
 To change setting (memory usage, etc), do edit `php.ini`:
 
-TODO
+TODO: Add a file in conf.d instead of doing things to php.ini
 
 ## Configuring e-mail for testing
 
