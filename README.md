@@ -109,9 +109,7 @@ If you're running a standard **Jammer/Ludum Dare** setup, the following domains 
   * http://api.bio.jammer.work (http://192.168.48.48:8081 [Port **8081**]) - **api.jammer.bio** (`www/public-api`)
 * http://static.jammer.work (http://192.168.48.48:8080 [Port **8080**]) - **static.jam.vg** (`www/public-static`)
 
-Testing on remote machines and mobile devices is a bit more effort. Go here:
-
-https://github.com/povrazor/dairybox/blob/master/README.md#public-server
+Testing on remote machines and mobile devices is a bit more effort. See the [Public Server](#setup-part-3-vagrant-up) section below.
 
 For details on the structure of the **Jammer/Ludum Dare** source tree, visit:
 
