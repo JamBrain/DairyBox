@@ -99,16 +99,17 @@ Do a `vagrant up`.
 After setup, you'll be able to access VM server here: http://192.168.48.48. It may take a moment to connect.
 
 If you're running a standard **Jammer/Ludum Dare** setup, the following domains have been configured to point to the VM running on your local machine:
-* http://ludumdare.org (http://192.168.48.48:8084) - **ludumdare.com** (`www/public-ludumdare.com`)
-* http://jammer.work (http://192.168.48.48:8085) - **jammer.vg** (`www/public-jammer.vg`)
-* http://bio.jammer.work (http://192.168.48.48:8086) - **jammer.bio** (`www/public-jammer.bio`)
-* http://192.168.48.48:8089 - **ldj.am** and **jam.mr** (`www/public-url.shortener`)
-* http://static.jammer.work (http://192.168.48.48:8080) - **static.jam.vg** (`www/public-static`)
-* http://api.jammer.work (http://192.168.48.48:8081) - **api.ludumdare.com** and **api.jammer.vg** (`www/public-api`)
+* http://ludumdare.org (http://192.168.48.48:8084 [Port **8084**]) - **ludumdare.com** (`www/public-ludumdare.com`)
+  * http://api.ludumdare.org (http://192.168.48.48:8081 [Port **8081**]) - **api.ludumdare.com** (`www/public-api`)
+  * http://url.ludumdare.org (http://192.168.48.48:8089 [Port **8089**]) - **ldj.am** (`www/public-url.shortener`)
+* http://jammer.work (http://192.168.48.48:8085 [Port **8085**]) - **jammer.vg** (`www/public-jammer.vg`)
+  * http://api.jammer.work (http://192.168.48.48:8081 [Port **8081**]) - **api.jammer.vg** (`www/public-api`)
+  * http://url.jammer.work (http://192.168.48.48:8089 [Port **8089**]) - **jam.mr** (`www/public-url.shortener`)
+* http://bio.jammer.work (http://192.168.48.48:8086 [Port **8086**]) - **jammer.bio** (`www/public-jammer.bio`)
+  * http://api.bio.jammer.work (http://192.168.48.48:8081 [Port **8081**]) - **api.jammer.bio** (`www/public-api`)
+* http://static.jammer.work (http://192.168.48.48:8080 [Port **8080**]) - **static.jam.vg** (`www/public-static`)
 
-To test locally on a mobile device, you can find details on advanced configurations here: 
-
-https://github.com/ludumdare/ludumdare/wiki/Testing-on-Mobile
+Testing on remote machines and mobile devices is a bit more effort. See the [Public Server](#setup-part-3-vagrant-up) section below.
 
 For details on the structure of the **Jammer/Ludum Dare** source tree, visit:
 
@@ -136,30 +137,32 @@ From your root working directory (not `www`).
 * Initialize a fresh VM with `vagrant up`.
 
 ## Tips
+You should **suspend** the VM before put it to sleep (or close the lid). If you forget, do a `vagrant suspend` then a `vagrant up` to resume the server.
 * `vagrant up` to initialize, start, or resume a server (after suspending or rebooting)
 * `vagrant suspend` to put it to sleep
-* `vagrant reload` to restart it
 * `vagrant halt` to shut it down (power button)
+* `vagrant reload` to restart it
 * `vagrant destroy` to delete the VM (the files in www are fine, but everything else is lost)
 * `vagrant ssh` to connect to the VM with SSH
 
 ## Utilities
 ### Local Utilities
-Things you can run from your shell.
+With **Vagrant-Exec** installed, these shell scripts are available in the Dairybox folder.
 * **info.sh** - Get information about the VM. IP addresses, etc.
 * **log.sh** - Get the Apache+PHP Log (use PHP function "error_log" to send errors here).
 
 ### Config File Symlinks
 If you do a `vagrant ssh`, inside your home directory (`~`), you'll find symlinks to configuration files for the various software run on the webserver.
-* **~/php.ini**
-* **~/apache2.conf**
-* **~/mysql.conf** (file is actually `my.cnf`)
+* **~/php.ini** - PHP Configuration
+* **~/user.ini** - **OTHER** PHP Configuration. This is the config that enables debugging, etc.
+* **~/apache2.conf** - Apache Configuration
+* **~/mysql.conf** - MySQL Configuration (NB. file is actually named `my.cnf`, but symlinked with a better name)
 * **~/memcached.conf** (not used)
 * **~/redis.conf** (not used)
 
 Also, for convenience, there are symlinks to two helpful folders:
 * **~/www/** - to the WWW root folder
-* **~/vagrant/** - to the Vagrant root folder
+* **~/vvv/** - like WWW, but you can actually execute scripts in it.
 
 ### Web Utilities
 These are some extras pre-installed on DairyBox you can access with your browser. Helpful for debugging.
@@ -173,17 +176,23 @@ If you want PHPMyAdmin, simply download the latest version and unzip it in to th
 http://192.168.48.48/dev/phpmyadmin/ - Login: **root**  Password: **root**
 
 ## Public Server
-By default, your DairyBox can only be accessed locally. To access it from another machine or device on your network, you need to enable the Public Server.
+By default, your DairyBox can only be accessed on the local machine. To access it from another machine or device on your network, you need to enable the Public Server.
 
 To do this, remove the # in front of the `"public_network"` line in your **Vagrantfile** (`/Vagrantfile`).
 
-The next time you start your server with `vagrant up`, you may be prompted which of your Network Interfaces you want to bind (i.e. your Ethernet or your WiFi). Once setup completes, you can use the info script to get information about the server.
+The next time you start your server with `vagrant up`, you may be prompted which of your Network Interfaces you want to bind (i.e. your Ethernet or your WiFi). For me I choose the ``1`` option, but YMMV.
+
+Once setup completes, you can use the info script to fetch the public IP address of the server.
 
 `./info.sh`
 
 The public IP is usually the IP listed under **eth2**.
 
-Once you know the public IP address, all URLs like the ones above (http://192.168.48.48) can be accessed from your remote devices using the public IP.
+The public IP address is needed to connect to the VM remotely. The domains, `jammer.work` and `ludumdare.org` are configured for the default local IP address (`192.168.48.48`), and can't be used for this. You **must** use the IP addresses and **ports** to access the site. Both are detailed above.
+
+Alternatively, you can change the `.hosts` file of your local internet router. For details, go here:
+
+https://github.com/ludumdare/ludumdare/wiki/Testing-on-Mobile
 
 ## Enabling OpCache
 You should only enable OpCache if you need to better simulate the active **Ludum Dare** server environment, or test OpCache aware features. For most developers, it's preferred that your PHP scripts aren't cached. That way, they reload whenever you refresh your browser.
@@ -194,17 +203,22 @@ http://192.168.48.48/dev/utils/ocp.php
 
 To Enable OpCache, do the following:
 
-TODO
+```
+vagrant ssh
+sudo nano ~/user.ini
+```
 
-but it's either enable this in `php.ini`:
+Enable it by changing the `opcache.enable` line like so:
 
-`opcache.enable=1`
+```
+opcache.enable=1
+```
 
-or add this:
+Save and close the file (`CTRL+O, ENTER, CTRL+X`). Restart Apache.
 
-`zend_extension=opcache.so`
-
-(or both)
+```
+sudo service apache2 restart
+```
 
 ## Configuring APCu (Memory Cache)
 APCu comes pre-configured in DairyBox.
