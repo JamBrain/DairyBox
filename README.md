@@ -99,19 +99,19 @@ Do a `vagrant up`.
 After setup, you'll be able to access VM server here: http://192.168.48.48. It may take a moment to connect.
 
 If you're running a standard **Jammer/Ludum Dare** setup, the following domains have been configured to point to the VM running on your local machine:
-* http://ludumdare.org (http://192.168.48.48:8084) - **ludumdare.com** (`www/public-ludumdare.com`)
-  * http://api.ludumdare.org (http://192.168.48.48:8081) - **api.ludumdare.com** (`www/public-api`)
-  * http://url.ludumdare.org (http://192.168.48.48:8089) - **ldj.am** (`www/public-url.shortener`)
-* http://jammer.work (http://192.168.48.48:8085) - **jammer.vg** (`www/public-jammer.vg`)
-  * http://api.jammer.work (http://192.168.48.48:8081) - **api.jammer.vg** (`www/public-api`)
-  * http://url.jammer.work (http://192.168.48.48:8089) - **jam.mr** (`www/public-url.shortener`)
-* http://bio.jammer.work (http://192.168.48.48:8086) - **jammer.bio** (`www/public-jammer.bio`)
-  * http://api.bio.jammer.work (http://192.168.48.48:8081) - **api.jammer.bio** (`www/public-api`)
-* http://static.jammer.work (http://192.168.48.48:8080) - **static.jam.vg** (`www/public-static`)
+* http://ludumdare.org (http://192.168.48.48:**8084**) - **ludumdare.com** (`www/public-ludumdare.com`)
+  * http://api.ludumdare.org (http://192.168.48.48:**8081**) - **api.ludumdare.com** (`www/public-api`)
+  * http://url.ludumdare.org (http://192.168.48.48:**8089**) - **ldj.am** (`www/public-url.shortener`)
+* http://jammer.work (http://192.168.48.48:**8085**) - **jammer.vg** (`www/public-jammer.vg`)
+  * http://api.jammer.work (http://192.168.48.48:**8081**) - **api.jammer.vg** (`www/public-api`)
+  * http://url.jammer.work (http://192.168.48.48:**8089**) - **jam.mr** (`www/public-url.shortener`)
+* http://bio.jammer.work (http://192.168.48.48:**8086**) - **jammer.bio** (`www/public-jammer.bio`)
+  * http://api.bio.jammer.work (http://192.168.48.48:**8081**) - **api.jammer.bio** (`www/public-api`)
+* http://static.jammer.work (http://192.168.48.48:**8080**) - **static.jam.vg** (`www/public-static`)
 
-To test locally on a mobile device, you can find details on advanced configurations here: 
+Testing on remote machines and mobile devices is a bit more effort. Go here:
 
-https://github.com/ludumdare/ludumdare/wiki/Testing-on-Mobile
+https://github.com/povrazor/dairybox/blob/master/README.md#public-server
 
 For details on the structure of the **Jammer/Ludum Dare** source tree, visit:
 
@@ -178,17 +178,23 @@ If you want PHPMyAdmin, simply download the latest version and unzip it in to th
 http://192.168.48.48/dev/phpmyadmin/ - Login: **root**  Password: **root**
 
 ## Public Server
-By default, your DairyBox can only be accessed locally. To access it from another machine or device on your network, you need to enable the Public Server.
+By default, your DairyBox can only be accessed on the local machine. To access it from another machine or device on your network, you need to enable the Public Server.
 
 To do this, remove the # in front of the `"public_network"` line in your **Vagrantfile** (`/Vagrantfile`).
 
-The next time you start your server with `vagrant up`, you may be prompted which of your Network Interfaces you want to bind (i.e. your Ethernet or your WiFi). Once setup completes, you can use the info script to get information about the server.
+The next time you start your server with `vagrant up`, you may be prompted which of your Network Interfaces you want to bind (i.e. your Ethernet or your WiFi). For me I choose the ``1`` option, but YMMV.
+
+Once setup completes, you can use the info script to fetch the public IP address of the server.
 
 `./info.sh`
 
 The public IP is usually the IP listed under **eth2**.
 
-Once you know the public IP address, all URLs like the ones above (http://192.168.48.48) can be accessed from your remote devices using the public IP.
+The public IP address is needed to connect to the VM remotely. The domains, `jammer.work` and `ludumdare.org` are configured for the default local IP address (`192.168.48.48`), and can't be used for this. You **must** use the IP addresses and **ports** to access the site. Both are detailed above.
+
+Alternatively, you can change the `.hosts` file of your local internet router. For details, go here:
+
+https://github.com/ludumdare/ludumdare/wiki/Testing-on-Mobile
 
 ## Enabling OpCache
 You should only enable OpCache if you need to better simulate the active **Ludum Dare** server environment, or test OpCache aware features. For most developers, it's preferred that your PHP scripts aren't cached. That way, they reload whenever you refresh your browser.
