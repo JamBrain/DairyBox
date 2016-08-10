@@ -99,15 +99,15 @@ Do a `vagrant up`.
 After setup, you'll be able to access VM server here: http://192.168.48.48. It may take a moment to connect.
 
 If you're running a standard **Jammer/Ludum Dare** setup, the following domains have been configured to point to the VM running on your local machine:
-* http://ludumdare.org (http://192.168.48.48:8084 [**8084**]) - **ludumdare.com** (`www/public-ludumdare.com`)
-  * http://api.ludumdare.org (http://192.168.48.48:8081 [**8081**]) - **api.ludumdare.com** (`www/public-api`)
-  * http://url.ludumdare.org (http://192.168.48.48:8089 [**8081**]) - **ldj.am** (`www/public-url.shortener`)
-* http://jammer.work (http://192.168.48.48:8085 [**8085**]) - **jammer.vg** (`www/public-jammer.vg`)
-  * http://api.jammer.work (http://192.168.48.48:8081 [**8081**]) - **api.jammer.vg** (`www/public-api`)
-  * http://url.jammer.work (http://192.168.48.48:8089 [**8089**]) - **jam.mr** (`www/public-url.shortener`)
-* http://bio.jammer.work (http://192.168.48.48:8086 [**8086**]) - **jammer.bio** (`www/public-jammer.bio`)
-  * http://api.bio.jammer.work (http://192.168.48.48:8081 [**8081**]) - **api.jammer.bio** (`www/public-api`)
-* http://static.jammer.work (http://192.168.48.48:8080 [**8080**]) - **static.jam.vg** (`www/public-static`)
+* http://ludumdare.org (http://192.168.48.48:8084 [Port **8084**]) - **ludumdare.com** (`www/public-ludumdare.com`)
+  * http://api.ludumdare.org (http://192.168.48.48:8081 [Port **8081**]) - **api.ludumdare.com** (`www/public-api`)
+  * http://url.ludumdare.org (http://192.168.48.48:8089 [Port **8089**]) - **ldj.am** (`www/public-url.shortener`)
+* http://jammer.work (http://192.168.48.48:8085 [Port **8085**]) - **jammer.vg** (`www/public-jammer.vg`)
+  * http://api.jammer.work (http://192.168.48.48:8081 [Port **8081**]) - **api.jammer.vg** (`www/public-api`)
+  * http://url.jammer.work (http://192.168.48.48:8089 [Port **8089**]) - **jam.mr** (`www/public-url.shortener`)
+* http://bio.jammer.work (http://192.168.48.48:8086 [Port **8086**]) - **jammer.bio** (`www/public-jammer.bio`)
+  * http://api.bio.jammer.work (http://192.168.48.48:8081 [Port **8081**]) - **api.jammer.bio** (`www/public-api`)
+* http://static.jammer.work (http://192.168.48.48:8080 [Port **8080**]) - **static.jam.vg** (`www/public-static`)
 
 Testing on remote machines and mobile devices is a bit more effort. Go here:
 
