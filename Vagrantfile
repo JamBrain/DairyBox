@@ -4,13 +4,18 @@
 Vagrant.configure("2") do |config|
 	config.vm.box = "scotch/box"
 
-    # If doing multiple installs, you should install Vagrant Cachier
-    # i.e. vagrant plugin install vagrant-cachier
-    if Vagrant.has_plugin?("vagrant-cachier")
-      # Configure cached packages to be shared between instances of the same base box.
-      # More info at https://github.com/fgrehm/vagrant-cachier
-      config.cache.scope = :box
-    end
+	config.vm.provider "virtualbox" do |v|
+		v.memory = 1024
+		v.cpus = 2
+	end
+
+	# If doing multiple installs, you should install Vagrant Cachier
+	# i.e. vagrant plugin install vagrant-cachier
+	if Vagrant.has_plugin?("vagrant-cachier")
+		# Configure cached packages to be shared between instances of the same base box.
+		# More info at https://github.com/fgrehm/vagrant-cachier
+		config.cache.scope = :box
+	end
 
 	config.vm.network "private_network", ip: "192.168.48.48"
 #	config.vm.network "public_network"
@@ -20,3 +25,4 @@ Vagrant.configure("2") do |config|
 
 	config.vm.provision :shell, path: "provision/bootstrap.sh"	
 end
+
