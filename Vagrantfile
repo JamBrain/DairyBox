@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
 	end
 
 	config.vm.network "private_network", ip: "192.168.48.48"
-	config.vm.network "public_network"
+#	config.vm.network "public_network"
 	config.vm.hostname = "dairybox"
 	config.vm.synced_folder "www", "/var/www", :mount_options => ["dmode=777", "fmode=666"]
 	config.vm.synced_folder "dev", "/var/www/sandbox/dev", :mount_options => ["dmode=775", "fmode=664"]
