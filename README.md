@@ -110,19 +110,16 @@ For details on the structure of the **Jammer/Ludum Dare** source tree, visit:
 
 https://github.com/ludumdare/ludumdare
 
-## Setup Part 4: Gulp Build
+## Building the Source Code
 TODO: this
 
 ```
 vagrant ssh
-cd vvv
-npm install
-gulp
+cd ~/vvv
+make
 ```
 
-I forget the exact syntax, but it's something like the above.
-
-Once properly configured, this wont be necessary (watches).
+**NOTE:** At the time of this writing, the setup scrupts aren't fully up to date. See this issue for details how to coax the toolchain in to working correctly until they are: https://github.com/ludumdare/ludumdare/issues/221
 
 ## Merging Upstream
 TODO
