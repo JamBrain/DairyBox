@@ -9,8 +9,18 @@ add-apt-repository -y ppa:mc3man/trusty-media
 # Newer version of ImageMagick on Ubuntu 14.04 (needed for correct webp support)
 add-apt-repository -y ppa:jamedjo/ppa
 
-# To correctly use pecl and other packages, we need a few prerequisites
+# Repo for PHP 7.0 (for Ubuntu 14.04)
+add-apt-repository -y ppa:ondrej/php
+
+# Repo for MariaDB 10.1 (for Ubuntu 14.04)
+apt-get install -y software-properties-common
+apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
+add-apt-repository 'deb [arch=amd64,i386,ppc64el] http://mirrors.accretive-networks.net/mariadb/repo/10.1/ubuntu trusty main'
+
+# Update once after all new repos have been added
 apt-get update
+
+# To correctly use pecl and other packages, we need a few prerequisites
 apt-get -y install php5-dev
 
 # Tell Pear/Pecl packages where to find php.ini
@@ -21,24 +31,22 @@ echo "Installing APCu..."
 printf "no\nno" | pecl install APCu-4.0.11
 
 # Install other packages
-apt-get -y install ffmpeg imagemagick pngquant gifsicle webp
+apt-get -y install ffmpeg imagemagick pngquant gifsicle webp php7.0 php7.0-mbstring php7.0-mysql php-apcu
 
-# MariaDB
-#apt-get -y remove mysql-server
-#apt-get -y autoremove
+# Switch Apache to PHP 7.0
+a2dismod php5
+a2enmod php7.0
 
-#apt-get -y install software-properties-common
-#apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
-#add-apt-repository -y 'deb [arch=amd64,i386] http://nyc2.mirrors.digitalocean.com/mariadb/repo/10.1/ubuntu trusty main'
-
-#apt-get update
-#printf "\n\n" | apt-get -y install mariadb-server
+# Install MariaDB
+apt-get -y remove mysql-server
+apt-get -y autoremove
+DEBIAN_FRONTEND=noninteractive apt-get -y install mariadb-server
 
 # PHPMyAdmin
-if [ ! -d "/vagrant/www/sandbox/phpmyadmin" ]; then
+if [ ! -d "/vagrant/dev/phpmyadmin" ]; then
 	wget --quiet https://files.phpmyadmin.net/phpMyAdmin/4.6.3/phpMyAdmin-4.6.3-all-languages.zip
 	unzip phpMyAdmin-4.6.3-all-languages.zip
-	sudo mv phpMyAdmin-4.6.3-all-languages /vagrant/www/sandbox/phpmyadmin
+  mv phpMyAdmin-4.6.3-all-languages /vagrant/dev/phpmyadmin
 	rm phpMyAdmin-4.6.3-all-languages.zip
 fi
 
