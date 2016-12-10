@@ -50,8 +50,9 @@ fi
 sh /var/www/scripts/setup.sh || true
 
 # Create symlinks to useful folders
-ln -s /var/www www
-ln -s /vagrant/www vvv
+#ln -s /var/www www
+#ln -s /vagrant/www vvv
+ln -s /vagrant/www www
 ln -s /vagrant/provision/start_mailcatcher.sh start_mailcatcher.sh
 ln -s /etc/php5/apache2/php.ini php.ini
 ln -s /etc/php5/apache2/conf.d/user.ini user.ini
