@@ -1,4 +1,13 @@
-#!/bin/sh
+#!/bin/bash
 
-vagrant exec "cd ~/vvv/scripts/db; sudo php table-create"
+# Had to use BASH (and not SH, i.e. DASH). arrays ("()") in SH/DASH are unsupported (requires $@ trickery)
 
+argv=("$@")
+if [ ! -z "$argv" ]
+then 
+	args=($(printf "%q " "${argv[@]}"))
+fi
+
+vagrant exec "cd ~/www/src/shrub/tools; sudo ./table-create ${args[@]}"
+
+exit $?
