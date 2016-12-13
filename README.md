@@ -91,35 +91,89 @@ We will be working in the `www` directory.
 ## Setup Part 3: Vagrant Up
 Do a `vagrant up`.
 
-After setup, you'll be able to access VM server here: http://192.168.48.48. It may take a moment to connect.
+Setup should take about 4 minutes, but longer on a brand new install (lots of downloading).
 
-If you're running a standard **Jammer/Ludum Dare** setup, the following domains have been configured to point to the VM running on your local machine:
-* http://ludumdare.org (http://192.168.48.48:8084 [Port **8084**]) - **ludumdare.com** (`www/public-ludumdare.com`)
-  * http://api.ludumdare.org (http://192.168.48.48:8081 [Port **8081**]) - **api.ludumdare.com** (`www/public-api`)
-  * http://url.ludumdare.org (http://192.168.48.48:8089 [Port **8089**]) - **ldj.am** (`www/public-url.shortener`)
-* http://jammer.work (http://192.168.48.48:8085 [Port **8085**]) - **jammer.vg** (`www/public-jammer.vg`)
-  * http://api.jammer.work (http://192.168.48.48:8081 [Port **8081**]) - **api.jammer.vg** (`www/public-api`)
-  * http://url.jammer.work (http://192.168.48.48:8089 [Port **8089**]) - **jam.mr** (`www/public-url.shortener`)
-* http://bio.jammer.work (http://192.168.48.48:8086 [Port **8086**]) - **jammer.bio** (`www/public-jammer.bio`)
-  * http://api.bio.jammer.work (http://192.168.48.48:8081 [Port **8081**]) - **api.jammer.bio** (`www/public-api`)
-* http://static.jammer.work (http://192.168.48.48:8080 [Port **8080**]) - **static.jam.vg** (`www/public-static`)
+After setup, you'll be able to access VM's sandbox folder here: http://192.168.48.48. It may take a moment to connect.
 
-Testing on remote machines and mobile devices is a bit more effort. See the [Public Server](#setup-part-3-vagrant-up) section below.
+The following domains have been configured to point to the VM running on your local machine:
+* http://ludumdare.org - **ludumdare.com** (`www/public-ludumdare.com`)
+  * http://api.ludumdare.org - **api.ludumdare.com** (`www/public-api`)
+  * http://url.ludumdare.org - **ldj.am** (`www/public-url.shortener`)
+* http://jammer.work - **jammer.vg** (`www/public-jammer.vg`)
+  * http://api.jammer.work - **api.jammer.vg** (`www/public-api`)
+  * http://url.jammer.work - **jam.mr** (`www/public-url.shortener`)
+* http://bio.jammer.work - **jammer.bio** (`www/public-jammer.bio`)
+  * http://api.bio.jammer.work - **api.jammer.bio** (`www/public-api`)
+* http://static.jammer.work - **static.jam.vg** (`www/public-static`)
 
-For details on the structure of the **Jammer/Ludum Dare** source tree, visit:
+Testing on remote machines and mobile devices is a bit more effort. See the [Public Server](#public-server) section below.
+
+For details on the **Jammer/Ludum Dare** source tree, visit:
 
 https://github.com/ludumdare/ludumdare
 
-## Building the Source Code
-TODO: this
+## Building the Source Code and Assets
+There are two ways to build the source code and assets.
+
+1. From inside the VM
+2. From outside the VM
+
+Common to both methods are the commands used for building
+
+* `make` to compile the latest changes to the project
+* `make clean` to destroy all files, and start over.
+* `make mini`, which is like `make`, but triggers the "Page is Updating" user message at the start of the build
+
+### Building inside the VM
+This is ready to-go after setup. Simply do the following.
 
 ```
 vagrant ssh
-cd ~/vvv
+cd ~/www
 make
 ```
 
-**NOTE:** At the time of this writing, the setup scrupts aren't fully up to date. See this issue for details how to coax the toolchain in to working correctly until they are: https://github.com/ludumdare/ludumdare/issues/221
+### Building outside the VM
+Building outside the VM requires more setup
+
+* PHP 7.x with MBString, and XML
+* Node.js
+* GNU Make
+* A Unix compatbile environment
+
+#### Ubuntu
+```
+# Install latest versions of PHP
+sudo add-apt-repository -y ppa:ondrej/php
+sudo apt update
+sudo apt-get install php7.0 php7.0-mbstring php7.0-mysql php7.0-xml php-apcu
+
+# Install Image and Video/GIF Manipulation Tools
+add-apt-repository -y ppa:mc3man/trusty-media
+add-apt-repository -y ppa:jamedjo/ppa
+sudo apt update
+sudo apt-get install ffmpeg imagemagick pngquant gifsicle webp
+
+# Install Other Tools
+sudo apt-get install make
+
+# Install Node.js (NOTE: You can also install newer versions)
+sudo apt-get install nodejs
+
+# Install Node packages (some of these commands may need sudo)
+cd www
+npm install
+npm install -g svgo less clean-css buble rollup uglify-js
+```
+That should be everything you need to 
+
+Then simply navigate to your version of the `ludumdare/www` folder in bash, and run `make`.
+
+#### Windows
+TODO: Cygwin
+
+#### Mac
+TODO: that wacky package manager
 
 ## Merging Upstream
 TODO
@@ -128,6 +182,8 @@ TODO
 git fetch upstream
 git checkout master
 git merge upstream/master
+
+git push -u
 ```
 
 https://help.github.com/articles/syncing-a-fork/
