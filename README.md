@@ -178,7 +178,7 @@ These are some pre-installed tools you can access with your browser. Helpful for
 
 You can also find **PHPMyAdmin** (for MySQL DB viewing/editing) installed here:
 
-http://192.168.48.48/phpmyadmin/ - Login: **root**  Password: **root**
+http://192.168.48.48/dev/phpmyadmin/ - Login: **root**  Password: **root**
 
 Data can be found in the `scotchbox` database.
 
