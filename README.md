@@ -112,17 +112,16 @@ For details on the **Jammer/Ludum Dare** source tree, visit:
 
 https://github.com/ludumdare/ludumdare
 
-## Building the Source Code and Assets
+## Building the Source Code and SVG Assets
 There are two ways to build the source code and assets.
 
 1. From inside the VM
 2. From outside the VM
 
-Common to both methods are the commands used for building
+Common to both methods is how you build.
 
 * `make` to compile the latest changes to the project
-* `make clean` to destroy all files, and start over.
-* `make mini`, which is like `make`, but triggers the "Page is Updating" user message at the start of the build
+* `make clean` to destroy all files, and start over
 
 ### Building inside the VM
 This is ready to-go after setup. Simply do the following.
@@ -132,16 +131,22 @@ vagrant ssh
 cd ~/www
 make
 ```
+This compiles from inside the VM. You can repeat running `make` as many time as you like thereafter.
 
 ### Building outside the VM
-Building outside the VM requires more setup
+Building outside the VM requires more setup. The reason you might want to do this is that you get much faster build times outside the VM.
 
-* PHP 7.x with MBString, and XML
+Some of the things you need:
+
+* PHP 7.x with MBString, MySQL, XML, and APCU addons
 * Node.js
 * GNU Make
+* Other image and vidio manipulation command-line tools
 * A Unix compatbile environment
 
 #### Ubuntu
+Debian setup be similar.
+
 ```
 # Install latest versions of PHP
 sudo add-apt-repository -y ppa:ondrej/php
@@ -218,12 +223,9 @@ If you do a `vagrant ssh`, inside your home directory (`~`), you'll find symlink
 * **~/user.ini** - **OTHER** PHP Configuration. This is the config that enables debugging, etc.
 * **~/apache2.conf** - Apache Configuration
 * **~/mysql.conf** - MySQL Configuration (NB. file is actually named `my.cnf`, but symlinked with a better name)
-* **~/memcached.conf** (not used)
-* **~/redis.conf** (not used)
 
-Also, for convenience, there are symlinks to two helpful folders:
+Also, for convenience, there are symlinks to the following helpful folders:
 * **~/www/** - to the WWW root folder
-* **~/vvv/** - like WWW, but you can actually execute scripts in it.
 
 ### Web Utilities
 These are some pre-installed tools you can access with your browser. Helpful for debugging.
