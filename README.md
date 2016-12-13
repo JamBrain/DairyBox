@@ -33,7 +33,7 @@ We call the stuff you download and install *the toolchain*.
 3. Install **Vagrant**: http://vagrantup.com/ (***)
 4. Install **Vagrant-Exec** and **Vagrant Cachier** plugins:
 
-    ```
+    ```sh
     vagrant plugin install vagrant-exec
     vagrant plugin install vagrant-cachier
     ```
@@ -49,7 +49,7 @@ Clone the **DairyBox** repo.
 
 **EXAMPLE:**
     
-```
+```sh
 git clone https://github.com/ludumdare/dairybox.git ludumdare
 ```
 where `ludumdare` is the directory you plan to work out of.
@@ -63,7 +63,7 @@ Initialize a new repository in the `www` directory, and set the origin to your s
 
 If you just want to try it out, or don't yet have a GitHub account, you can do the following.
 
-```
+```sh
 cd www
 git init
 git remote add origin https://github.com/ludumdare/ludumdare.git
@@ -73,7 +73,7 @@ git checkout -t origin/master
 
 If you do plan to contribute changes, **fork** the `/ludumdare/ludumdare` repostiory, and check it out like so:
 
-```
+```sh 
 cd www
 git init
 git remote add origin https://github.com/YOUR-USER-NAME-ON-GIT/ludumdare.git
@@ -126,7 +126,7 @@ Common to both methods is how you build.
 ### Building inside the VM
 This is ready to-go after setup. Simply do the following.
 
-```
+```sh
 vagrant ssh
 cd ~/www
 make
@@ -147,7 +147,7 @@ Some of the things you need:
 #### Ubuntu
 Debian setup be similar.
 
-```
+```sh
 # Install latest versions of PHP
 sudo add-apt-repository -y ppa:ondrej/php
 sudo apt update
@@ -183,7 +183,7 @@ TODO: that wacky package manager
 ## Merging Upstream
 TODO
 
-```
+```sh
 git fetch upstream
 git checkout master
 git merge upstream/master
@@ -268,7 +268,7 @@ http://192.168.48.48/dev/ocp.php
 
 To Enable OpCache, do the following:
 
-```
+```sh
 vagrant ssh
 sudo nano ~/user.ini
 ```
@@ -281,7 +281,7 @@ opcache.enable=1
 
 Save and close the file (`CTRL+O, ENTER, CTRL+X`). Restart Apache.
 
-```
+```sh
 sudo service apache2 restart
 ```
 
