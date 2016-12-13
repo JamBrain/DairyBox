@@ -51,7 +51,7 @@ if [ ! -d "/vagrant/dev/phpmyadmin" ]; then
 fi
 
 # NodeJS CSS dependencies
-npm install -p /vagrant/www
+npm install -p /vagrant/www/node_modules
 npm install -g svgo less clean-css buble rollup uglify-js
 
 #npm install --prefix /vagrant/www gulp gulp-postcss gulp-sourcemaps autoprefixer cssnano gulp-less stylelint
