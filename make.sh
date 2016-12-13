@@ -5,9 +5,9 @@
 argv=("$@")
 if [ ! -z "$argv" ]
 then 
-        args=($(printf "%q " "${argv[@]}"))
+	args=($(printf "%q " "${argv[@]}"))
 fi
 
-vagrant exec "cd ~/www/src/shrub/tools; sudo ./table-destroy ${args[@]}"
+vagrant exec "cd ~/www; make ${args[@]}"
 
 exit $?
