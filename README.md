@@ -33,7 +33,7 @@ We call the stuff you download and install *the toolchain*.
 3. Install **Vagrant**: http://vagrantup.com/ (***)
 4. Install **Vagrant-Exec** and **Vagrant Cachier** plugins:
 
-    ```
+    ```sh
     vagrant plugin install vagrant-exec
     vagrant plugin install vagrant-cachier
     ```
@@ -49,7 +49,7 @@ Clone the **DairyBox** repo.
 
 **EXAMPLE:**
     
-```
+```sh
 git clone https://github.com/ludumdare/dairybox.git ludumdare
 ```
 where `ludumdare` is the directory you plan to work out of.
@@ -63,7 +63,7 @@ Initialize a new repository in the `www` directory, and set the origin to your s
 
 If you just want to try it out, or don't yet have a GitHub account, you can do the following.
 
-```
+```sh
 cd www
 git init
 git remote add origin https://github.com/ludumdare/ludumdare.git
@@ -73,7 +73,7 @@ git checkout -t origin/master
 
 If you do plan to contribute changes, **fork** the `/ludumdare/ludumdare` repostiory, and check it out like so:
 
-```
+```sh 
 cd www
 git init
 git remote add origin https://github.com/YOUR-USER-NAME-ON-GIT/ludumdare.git
@@ -112,37 +112,42 @@ For details on the **Jammer/Ludum Dare** source tree, visit:
 
 https://github.com/ludumdare/ludumdare
 
-## Building the Source Code and Assets
+## Building the Source Code and SVG Assets
 There are two ways to build the source code and assets.
 
 1. From inside the VM
 2. From outside the VM
 
-Common to both methods are the commands used for building
+Common to both methods is how you build.
 
 * `make` to compile the latest changes to the project
-* `make clean` to destroy all files, and start over.
-* `make mini`, which is like `make`, but triggers the "Page is Updating" user message at the start of the build
+* `make clean` to destroy all files, and start over
 
 ### Building inside the VM
 This is ready to-go after setup. Simply do the following.
 
-```
+```sh
 vagrant ssh
 cd ~/www
 make
 ```
+This compiles from inside the VM. You can repeat running `make` as many time as you like thereafter.
 
 ### Building outside the VM
-Building outside the VM requires more setup
+Building outside the VM requires more setup. The reason you might want to do this is that you get much faster build times outside the VM.
 
-* PHP 7.x with MBString, and XML
+Some of the things you need:
+
+* PHP 7.x with MBString, MySQL, XML, and APCU addons
 * Node.js
 * GNU Make
+* Other image and vidio manipulation command-line tools
 * A Unix compatbile environment
 
 #### Ubuntu
-```
+Debian setup be similar.
+
+```sh
 # Install latest versions of PHP
 sudo add-apt-repository -y ppa:ondrej/php
 sudo apt update
@@ -178,7 +183,7 @@ TODO: that wacky package manager
 ## Merging Upstream
 TODO
 
-```
+```sh
 git fetch upstream
 git checkout master
 git merge upstream/master
@@ -218,12 +223,9 @@ If you do a `vagrant ssh`, inside your home directory (`~`), you'll find symlink
 * **~/user.ini** - **OTHER** PHP Configuration. This is the config that enables debugging, etc.
 * **~/apache2.conf** - Apache Configuration
 * **~/mysql.conf** - MySQL Configuration (NB. file is actually named `my.cnf`, but symlinked with a better name)
-* **~/memcached.conf** (not used)
-* **~/redis.conf** (not used)
 
-Also, for convenience, there are symlinks to two helpful folders:
+Also, for convenience, there are symlinks to the following helpful folders:
 * **~/www/** - to the WWW root folder
-* **~/vvv/** - like WWW, but you can actually execute scripts in it.
 
 ### Web Utilities
 These are some pre-installed tools you can access with your browser. Helpful for debugging.
@@ -266,7 +268,7 @@ http://192.168.48.48/dev/ocp.php
 
 To Enable OpCache, do the following:
 
-```
+```sh
 vagrant ssh
 sudo nano ~/user.ini
 ```
@@ -279,7 +281,7 @@ opcache.enable=1
 
 Save and close the file (`CTRL+O, ENTER, CTRL+X`). Restart Apache.
 
-```
+```sh
 sudo service apache2 restart
 ```
 
