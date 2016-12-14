@@ -233,10 +233,7 @@ These are some pre-installed tools you can access with your browser. Helpful for
   * **apcu.php** - Manage APCu state (fast RAM cache) - login: **root**  password: **root**
   * **ocp.php** - Manage Opcache state (PHP Opcache)
   * **phpinfo.php** - Simple script with a phpinfo() call.
-
-You can also find **PHPMyAdmin** (for MySQL DB viewing/editing) installed here:
-
-http://192.168.48.48/phpmyadmin/ - Login: **root**  Password: **root**
+  * **phpmyadmin/** - Manage the Databases - login: **root**  password: **root**
 
 Data can be found in the `scotchbox` database.
 
