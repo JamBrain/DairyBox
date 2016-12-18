@@ -139,7 +139,7 @@ Building outside the VM requires more setup. The reason you might want to do thi
 
 Some of the things you need:
 
-* PHP 7.x with MBString, MySQL, XML, and APCU addons
+* PHP 7.x with MBString and XML addons
 * Node.js
 * GNU Make
 * Other image and vidio manipulation command-line tools
@@ -152,7 +152,7 @@ Debian setup be similar.
 # Install latest versions of PHP
 sudo add-apt-repository -y ppa:ondrej/php
 sudo apt update
-sudo apt-get install php7.0 php7.0-mbstring php7.0-mysql php7.0-xml php-apcu
+sudo apt-get install php7.0 php7.0-mbstring php7.0-xml
 
 # Install Image and Video/GIF Manipulation Tools
 add-apt-repository -y ppa:mc3man/trusty-media
