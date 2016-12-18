@@ -71,20 +71,18 @@ git fetch
 git checkout -t origin/master
 ```
 
-If you do plan to contribute changes, **fork** the `/ludumdare/ludumdare` repostiory, and check it out like so:
+If you do plan to contribute changes, **fork** the `/ludumdare/ludumdare` repostiory. 
+
+You should also set up [SSH with GitHub](https://help.github.com/articles/which-remote-url-should-i-use/#cloning-with-ssh-urls) ([more info](https://help.github.com/categories/ssh/)), as it makes everything simpler (no need to generate tokens).
 
 ```sh 
 cd www
 git init
-git remote add origin https://github.com/YOUR-USER-NAME-ON-GIT/ludumdare.git
+git remote add origin git@github.com:YOUR-USER-NAME-ON-GIT/ludumdare.git
 git remote add upstream https://github.com/ludumdare/ludumdare.git
 git fetch
 git checkout -t origin/master
 ```
-
-Or even better, configure SSH, and use `git@github.com:YOUR-USER-NAME-ON-GIT/ludumdare.git` as your origin.
-
-https://help.github.com/categories/ssh/
 
 We will be working in the `www` directory.
 
@@ -181,11 +179,11 @@ TODO: Cygwin
 TODO: that wacky package manager
 
 ## Merging Upstream
-TODO
+Often the upstream Ludum Dare repository will be updated. GitHub will complain that your version is behind master. To merge the latest changes, you do the following
 
 ```sh
 git fetch upstream
-git checkout master
+git checkout master         # this can be omitted if you're not working out of a branch
 git merge upstream/master
 
 git push -u
