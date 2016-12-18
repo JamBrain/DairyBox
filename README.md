@@ -75,6 +75,8 @@ If you do plan to contribute changes, **fork** the `/ludumdare/ludumdare` repost
 
 You should also set up [SSH with GitHub](https://help.github.com/articles/which-remote-url-should-i-use/#cloning-with-ssh-urls) ([more info](https://help.github.com/categories/ssh/)), as it makes everything simpler (no need to generate tokens).
 
+The recommended checkout should look something like this.
+
 ```sh 
 cd www
 git init
@@ -83,6 +85,7 @@ git remote add upstream https://github.com/ludumdare/ludumdare.git
 git fetch
 git checkout -t origin/master
 ```
+This will make committing your changes, and merging upstream changes easier.
 
 We will be working in the `www` directory.
 
