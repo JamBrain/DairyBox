@@ -24,5 +24,7 @@ Vagrant.configure("2") do |config|
 	config.vm.synced_folder "dev", "/var/www/sandbox/dev", :mount_options => ["dmode=775", "fmode=664"]
 
 	config.vm.provision :shell, path: "provision/bootstrap.sh"	
-end
 
+	# Mailcatcher
+	config.vm.provision :shell, inline: "/home/vagrant/.rbenv/shims/mailcatcher --http-ip=0.0.0.0", run: "always"
+end
