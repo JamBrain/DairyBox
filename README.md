@@ -200,6 +200,8 @@ From your root working directory (not `www`).
 * Update your Vagrant boxes (i.e. Scotch/Box) with `vagrant box update`.
 * Initialize a fresh VM with `vagrant up`.
 
+If however you forked Dairybox, you will have to do something like above (Merging Upstream).
+
 ## Tips
 You should **suspend** the VM before put it to sleep (or close the lid). If you forget, do a `vagrant suspend` then a `vagrant up` to resume the server.
 * `vagrant up` to initialize, start, or resume a server (after suspending or rebooting)
@@ -280,12 +282,14 @@ Save and close the file (`CTRL+O, ENTER, CTRL+X`). Restart Apache.
 sudo service apache2 restart
 ```
 
+**NOTE:** You can find other configuration settings here:
+
+http://php.net/manual/en/opcache.configuration.php
+
 ## Configuring APCu (Memory Cache)
 APCu comes pre-configured in DairyBox.
 
 The **Ludum Dare** website requires APCu. APCu is faster than Memcached (shared data is written directly to RAM instead of being piped over TCP), but is unreliable when it comes to scaling across multiple servers. Data that must be real-time accurate across multiple servers should not be cached by APCu. That said, a lot of **Ludum Dare** data can safely be wrong and out of date. For example: Changes to data **must** be read and written to the database, but data fetched by users browsing the website (comments, posts, likes, links, etc) can safely be out-of-date. In practice, the worst case has data out-of-date for a few minutes, but in many cases it wont even be a second.
-
-**NOTE**: APCu for PHP 7.0 may be less fragile, but we currently run PHP 5.6 on the VM.
 
 For caching advice, see the Development Guide.
 
@@ -293,9 +297,11 @@ You can check what's cached and how much memory is used with the ACPu tool:
 
 http://192.168.48.48/dev/apcu.php
 
-To change setting (memory usage, etc), do edit `php.ini`:
+To change setting (memory usage, etc), do edit `~/user.ini`.
 
-TODO: Add a file in conf.d instead of doing things to php.ini
+**NOTE:** By default, we are not changing any of the default settings. You can find a list of possible options here:
+
+http://php.net/manual/en/apcu.configuration.php
 
 ## Configuring e-mail for testing
 
