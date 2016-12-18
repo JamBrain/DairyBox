@@ -63,7 +63,7 @@ fi
 
 # NodeJS CSS dependencies
 cd /vagrant/www/ && npm install
-npm install -g svgo less clean-css buble rollup uglify-js
+npm install -g svgo less clean-css buble rollup uglify-js eslint
 
 cd /home/vagrant
 
