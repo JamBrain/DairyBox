@@ -182,7 +182,7 @@ TODO: Cygwin
 TODO: that wacky package manager
 
 ## Merging Upstream
-Often the upstream Ludum Dare repository will be updated. GitHub will complain that your version is behind master. To merge the latest changes, you do the following
+GitHub will often complain that your version is behind master. To merge the latest changes, do the following:
 
 ```sh
 git fetch upstream
