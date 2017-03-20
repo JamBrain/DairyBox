@@ -62,8 +62,15 @@ if [ ! -d "/vagrant/dev/phpmyadmin" ]; then
 fi
 
 # NodeJS CSS dependencies
-cd /vagrant/www/ && npm install
-npm install -g svgo less clean-css-cli buble rollup uglify-js eslint
+if [ `uname -o` = "Cygwin" ]
+then
+	NPM_INSTALL_ARGS=--no-bin-links
+else
+	NPM_INSTALL_ARGS=
+fi
+
+cd /vagrant/www/ && npm install $NPM_INSTALL_ARGS
+npm install $NPM_INSTALL_ARGS -g svgo less clean-css-cli buble rollup uglify-js eslint
 
 cd /home/vagrant
 
