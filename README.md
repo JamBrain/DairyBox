@@ -185,10 +185,10 @@ That should be everything you need to
 Then simply navigate to your version of the `ludumdare/www` folder in bash, and run `make`.
 
 #### Windows
-TODO: Cygwin
+For a variety of reasons, you should build from inside the VM.
 
 #### Mac
-TODO: that wacky package manager
+TODO: that wacky package manager whose name I forget
 
 ## Merging Upstream
 GitHub will often complain that your version is behind master. To merge the latest changes, do the following:
