@@ -122,7 +122,8 @@ For details on the **Jammer/Ludum Dare** source tree, visit:
 
 https://github.com/ludumdare/ludumdare
 
-# Using Dairybox: Building the Source Code and SVG Assets
+# Using Dairybox
+## Building the Source Code and SVG Assets
 There are two ways to build the source code and assets.
 
 1. From inside the VM
@@ -154,7 +155,7 @@ Some of the things you need:
 * Other image and vidio manipulation command-line tools
 * A Unix compatbile environment
 
-#### Ubuntu
+### Ubuntu
 Debian setup be similar.
 
 ```sh
@@ -184,7 +185,7 @@ That should be everything you need to
 
 Then simply navigate to your version of the `ludumdare/www` folder in bash, and run `make`.
 
-#### Mac
+### Mac
 TODO: that wacky package manager whose name I forget
 
 ## Merging Upstream
@@ -202,7 +203,7 @@ https://help.github.com/articles/syncing-a-fork/
 
 https://help.github.com/articles/merging-an-upstream-repository-into-your-fork/
 
-# Upgrading DairyBox
+## Upgrading DairyBox
 From your root working directory (not `www`).
 * Destroy your VM with `vagrant destroy`. This shuts down the server and removes the VM.
 * Pull the latest changes with `git pull -u`.
