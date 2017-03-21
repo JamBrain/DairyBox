@@ -31,10 +31,10 @@ Vagrant.configure("2") do |config|
 	end
 	if Vagrant::Util::Platform.darwin? then
 		config.vm.provision :shell, inline: "echo \"export MAC_HOST=1\" >> ~/.profile"
-	else
+	end
 	if Vagrant::Util::Platform.linux? then
 		config.vm.provision :shell, inline: "echo \"export LINUX_HOST=1\" >> ~/.profile"
-	else
+	end
 
 	config.vm.provision :shell, path: "provision/bootstrap.sh"
 
