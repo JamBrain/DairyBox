@@ -178,7 +178,7 @@ sudo apt-get install nodejs
 # Install Node packages (some of these commands may need sudo)
 cd www
 npm install
-npm install -g svgo less clean-css buble rollup uglify-js eslint
+npm install -g svgo less clean-css-cli buble rollup uglify-js eslint
 ```
 That should be everything you need to 
 
