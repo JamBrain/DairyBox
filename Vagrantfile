@@ -23,11 +23,17 @@ Vagrant.configure("2") do |config|
 	config.vm.synced_folder "www", "/var/www", :mount_options => ["dmode=777", "fmode=666"]
 	config.vm.synced_folder "dev", "/var/www/sandbox/dev", :mount_options => ["dmode=775", "fmode=664"]
 
-	# Store an environment variable that lets us know what the host machine is (Windows or Unix)
+	# Store an environment variable that lets us know what the host machine is (Windows, or a Unix)
 	if Vagrant::Util::Platform.windows? then
-		config.vm.provision :shell, inline: 'echo "export WINDOWS_HOST=1" >> ~/.profile'
+		config.vm.provision :shell, inline: "echo \"export WINDOWS_HOST=1\nexport HOST_OS=windows\" >> /etc/profile"
 	else
-		config.vm.provision :shell, inline: 'echo "export UNIX_HOST=1" >> ~/.profile'
+		config.vm.provision :shell, inline: "echo \"export UNIX_HOST=1\nexport HOST_OS=unix\" >> /etc/profile"
+	end
+	if Vagrant::Util::Platform.darwin? then
+		config.vm.provision :shell, inline: "echo \"export MAC_HOST=1\nexport HOST_OS=mac\" >> /etc/profile"
+	end
+	if Vagrant::Util::Platform.linux? then
+		config.vm.provision :shell, inline: "echo \"export LINUX_HOST=1\nexport HOST_OS=linux\" >> /etc/profile"
 	end
 
 	config.vm.provision :shell, path: "provision/bootstrap.sh"
