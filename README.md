@@ -44,14 +44,10 @@ If you're on Arch Linux, you will need the **net-tools** package to make Vagrant
 
 If you're on a computer that needs to save hard drive space, **Vagrant Cachier** can be omitted. The plugin is used to keep cached copies of the VM's Ubuntu packages, so you don't need to redownload them.
 
-#### Windows
-Setup on Windows also requires that you install a Unix environment. 
+### Windows Notes
+Dairybox on Windows works best with a Unix environment. The latest version of **GIT** includes one (Based on **MSys**). Launch the **GIT Bash** shell to use it (may require a reboot).
 
-The latest version of **GIT** actually includes one (Based on **MSys**). Launch the **GIT Bash** shell to use it. It may require a reboot.
-
-Alternatively you can use Cygwin.
-
-https://cygwin.com/install.html
+**IMPORTANT**: You **MUST** run your shell as an Administrator!! This is **REQUIRED** for symlinks to work correctly.
 
 ## Setup Part 1: DairyBox
 Clone the **DairyBox** repo. 

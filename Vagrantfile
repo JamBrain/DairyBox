@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
 	config.vm.provider "virtualbox" do |v|
 		v.memory = 1024
 		v.cpus = 2
-		v.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"]
+		v.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/www", "1"]
 	end
 
 	# If doing multiple installs, you should install Vagrant Cachier
