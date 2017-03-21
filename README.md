@@ -26,10 +26,10 @@ We call that editing, clicking, and blowing up computers *the workflow*.
 
 We call the stuff you download and install *the toolchain*.
 
-## Pre Setup (Part 0)
+# Pre Setup (Part 0)
 **ALWAYS** install the latest versions. If something ever stops working, make sure you **are** running the absolute latest version.
 
-1. Install **GIT**: http://git-scm.com/downloads
+1. Install **GIT**: http://git-scm.com/downloads (*)
 2. Install **Virtual Box**: https://www.virtualbox.org/wiki/Downloads (***)
 3. Install **Vagrant**: http://vagrantup.com/ (***)
 4. Install **Vagrant-Exec** and **Vagrant Cachier** plugins:
@@ -39,21 +39,21 @@ We call the stuff you download and install *the toolchain*.
     vagrant plugin install vagrant-cachier
     ```
 
-If you're on a computer that needs to save hard drive space, **Vagrant Cachier** can be omitted. The plugin is used to keep cached copies of the VM's Ubuntu packages, so you don't need to redownload them.
+If you're on a computer with limited hard drive space, **Vagrant Cachier** can be omitted. The plugin is used to keep cached copies of the VM's Ubuntu packages, so you don't need to redownload them (makes `vagrant destroy && vagrant up` faster).
 
-### Linux Notes
+### Linux Notes (***)
 If you're an Ubuntu/Debian user, **DON'T INSTALL VAGRANT AND VIRTUAL BOX USING APT-GET**! The repositories for these are **VERY** out of date. Most Vagrant setup problems on Linux are because you don't have the latest version.
 
 If you're on Arch Linux, you will need the **net-tools** package to make Vagrant work right. See [here](https://wiki.archlinux.org/index.php/Vagrant#No_ping_between_host_and_vagrant_box_.28host-only_networking.29).
 
-### Windows Notes
+### Windows Notes (*)
 Dairybox on Windows works _best_ with a Unix environment. The latest version of **GIT** includes one (Based on **MSys**). Launch the **GIT Bash** shell to use it (may require a reboot).
 
 **IMPORTANT**: You **MUST** run your shell as an **ADMINISTRATOR**!! This is **REQUIRED** for symlinks to work correctly.
 
-You _can_ use the standard Windows **command prompt**, but you will need an **SSH** client to connect to the VM and build the project.
+You _can_ use the standard Windows **command prompt**, but you will need an **SSH** client to connect and build the project.
 
-## Setup Part 1: DairyBox
+# Setup Part 1: DairyBox
 Clone the **DairyBox** repo. 
 
 **EXAMPLE:**
@@ -67,7 +67,7 @@ where `ludumdare` is the directory you plan to work out of.
 
 **DO NOT** do a `vagrant up` yet. We have one more step...
 
-## Setup Part 2: Source
+# Setup Part 2: Source
 Initialize a new repository in the `www` directory, and set the origin to your source repository.
 
 If you just want to try it out, or don't yet have a GitHub account, you can do the following.
@@ -98,7 +98,7 @@ This will make committing your changes, and merging upstream changes easier.
 
 We will be working in the `www` directory.
 
-## Setup Part 3: Vagrant Up
+# Setup Part 3: Vagrant Up
 Do a `vagrant up`.
 
 Setup should take about 4 minutes, but longer on a brand new install (lots of downloading).
@@ -122,11 +122,11 @@ For details on the **Jammer/Ludum Dare** source tree, visit:
 
 https://github.com/ludumdare/ludumdare
 
-## Building the Source Code and SVG Assets
+# Using Dairybox: Building the Source Code and SVG Assets
 There are two ways to build the source code and assets.
 
 1. From inside the VM
-2. From outside the VM
+2. From outside the VM (Linux/Mac only)
 
 Common to both methods is how you build.
 
@@ -143,8 +143,8 @@ make
 ```
 This compiles from inside the VM. You can repeat running `make` as many time as you like thereafter.
 
-### Building outside the VM
-Building outside the VM requires more setup. The reason you might want to do this is that you get much faster build times outside the VM.
+### Building outside the VM (Linux/Mac only)
+Building outside the VM requires more setup. You may want to do this, as you can get much faster build times outside the VM.
 
 Some of the things you need:
 
@@ -184,9 +184,6 @@ That should be everything you need to
 
 Then simply navigate to your version of the `ludumdare/www` folder in bash, and run `make`.
 
-#### Windows
-For a variety of reasons, you should build from inside the VM.
-
 #### Mac
 TODO: that wacky package manager whose name I forget
 
@@ -205,7 +202,7 @@ https://help.github.com/articles/syncing-a-fork/
 
 https://help.github.com/articles/merging-an-upstream-repository-into-your-fork/
 
-## Upgrading DairyBox
+# Upgrading DairyBox
 From your root working directory (not `www`).
 * Destroy your VM with `vagrant destroy`. This shuts down the server and removes the VM.
 * Pull the latest changes with `git pull -u`.
@@ -214,7 +211,7 @@ From your root working directory (not `www`).
 
 If however you forked Dairybox, you will have to do something like above (Merging Upstream).
 
-## Tips
+# Tips
 You should **suspend** the VM before put it to sleep (or close the lid). If you forget, do a `vagrant suspend` then a `vagrant up` to resume the server.
 * `vagrant up` to initialize, start, or resume a server (after suspending or rebooting)
 * `vagrant suspend` to put it to sleep
