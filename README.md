@@ -1,6 +1,7 @@
 # DairyBox
 <img align="right" src="https://raw.githubusercontent.com/ludumdare/dairybox/gh-pages/assets/Logo.png">
-DairyBox is the Web Development Toolchain for **Jammer** and **Ludum Dare**. To make contributions to the website, you will be using this suite of tools.
+
+DairyBox is the Web Development Toolchain for the **Jammer** and **Ludum Dare** projects. To make contributions to the website, you will be using this suite of tools.
 
 ### DairyBox Uses
 * **Vagrant** - A set of tools for automating and controlling Virtual Machines (VMs)
@@ -37,17 +38,20 @@ We call the stuff you download and install *the toolchain*.
     vagrant plugin install vagrant-exec
     vagrant plugin install vagrant-cachier
     ```
-    
+
+If you're on a computer that needs to save hard drive space, **Vagrant Cachier** can be omitted. The plugin is used to keep cached copies of the VM's Ubuntu packages, so you don't need to redownload them.
+
+### Linux Notes
 If you're an Ubuntu/Debian user, **DON'T INSTALL VAGRANT AND VIRTUAL BOX USING APT-GET**! The repositories for these are **VERY** out of date. Most Vagrant setup problems on Linux are because you don't have the latest version.
 
 If you're on Arch Linux, you will need the **net-tools** package to make Vagrant work right. See [here](https://wiki.archlinux.org/index.php/Vagrant#No_ping_between_host_and_vagrant_box_.28host-only_networking.29).
 
-If you're on a computer that needs to save hard drive space, **Vagrant Cachier** can be omitted. The plugin is used to keep cached copies of the VM's Ubuntu packages, so you don't need to redownload them.
-
 ### Windows Notes
-Dairybox on Windows works best with a Unix environment. The latest version of **GIT** includes one (Based on **MSys**). Launch the **GIT Bash** shell to use it (may require a reboot).
+Dairybox on Windows works _best_ with a Unix environment. The latest version of **GIT** includes one (Based on **MSys**). Launch the **GIT Bash** shell to use it (may require a reboot).
 
-**IMPORTANT**: You **MUST** run your shell as an Administrator!! This is **REQUIRED** for symlinks to work correctly.
+**IMPORTANT**: You **MUST** run your shell as an **ADMINISTRATOR**!! This is **REQUIRED** for symlinks to work correctly.
+
+You _can_ use the standard Windows **command prompt**, but you will need an **SSH** client to connect to the VM and build the project.
 
 ## Setup Part 1: DairyBox
 Clone the **DairyBox** repo. 
