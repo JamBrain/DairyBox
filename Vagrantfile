@@ -25,15 +25,15 @@ Vagrant.configure("2") do |config|
 
 	# Store an environment variable that lets us know what the host machine is (Windows, or a Unix)
 	if Vagrant::Util::Platform.windows? then
-		config.vm.provision :shell, inline: "echo \"export WINDOWS_HOST=1\" >> ~/.profile"
+		config.vm.provision :shell, inline: "echo \"export WINDOWS_HOST=1\" >> ~/.bashrc"
 	else
-		config.vm.provision :shell, inline: "echo \"export UNIX_HOST=1\" >> ~/.profile"
+		config.vm.provision :shell, inline: "echo \"export UNIX_HOST=1\" >> ~/.bashrc"
 	end
 	if Vagrant::Util::Platform.darwin? then
-		config.vm.provision :shell, inline: "echo \"export MAC_HOST=1\" >> ~/.profile"
+		config.vm.provision :shell, inline: "echo \"export MAC_HOST=1\" >> ~/.bashrc"
 	end
 	if Vagrant::Util::Platform.linux? then
-		config.vm.provision :shell, inline: "echo \"export LINUX_HOST=1\" >> ~/.profile"
+		config.vm.provision :shell, inline: "echo \"export LINUX_HOST=1\" >> ~/.bashrc"
 	end
 
 	config.vm.provision :shell, path: "provision/bootstrap.sh"
