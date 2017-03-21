@@ -36,7 +36,7 @@ Vagrant.configure("2") do |config|
 		config.vm.provision :shell, inline: "echo \"export LINUX_HOST=1\nexport HOST_OS=linux\" >> /etc/profile"
 	end
 
-	config.vm.provision :shell, path: ". /etc/profile && provision/bootstrap.sh"
+	config.vm.provision :shell, path: "provision/bootstrap.sh"
 
 	# Mailcatcher
 	config.vm.provision :shell, inline: "/home/vagrant/.rbenv/shims/mailcatcher --http-ip=0.0.0.0"

@@ -6,6 +6,9 @@ PHP_MYADMIN_VERSION="4.6.3"
 MARIADB_VERSION="10.1"
 
 
+# Report the Host operating system (from inside the VM)
+echo "HOST OS: $HOST_OS"
+
 cd /home/vagrant
 
 # Needed by Ubuntu 14.04 to get FFMPEG packages (remove this for Ubuntu 16.04) 
@@ -61,8 +64,8 @@ if [ ! -d "/vagrant/dev/phpmyadmin" ]; then
 	rm phpMyAdmin-$PHP_MYADMIN_VERSION-all-languages.zip
 fi
 
-# NodeJS CSS dependencies
-if [ `uname -o` = "Cygwin" ]
+# NodeJS dependencies
+if [ -n "$WINDOWS_HOST" ]
 then
 	NPM_INSTALL_ARGS=--no-bin-links
 else
@@ -71,6 +74,7 @@ fi
 
 cd /vagrant/www/ && npm install $NPM_INSTALL_ARGS
 npm install $NPM_INSTALL_ARGS -g svgo less clean-css-cli buble rollup uglify-js eslint
+
 
 cd /home/vagrant
 
