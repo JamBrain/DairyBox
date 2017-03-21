@@ -23,8 +23,15 @@ Vagrant.configure("2") do |config|
 	config.vm.synced_folder "www", "/var/www", :mount_options => ["dmode=777", "fmode=666"]
 	config.vm.synced_folder "dev", "/var/www/sandbox/dev", :mount_options => ["dmode=775", "fmode=664"]
 
-	config.vm.provision :shell, path: "provision/bootstrap.sh"	
+	# Store an environment variable that lets us know what the host machine is (Windows or Unix)
+	if Vagrant::Util::Platform.windows? then
+		config.vm.provision :shell, inline: 'echo "export WINDOWS_HOST=1" >> ~/.profile'
+	else
+		config.vm.provision :shell, inline: 'echo "export UNIX_HOST=1" >> ~/.profile'
+	end
+
+	config.vm.provision :shell, path: "provision/bootstrap.sh"
 
 	# Mailcatcher
-	config.vm.provision :shell, inline: "/home/vagrant/.rbenv/shims/mailcatcher --http-ip=0.0.0.0", run: "always"
+	config.vm.provision :shell, inline: "/home/vagrant/.rbenv/shims/mailcatcher --http-ip=0.0.0.0"
 end
