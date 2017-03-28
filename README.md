@@ -152,8 +152,8 @@ Some of the things you need:
 * PHP 7.x with MBString and XML addons
 * Node.js
 * GNU Make
-* Other image and vidio manipulation command-line tools
-* A Unix compatbile environment
+* Other image and video manipulation command-line tools
+* A Unix compatible environment
 
 ### Ubuntu
 Debian setup be similar.
@@ -181,7 +181,7 @@ cd www
 npm install
 npm install -g svgo less clean-css-cli buble rollup uglify-js eslint
 ```
-That should be everything you need to 
+That should be everything you need to install.
 
 Then simply navigate to your version of the `ludumdare/www` folder in bash, and run `make`.
 
