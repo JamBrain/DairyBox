@@ -4,6 +4,7 @@
 PHP_VERSION="7.0"
 PHP_MYADMIN_VERSION="4.6.3"
 MARIADB_VERSION="10.1"
+UBUNTU_VERSION="trusty"
 
 
 # Report the Host operating system (from inside the VM)
@@ -23,7 +24,7 @@ add-apt-repository -y ppa:ondrej/php
 # Repo for MariaDB (for Ubuntu 14.04)
 apt-get install -y software-properties-common
 apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
-add-apt-repository 'deb [arch=amd64,i386,ppc64el] http://mirrors.accretive-networks.net/mariadb/repo/$MARIADB_VERSION/ubuntu trusty main'
+add-apt-repository "deb [arch=amd64,i386,ppc64el] http://mirrors.accretive-networks.net/mariadb/repo/$MARIADB_VERSION/ubuntu $UBUNTU_VERSION main"
 
 # Update once after all new repos have been added
 apt-get update
