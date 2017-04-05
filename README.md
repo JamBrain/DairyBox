@@ -174,7 +174,7 @@ sudo apt-get install ffmpeg imagemagick pngquant gifsicle webp
 sudo apt-get install make
 
 # Install Node.js (NOTE: You can also install newer versions)
-sudo apt-get install nodejs
+sudo apt-get install nodejs npm
 
 # Install Node packages (some of these commands may need sudo)
 cd www
