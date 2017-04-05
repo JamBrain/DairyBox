@@ -165,8 +165,8 @@ sudo apt update
 sudo apt-get install php7.0 php7.0-mbstring php7.0-xml
 
 # Install Image and Video/GIF Manipulation Tools
-add-apt-repository -y ppa:mc3man/trusty-media
-add-apt-repository -y ppa:jamedjo/ppa
+sudo add-apt-repository -y ppa:mc3man/trusty-media
+sudo add-apt-repository -y ppa:jamedjo/ppa
 sudo apt update
 sudo apt-get install ffmpeg imagemagick pngquant gifsicle webp
 
