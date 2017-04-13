@@ -165,8 +165,8 @@ sudo apt update
 sudo apt-get install php7.0 php7.0-mbstring php7.0-xml
 
 # Install Image and Video/GIF Manipulation Tools
-add-apt-repository -y ppa:mc3man/trusty-media
-add-apt-repository -y ppa:jamedjo/ppa
+sudo add-apt-repository -y ppa:mc3man/trusty-media
+sudo add-apt-repository -y ppa:jamedjo/ppa
 sudo apt update
 sudo apt-get install ffmpeg imagemagick pngquant gifsicle webp
 
@@ -174,12 +174,12 @@ sudo apt-get install ffmpeg imagemagick pngquant gifsicle webp
 sudo apt-get install make
 
 # Install Node.js (NOTE: You can also install newer versions)
-sudo apt-get install nodejs
+sudo apt-get install nodejs npm
 
 # Install Node packages (some of these commands may need sudo)
 cd www
 npm install
-npm install -g svgo less clean-css-cli buble rollup uglify-js eslint
+sudo npm install -g svgo less clean-css-cli buble rollup uglify-js eslint
 ```
 That should be everything you need to install.
 
