@@ -203,6 +203,27 @@ https://help.github.com/articles/syncing-a-fork/
 
 https://help.github.com/articles/merging-an-upstream-repository-into-your-fork/
 
+## Cherry-Picking
+If you've made several changes and want to make a patch for specific changes, you can use Git's cherry-pick feature.
+
+```sh
+# setup
+git checkout -b mybranch
+git fetch upstream
+git reset --hard upstream/master
+
+# for each change you want to add to this branch
+git cherry-pick <commit-hash>
+
+# when ready to commit
+git push origin mybranch:mybranch
+
+# when finished, and you want to return to origin
+git checkout master
+```
+
+Reference: http://stackoverflow.com/a/25955829/5678759
+
 ## Upgrading DairyBox
 From your root working directory (not `www`).
 * Destroy your VM with `vagrant destroy`. This shuts down the server and removes the VM.
