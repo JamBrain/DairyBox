@@ -28,10 +28,9 @@ We call the stuff you download and install *the toolchain*.
 
 # Pre Setup (Part 0)
 
-First, you may need to enable virtualization support in your BIOS. How you do this will depend on you computer or motherboard. A good place to start is Google: 
+First, you may need to enable virtualization support in your BIOS. How you do this will depend on your computer model or motherboard. A good place to start is Google: 
 
 https://www.google.com/#q=enable+virtualization
-
 
 **ALWAYS** install the latest versions of software. If something ever stops working, make sure you **are** running the absolute latest version.
 
@@ -59,10 +58,13 @@ Dairybox on Windows works _best_ with a Unix environment. The latest version of 
 
 You _can_ use the standard Windows **command prompt**, but you will need an **SSH** client to connect and build the project.
 
+**IMPORTANT 2**: On Windows, you will run in to issues if the directory you are working out of has a space in it. You may have done this unwillingly, if for example your Windows username has a space in it, and you happen to be working on your Desktop. 
+
+In this case, it's recommended you create and work out of a folder on the root of your `C` drive. In the **GIT Bash** shell, this could be `/c/ludumdare/`.
+
+
 # Setup Part 1: DairyBox
 Clone the **DairyBox** repo. 
-
-**NOTE**: On some systems, vagrant will have issues with paths including space. You will probably want to place dairybox somewhere with a simple path. On windows (in git bash) it could be in `/c/web/`.
 
 **EXAMPLE:**
     
