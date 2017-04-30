@@ -152,6 +152,8 @@ make
 ```
 This compiles from inside the VM. You can repeat running `make` as many time as you like thereafter.
 
+Since the VM is up, you should now see the page at http://ludumdare.org/
+
 ### Building outside the VM (Linux/Mac only)
 Building outside the VM requires more setup. You may want to do this, as you can get much faster build times outside the VM.
 
