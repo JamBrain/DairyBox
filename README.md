@@ -78,7 +78,7 @@ where `ludumdare` is the directory you plan to work out of.
 **DO NOT** do a `vagrant up` yet. We have one more step...
 
 # Setup Part 2: Source
-Initialize a new repository in the `www` directory of the ludumdare-repository, and set the origin to your source repository.
+Enter the `www` directory, initialize a new repository there, and set the origin to your source repository.
 
 If you just want to try it out, or don't yet have a GitHub account, you can do the following.
 
