@@ -30,7 +30,7 @@ We call the stuff you download and install *the toolchain*.
 
 First, you will need virtualization support on in your bios. It will depend on computer model and operating system how you this is done so start with a search: 
 
-https://www.google.es/#safe=off&q=Enable+virtualization+in+your+computer
+https://www.google.com/#q=Enable+virtualization+in+your+computer
 
 
 **ALWAYS** install the latest versions. If something ever stops working, make sure you **are** running the absolute latest version.
