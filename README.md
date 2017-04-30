@@ -27,6 +27,12 @@ We call that editing, clicking, and blowing up computers *the workflow*.
 We call the stuff you download and install *the toolchain*.
 
 # Pre Setup (Part 0)
+
+First, you will need virtualization support on in your bios. It will depend on computer model and operating system how you this is done so start with a search: 
+
+https://www.google.es/#safe=off&q=Enable+virtualization+in+your+computer
+
+
 **ALWAYS** install the latest versions. If something ever stops working, make sure you **are** running the absolute latest version.
 
 1. Install **GIT**: http://git-scm.com/downloads (*)
