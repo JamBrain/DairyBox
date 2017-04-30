@@ -62,6 +62,8 @@ You _can_ use the standard Windows **command prompt**, but you will need an **SS
 # Setup Part 1: DairyBox
 Clone the **DairyBox** repo. 
 
+**NOTE**: On some systems, vagrant will have issues with paths including space so if you will probably want to place it where the path is simple. On windows (in git bash) it could be in `/c/web/`.
+
 **EXAMPLE:**
     
 ```sh
