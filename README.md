@@ -27,7 +27,12 @@ We call that editing, clicking, and blowing up computers *the workflow*.
 We call the stuff you download and install *the toolchain*.
 
 # Pre Setup (Part 0)
-**ALWAYS** install the latest versions. If something ever stops working, make sure you **are** running the absolute latest version.
+
+First, you may need to enable virtualization support in your BIOS. How you do this will depend on your computer model or motherboard. A good place to start is Google: 
+
+https://www.google.com/#q=enable+virtualization
+
+**ALWAYS** install the latest versions of software. If something ever stops working, make sure you **are** running the absolute latest version.
 
 1. Install **GIT**: http://git-scm.com/downloads (*)
 2. Install **Virtual Box**: https://www.virtualbox.org/wiki/Downloads (***)
@@ -53,6 +58,11 @@ Dairybox on Windows works _best_ with a Unix environment. The latest version of 
 
 You _can_ use the standard Windows **command prompt**, but you will need an **SSH** client to connect and build the project.
 
+**IMPORTANT 2**: On Windows, you will run in to issues if the directory you are working out of has a space in it. You may have done this unwillingly, if you're working on your Desktop and your Windows username has a space in it.
+
+In this case, it's recommended you create and work out of a folder on the root of your `C` drive. In the **GIT Bash** shell, this could be `/c/ludumdare/`.
+
+
 # Setup Part 1: DairyBox
 Clone the **DairyBox** repo. 
 
@@ -68,7 +78,7 @@ where `ludumdare` is the directory you plan to work out of.
 **DO NOT** do a `vagrant up` yet. We have one more step...
 
 # Setup Part 2: Source
-Initialize a new repository in the `www` directory, and set the origin to your source repository.
+Enter the `www` directory, initialize a new repository there, and set the origin to your source repository.
 
 If you just want to try it out, or don't yet have a GitHub account, you can do the following.
 
@@ -143,6 +153,8 @@ cd ~/www
 make
 ```
 This compiles from inside the VM. You can repeat running `make` as many time as you like thereafter.
+
+With the source built and the VM running, you can now view your instance in a browser at http://ludumdare.org
 
 ### Building outside the VM (Linux/Mac only)
 Building outside the VM requires more setup. You may want to do this, as you can get much faster build times outside the VM.
