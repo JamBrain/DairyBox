@@ -28,12 +28,12 @@ We call the stuff you download and install *the toolchain*.
 
 # Pre Setup (Part 0)
 
-First, you will need virtualization support on in your bios. It will depend on computer model and operating system how you this is done so start with a search: 
+First, you may need to enable virtualization support in your BIOS. How you do this will depend on you computer or motherboard. A good place to start is Google: 
 
-https://www.google.com/#q=Enable+virtualization+in+your+computer
+https://www.google.com/#q=enable+virtualization
 
 
-**ALWAYS** install the latest versions. If something ever stops working, make sure you **are** running the absolute latest version.
+**ALWAYS** install the latest versions of software. If something ever stops working, make sure you **are** running the absolute latest version.
 
 1. Install **GIT**: http://git-scm.com/downloads (*)
 2. Install **Virtual Box**: https://www.virtualbox.org/wiki/Downloads (***)
