@@ -58,7 +58,7 @@ Dairybox on Windows works _best_ with a Unix environment. The latest version of 
 
 You _can_ use the standard Windows **command prompt**, but you will need an **SSH** client to connect and build the project.
 
-**IMPORTANT 2**: On Windows, you will run in to issues if the directory you are working out of has a space in it. You may have done this unwillingly, if for example your Windows username has a space in it, and you happen to be working on your Desktop. 
+**IMPORTANT 2**: On Windows, you will run in to issues if the directory you are working out of has a space in it. You may have done this unwillingly, if you're working on your Desktop and your Windows username has a space in it.
 
 In this case, it's recommended you create and work out of a folder on the root of your `C` drive. In the **GIT Bash** shell, this could be `/c/ludumdare/`.
 
