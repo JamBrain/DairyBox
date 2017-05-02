@@ -369,3 +369,28 @@ Windows XP and Vista VM downloads are no longer officially available (with IE7 a
 https://github.com/magnetikonline/linuxmicrosoftievirtualmachines#ie8---xp
 
 **NOTE**: Be sure to snapshot the VMs **BEFORE** starting them for the first time. The VMs use un-activated versions of Windows, and will expire after 30-90 days. With a snapshot, you can roll-back the VM and get a new 30-90 days.
+
+## Working Offline
+
+To work offline we must add the following to the hosts-file:
+
+```
+# For LudumDare Development
+192.168.48.48 ludumdare.org
+192.168.48.48 api.ludumdare.org
+192.168.48.48 url.ludumdare.org
+192.168.48.48 jammer.work
+192.168.48.48 api.jammer.work
+192.168.48.48 url.jammer.work
+192.168.48.48 bio.jammer.work
+192.168.48.48 api.bio.jammer.work
+192.168.48.48 static.jammer.work
+```
+
+**Note** that this must be commented out or removed for testing to be online again.
+
+On windows in `git bash` as **administrator** you can edit it by:
+
+```
+vi /c/Windows/System32/drivers/etc/hosts
+```
