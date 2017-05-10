@@ -200,6 +200,17 @@ Then simply navigate to your version of the `ludumdare/www` folder in bash, and 
 ### Mac
 TODO: that wacky package manager whose name I forget
 
+## Updating the database tables
+**IMPORTANT**: When you've been working a while, ocassionally you will need to update the database tables. 
+
+You can do this by running this command:
+
+```
+sudo ~/db-create.sh
+```
+
+If you're working outside the VM, a version of `db-create.sh` can be found in the DairyBox folder (i.e. `../db-create.sh`).
+
 ## Merging Upstream
 GitHub will often complain that your version is behind master. To merge the latest changes, do the following:
 
