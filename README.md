@@ -201,7 +201,9 @@ Then simply navigate to your version of the `ludumdare/www` folder in bash, and 
 TODO: that wacky package manager whose name I forget
 
 ## Updating the database tables
-*IMPORTANT*: When you've been working a while, ocassionally you will need to update the database tables. You can do this by running this command:
+**IMPORTANT**: When you've been working a while, ocassionally you will need to update the database tables. 
+
+You can do this by running this command:
 
 ```
 sudo ~/db-create.sh
