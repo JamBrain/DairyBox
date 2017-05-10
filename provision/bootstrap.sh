@@ -84,6 +84,7 @@ cd /home/vagrant
 #ln -s /vagrant/www vvv
 ln -s /vagrant/www www
 ln -s /vagrant/provision/start_mailcatcher.sh start_mailcatcher.sh
+ln -s /vagrant/provision/db-create.sh db-create.sh
 #ln -s /etc/php5/apache2/php.ini php.ini
 #ln -s /etc/php5/apache2/conf.d/user.ini user.ini
 ln -s /etc/php/$PHP_VERSION/apache2/php.ini php.ini
