@@ -292,15 +292,17 @@ These are some pre-installed tools you can access with your browser. Helpful for
 Data can be found in the `scotchbox` database.
 
 ## Public Server
-By default, your DairyBox can only be accessed on the local machine. To access it from another machine or device on your network, you need to enable the Public Server.
+By default, your DairyBox can only be accessed on the local machine. To access it from another machine or device on your network, you need to enable the _Public Server_, and either edit your router or remote devices `.hosts` file. If you don't have SSH access or another way to change the `.hosts` file of your router/device, you **will not** be able to do this.
 
-To do this, remove the # in front of the `"public_network"` line in your **Vagrantfile** (`/Vagrantfile`).
+To start, remove the # in front of the `"public_network"` line in your **Vagrantfile** (`/Vagrantfile`).
 
 The next time you start your server with `vagrant up`, you may be prompted which of your Network Interfaces you want to bind (i.e. your Ethernet or your WiFi). For me I choose the ``1`` option, but YMMV.
 
 Once setup completes, you can use the info script to fetch the public IP address of the server.
 
-`./info.sh`
+```sh
+./info.sh
+```
 
 The public IP is usually the IP listed under **eth2**.
 
@@ -310,7 +312,9 @@ You can change the `.hosts` file of your local internet router. For details, go 
 
 https://github.com/ludumdare/ludumdare/wiki/Testing-on-Mobile
 
-Add the following domains to your router's hosts file, and make them point to the VM's LAN IP address (**NOT** 192.168.48.48, but the IP returned by `info.sh` above).
+Alternatively, you can change the `.hosts` file of your device. Unfortunately this can mean _jailbreaking_ your phone, so modifying the `.hosts` file of the router is preferred.
+
+Add the following domains to the `.hosts` file, and make them point to the VM's LAN IP address (**NOT** 192.168.48.48, but the IP returned by `info.sh` above).
 
 * http://ludumdare.dev - **ludumdare.com** (`www/public-ludumdare.com`)
   * http://api.ludumdare.dev - **api.ludumdare.com** (`www/public-api`)
