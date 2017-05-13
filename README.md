@@ -304,11 +304,24 @@ Once setup completes, you can use the info script to fetch the public IP address
 
 The public IP is usually the IP listed under **eth2**.
 
-The public IP address is needed to connect to the VM remotely. The domains, `jammer.work` and `ludumdare.org` are configured for the default local IP address (`192.168.48.48`), and can't be used for this. You **must** use the IP addresses and **ports** to access the site. Both are detailed above.
+The public IP address is needed to connect to the VM remotely. The domains, `jammer.work` and `ludumdare.org` are configured for the default local IP address (`192.168.48.48`), and can't be used for this.
 
-Alternatively, you can change the `.hosts` file of your local internet router. For details, go here:
+You can change the `.hosts` file of your local internet router. For details, go here:
 
 https://github.com/ludumdare/ludumdare/wiki/Testing-on-Mobile
+
+Add the following domains to your router's hosts file, and make them point to the VM's LAN IP address (**NOT** 192.168.48.48, but the IP returned by `info.sh` above).
+
+* http://ludumdare.dev - **ludumdare.com** (`www/public-ludumdare.com`)
+  * http://api.ludumdare.dev - **api.ludumdare.com** (`www/public-api`)
+  * http://url.ludumdare.dev - **ldj.am** (`www/public-url.shortener`)
+* http://jammer.dev - **jammer.vg** (`www/public-jammer.vg`)
+  * http://api.jammer.dev - **api.jammer.vg** (`www/public-api`)
+  * http://url.jammer.dev - **jam.mr** (`www/public-url.shortener`)
+* http://bio.jammer.dev - **jammer.bio** (`www/public-jammer.bio`)
+  * http://api.bio.jammer.dev - **api.jammer.bio** (`www/public-api`)
+* http://static.jammer.dev - **static.jam.vg** (`www/public-static`)
+
 
 ## Enabling OpCache
 You should only enable OpCache if you need to better simulate the active **Ludum Dare** server environment, or test OpCache aware features. For most developers, it's preferred that your PHP scripts aren't cached. That way, they reload whenever you refresh your browser.
