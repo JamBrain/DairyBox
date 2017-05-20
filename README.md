@@ -394,3 +394,13 @@ On windows in `git bash` as **administrator** you can edit it by:
 ```
 vi /c/Windows/System32/drivers/etc/hosts
 ```
+
+## When your box stops working.
+
+1. Navigate to where you usually do `vagrant up`
+2. If your box is running `vagrant halt`
+3. Do `vagrant box list`, this should show you a `scotch/box`
+4. Do `vagrant box remove scotch/box`. This will give you some information about an environment using the box and asking if you are really sure. Say `N`.
+5. Use that long environment hex to destroy the environment: `vagrant destroy 00d3488f41fa40998bfe16ada2ebfd31` **but using your environment id**
+6. Now with the environment destroyed you can do `vagrant box remove scotch/box`
+7. And finally you can do `vagrant up` (this will take a long time again) and things should work nicely.
