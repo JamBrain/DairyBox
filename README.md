@@ -37,14 +37,11 @@ https://www.google.com/#q=enable+virtualization
 1. Install **GIT**: http://git-scm.com/downloads (*)
 2. Install **Virtual Box**: https://www.virtualbox.org/wiki/Downloads (***)
 3. Install **Vagrant**: http://vagrantup.com/ (***)
-4. Install **Vagrant-Exec** and **Vagrant Cachier** plugins:
+4. Install **Vagrant-Exec** plugins:
 
     ```sh
     vagrant plugin install vagrant-exec
-    vagrant plugin install vagrant-cachier
     ```
-
-If you're on a computer with limited hard drive space, **Vagrant Cachier** can be omitted. The plugin is used to keep cached copies of the VM's Ubuntu packages, so you don't need to redownload them (makes `vagrant destroy && vagrant up` faster).
 
 ### Linux Notes (***)
 If you're an Ubuntu/Debian user, **DON'T INSTALL VAGRANT AND VIRTUAL BOX USING APT-GET**! The repositories for these are **VERY** out of date. Most Vagrant setup problems on Linux are because you don't have the latest version.
