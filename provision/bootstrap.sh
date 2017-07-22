@@ -74,7 +74,7 @@ NPM_INSTALL_ARGS=
 #fi
 
 cd /vagrant/www/ && npm install $NPM_INSTALL_ARGS
-npm install $NPM_INSTALL_ARGS -g svgo less clean-css-cli buble rollup uglify-js eslint
+#npm install $NPM_INSTALL_ARGS -g svgo less clean-css-cli buble rollup uglify-js eslint
 
 
 cd /home/vagrant
