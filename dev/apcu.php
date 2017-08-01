@@ -784,7 +784,6 @@ EOB;
 EOB;
 	echo   '<tr class=tr-1><td class=td-0>Start Time</td><td>',date(DATE_FORMAT,$cache['start_time']),'</td></tr>';
 	echo   '<tr class=tr-0><td class=td-0>Uptime</td><td>',duration($cache['start_time']),'</td></tr>';
-	echo   '<tr class=tr-1><td class=td-0>File Upload Support</td><td>',$cache['file_upload_progress'],'</td></tr>';
 	echo <<<EOB
 		</tbody></table>
 		</div>
@@ -799,7 +798,7 @@ EOB;
 			<tr class=tr-0><td class=td-0>Hit Rate</td><td>$hit_rate_user cache requests/second</td></tr>
 			<tr class=tr-1><td class=td-0>Miss Rate</td><td>$miss_rate_user cache requests/second</td></tr>
 			<tr class=tr-0><td class=td-0>Insert Rate</td><td>$insert_rate_user cache requests/second</td></tr>
-			<tr class=tr-1><td class=td-0>Cache full count</td><td>{$cache['num_expunges']}</td></tr>
+			<tr class=tr-1><td class=td-0>Cache full count</td><td>{$cache['expunges']}</td></tr>
 		</tbody>
 		</table>
 		</div>
@@ -841,13 +840,11 @@ EOB;
 			: "",
 		'<tr>',
 		'<td class=td-0><span class="green box">&nbsp;</span>Free: ',bsize($mem_avail).sprintf(" (%.1f%%)",$mem_avail*100/$mem_size),"</td>\n",
-		'<td class=td-1><span class="green box">&nbsp;</span>Hits: ',$cache['num_hits'].@sprintf(" 
-(%.1f%%)",$cache['num_hits']*100/($cache['num_hits']+$cache['num_misses'])),"</td>\n",
+		'<td class=td-1><span class="green box">&nbsp;</span>Hits: ',$cache['num_hits'].@sprintf(" (%.1f%%)",$cache['num_hits']*100/($cache['num_hits']+$cache['num_misses'])),"</td>\n",
 		'</tr>',
 		'<tr>',
 		'<td class=td-0><span class="red box">&nbsp;</span>Used: ',bsize($mem_used).sprintf(" (%.1f%%)",$mem_used *100/$mem_size),"</td>\n",
-		'<td class=td-1><span class="red box">&nbsp;</span>Misses: ',$cache['num_misses'].@sprintf(" 
-(%.1f%%)",$cache['num_misses']*100/($cache['num_hits']+$cache['num_misses'])),"</td>\n";
+		'<td class=td-1><span class="red box">&nbsp;</span>Misses: ',$cache['num_misses'].@sprintf(" (%.1f%%)",$cache['num_misses']*100/($cache['num_hits']+$cache['num_misses'])),"</td>\n";
 	echo <<< EOB
 		</tr>
 		</tbody></table>
@@ -920,7 +917,7 @@ case OB_USER_CACHE:
 	}
 	$fieldname='info';
 	$fieldheading='User Entry Label';
-	$fieldkey='key';
+	$fieldkey='info';
 
 	$cols=6;
 	echo <<<EOB
@@ -985,7 +982,6 @@ EOB;
 	if($fieldname=='info') {
 		$cols+=2;
 		 echo '<th>',sortheader('T','Timeout',"&OB=".$MYREQUEST['OB']),'</th>';
-		 echo '<th>','Expires in','</th>';
 	}
 	echo '<th>',sortheader('D','Deleted at',"&OB=".$MYREQUEST['OB']),'</th></tr>';
 
@@ -1027,8 +1023,8 @@ EOB;
 		$sh=md5($entry["info"]);
         $field_value = htmlentities(strip_tags($entry[$fieldname],''), ENT_QUOTES, 'UTF-8');
         echo
-          '<tr class=tr-',$i%2,'>',
-          "<td class=td-0><a href=\"$MY_SELF&OB=",$MYREQUEST['OB'],"&SH=",$sh,"\">",$field_value,'</a></td>',
+          '<tr id="key-'. $sh .'" class=tr-',$i%2,'>',
+          "<td class=td-0><a href=\"$MY_SELF&OB=",$MYREQUEST['OB'],"&SH=",$sh,"#key-". $sh ."\">",$field_value,'</a></td>',
           '<td class="td-n center">',$entry['num_hits'],'</td>',
           '<td class="td-n right">',$entry['mem_size'],'</td>',
           '<td class="td-n center">',date(DATE_FORMAT,$entry['access_time']),'</td>',
@@ -1036,20 +1032,10 @@ EOB;
           '<td class="td-n center">',date(DATE_FORMAT,$entry['creation_time']),'</td>';
 
         if($fieldname=='info') {
-          if($entry['ttl']) {
+          if($entry['ttl'])
             echo '<td class="td-n center">'.$entry['ttl'].' seconds</td>';
-            $time_left = ($entry['creation_time'] + $entry['ttl']) - time();
-            if ( $time_left >= 0 ) {
-                echo '<td class="td-n center">'.$time_left.' seconds</td>';
-            }
-            else {
-                echo '<td class="td-n center">Expired</td>';
-            }
-          }
-          else {
+          else
             echo '<td class="td-n center">None</td>';
-            echo '<td class="td-n center">-</td>';
-          }
         }
         if ($entry['deletion_time']) {
 
@@ -1110,7 +1096,7 @@ EOB;
 	if (!$rss) {
 		echo '<tr class="td-last center"><td>Unable to fetch version information.</td></tr>';
 	} else {
-		$apcversion = phpversion('apc');
+		$apcversion = phpversion('apcu');
 
 		preg_match('!<title>APCu ([0-9.]+)</title>!', $rss, $match);
 		echo '<tr class="tr-0 center"><td>';
@@ -1128,18 +1114,19 @@ EOB;
 		echo '<tr class="tr-0"><td><h3>Change Log:</h3><br/>';
 
 		preg_match_all('!<(title|description)>([^<]+)</\\1>!', $rss, $match);
-		next($match[2]); next($match[2]);
+		$changelog = $match[2];
 
-		while (list(,$v) = each($match[2])) {
-			list(,$ver) = explode(' ', $v, 2);
+		for ($j = 2; $j + 1 < count($changelog); $j += 2) {
+			$v = $changelog[$j];
 			if ($i < 0 && version_compare($apcversion, $ver, '>=')) {
 				break;
 			} else if (!$i--) {
 				break;
 			}
+			list($unused, $ver) = $v;
+			$changes = $changelog[$j + 1];
 			echo "<b><a href=\"http://pecl.php.net/package/APCu/$ver\">".htmlspecialchars($v, ENT_QUOTES, 'UTF-8')."</a></b><br><blockquote>";
-			echo nl2br(htmlspecialchars(current($match[2]), ENT_QUOTES, 'UTF-8'))."</blockquote>";
-			next($match[2]);
+			echo nl2br(htmlspecialchars($changes, ENT_QUOTES, 'UTF-8'))."</blockquote>";
 		}
 		echo '</td></tr>';
 	}
