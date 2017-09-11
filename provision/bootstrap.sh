@@ -30,7 +30,7 @@ add-apt-repository "deb [arch=amd64,i386,ppc64el] http://mirrors.accretive-netwo
 apt-get update
 
 # Install packages
-apt-get -y install ffmpeg imagemagick pngquant gifsicle webp php$PHP_VERSION php$PHP_VERSION-mbstring php$PHP_VERSION-mysql php$PHP_VERSION-xml php$PHP_VERSION-opcache php$PHP_VERSION-gd php$PHP_VERSION-curl php$PHP_VERSION-zip php-apcu
+apt-get -y install ffmpeg imagemagick pngquant gifsicle freeglut3 webp php$PHP_VERSION php$PHP_VERSION-mbstring php$PHP_VERSION-mysql php$PHP_VERSION-xml php$PHP_VERSION-opcache php$PHP_VERSION-gd php$PHP_VERSION-curl php$PHP_VERSION-zip php-apcu
 
 # Switch Apache to PHP 7
 a2dismod php5
@@ -39,8 +39,9 @@ a2enmod php$PHP_VERSION
 # Copy old mailcatcher config
 cp /etc/php5/apache2/conf.d/20-mailcatcher.ini /etc/php/$PHP_VERSION/apache2/conf.d/
 
-# Copy old php5 user config (disables opcache, enables warnings)
-cp /etc/php5/apache2/conf.d/user.ini /etc/php/$PHP_VERSION/apache2/conf.d/
+# Copy old php5 user config (disables opcache, enables warnings) - but enable opcache.
+sed "s/opcache\.enable.*/opcache.enable = 1/" /etc/php5/apache2/conf.d/user.ini > /tmp/php.edited.user.ini
+cp /tmp/php.edited.user.ini /etc/php/$PHP_VERSION/apache2/conf.d/user.ini
 
 # To correctly use pecl and other packages, we need a few prerequisites
 #apt-get -y install php$PHP_VERSION-dev
