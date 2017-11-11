@@ -42,8 +42,9 @@ a2enmod php$PHP_VERSION
 # Copy old mailcatcher config
 cp /etc/php5/apache2/conf.d/20-mailcatcher.ini /etc/php/$PHP_VERSION/apache2/conf.d/
 
-# Copy old php5 user config (disables opcache, enables warnings)
-cp /etc/php5/apache2/conf.d/user.ini /etc/php/$PHP_VERSION/apache2/conf.d/
+# Copy old php5 user config (disables opcache, enables warnings) - but enable opcache.
+sed "s/opcache\.enable.*/opcache.enable = 1/" /etc/php5/apache2/conf.d/user.ini > /tmp/php.edited.user.ini
+cp /tmp/php.edited.user.ini /etc/php/$PHP_VERSION/apache2/conf.d/user.ini
 
 # To correctly use pecl and other packages, we need a few prerequisites
 #apt-get -y install php$PHP_VERSION-dev
