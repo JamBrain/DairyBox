@@ -26,11 +26,14 @@ apt-get install -y software-properties-common
 apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
 add-apt-repository "deb [arch=amd64,i386,ppc64el] http://mirrors.accretive-networks.net/mariadb/repo/$MARIADB_VERSION/ubuntu $UBUNTU_VERSION main"
 
+# Repo for Sphinx
+add-apt-repository ppa:builds/sphinxsearch-rel22
+
 # Update once after all new repos have been added
 apt-get update
 
 # Install packages
-apt-get -y install ffmpeg imagemagick pngquant gifsicle webp php$PHP_VERSION php$PHP_VERSION-mbstring php$PHP_VERSION-mysql php$PHP_VERSION-xml php$PHP_VERSION-opcache php$PHP_VERSION-gd php$PHP_VERSION-curl php$PHP_VERSION-zip php-apcu
+apt-get -y install ffmpeg imagemagick pngquant gifsicle webp php$PHP_VERSION php$PHP_VERSION-mbstring php$PHP_VERSION-mysql php$PHP_VERSION-xml php$PHP_VERSION-opcache php$PHP_VERSION-gd php$PHP_VERSION-curl php$PHP_VERSION-zip php-apcu sphinxsearch
 
 # Switch Apache to PHP 7
 a2dismod php5
