@@ -33,7 +33,7 @@ add-apt-repository ppa:builds/sphinxsearch-rel22
 apt-get update
 
 # Install packages
-apt-get -y install ffmpeg imagemagick pngquant gifsicle webp php$PHP_VERSION php$PHP_VERSION-mbstring php$PHP_VERSION-mysql php$PHP_VERSION-xml php$PHP_VERSION-opcache php$PHP_VERSION-gd php$PHP_VERSION-curl php$PHP_VERSION-zip php-apcu sphinxsearch
+apt-get -y install ffmpeg imagemagick pngquant gifsicle webp php$PHP_VERSION php$PHP_VERSION-mbstring php$PHP_VERSION-mysql php$PHP_VERSION-xml php$PHP_VERSION-opcache php$PHP_VERSION-gd php$PHP_VERSION-curl php$PHP_VERSION-zip php$PHP_VERSION-redis php-apcu sphinxsearch
 
 # Switch Apache to PHP 7
 a2dismod php5
@@ -44,6 +44,8 @@ cp /etc/php5/apache2/conf.d/20-mailcatcher.ini /etc/php/$PHP_VERSION/apache2/con
 
 # Copy old php5 user config (disables opcache, enables warnings) - but enable opcache.
 sed "s/opcache\.enable.*/opcache.enable = 1/" /etc/php5/apache2/conf.d/user.ini > /tmp/php.edited.user.ini
+# Also enable redis
+echo "extension=redis.so" >> /tmp/php.edited.user.ini
 cp /tmp/php.edited.user.ini /etc/php/$PHP_VERSION/apache2/conf.d/user.ini
 
 # To correctly use pecl and other packages, we need a few prerequisites
@@ -95,7 +97,7 @@ ln -s /etc/php/$PHP_VERSION/apache2/php.ini php.ini
 ln -s /etc/php/$PHP_VERSION/apache2/conf.d/user.ini user.ini
 ln -s /etc/apache2/apache2.conf apache2.conf
 ln -s /etc/mysql/my.cnf mysql.conf
-#ln -s /etc/redis/6379.conf redis.conf
+ln -s /etc/redis/6379.conf redis.conf
 #ln -s /etc/memcached.conf memcached.conf
 
 # Run codebase specific setup scripts
