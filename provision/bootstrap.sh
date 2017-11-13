@@ -33,7 +33,7 @@ add-apt-repository ppa:builds/sphinxsearch-rel22
 apt-get update
 
 # Install packages
-apt-get -y install ffmpeg imagemagick pngquant gifsicle webp php$PHP_VERSION php$PHP_VERSION-mbstring php$PHP_VERSION-mysql php$PHP_VERSION-xml php$PHP_VERSION-opcache php$PHP_VERSION-gd php$PHP_VERSION-curl php$PHP_VERSION-zip php$PHP_VERSION-redis php-apcu sphinxsearch
+apt-get -y install ffmpeg imagemagick pngquant gifsicle freeglut3 webp php$PHP_VERSION php$PHP_VERSION-mbstring php$PHP_VERSION-mysql php$PHP_VERSION-xml php$PHP_VERSION-opcache php$PHP_VERSION-gd php$PHP_VERSION-curl php$PHP_VERSION-zip php$PHP_VERSION-redis php-apcu sphinxsearch
 
 # Switch Apache to PHP 7
 a2dismod php5
@@ -70,6 +70,14 @@ if [ ! -d "/vagrant/dev/phpmyadmin" ]; then
 	mv phpMyAdmin-$PHP_MYADMIN_VERSION-all-languages /vagrant/dev/phpmyadmin
 	rm phpMyAdmin-$PHP_MYADMIN_VERSION-all-languages.zip
 fi
+
+# Mount node_modules for better performance of nodejs.
+mkdir /home/vagrant/.node_modules
+mkdir /vagrant/www/node_modules
+mount --bind /home/vagrant/.node_modules /vagrant/www/node_modules
+
+# Make the binding permanent in the fstab.
+#echo "/home/vagrant/.node_modules /vagrant/www/node_modules none defaults,bind 0 0" >> /etc/fstab
 
 # NodeJS dependencies
 NPM_INSTALL_ARGS=
