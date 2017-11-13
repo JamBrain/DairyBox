@@ -76,9 +76,6 @@ mkdir /home/vagrant/.node_modules
 mkdir /vagrant/www/node_modules
 mount --bind /home/vagrant/.node_modules /vagrant/www/node_modules
 
-# Make the binding permanent in the fstab.
-#echo "/home/vagrant/.node_modules /vagrant/www/node_modules none defaults,bind 0 0" >> /etc/fstab
-
 # NodeJS dependencies
 NPM_INSTALL_ARGS=
 #if [ -n "$WINDOWS_HOST" ]
