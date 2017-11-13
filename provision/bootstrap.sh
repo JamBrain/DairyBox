@@ -5,7 +5,7 @@ PHP_VERSION="7.0"
 PHP_MYADMIN_VERSION="4.6.3"
 MARIADB_VERSION="10.1"
 UBUNTU_VERSION="trusty"
-
+NODEJS_VERSION="9.x"
 
 # Report the Host operating system (from inside the VM)
 echo "HOST OS: $HOST_OS"
@@ -19,6 +19,8 @@ add-apt-repository -y ppa:mc3man/trusty-media
 add-apt-repository -y ppa:jamedjo/ppa
 
 # Repo for current PHP versions
+rm /etc/apt/sources.list.d/ondrej-php5-5_6-trusty.list
+rm /etc/apt/sources.list.d/ondrej-php5-5_6-trusty.list.save
 add-apt-repository -y ppa:ondrej/php
 
 # Repo for MariaDB (for Ubuntu 14.04)
@@ -29,11 +31,18 @@ add-apt-repository "deb [arch=amd64,i386,ppc64el] http://mirrors.accretive-netwo
 # Repo for Sphinx
 add-apt-repository ppa:builds/sphinxsearch-rel22
 
+# Repo for NodeJS (also disable the installed version)
+apt-get purge nodejs npm
+apt-get autoremove
+mv /usr/local/bin/node /usr/local/bin/_node
+mv /usr/local/bin/npm /usr/local/bin/_npm
+curl -sL https://deb.nodesource.com/setup_$NODEJS_VERSION | sudo -E bash -
+
 # Update once after all new repos have been added
 apt-get update
 
 # Install packages
-apt-get -y install ffmpeg imagemagick pngquant gifsicle freeglut3 webp php$PHP_VERSION php$PHP_VERSION-mbstring php$PHP_VERSION-mysql php$PHP_VERSION-xml php$PHP_VERSION-opcache php$PHP_VERSION-gd php$PHP_VERSION-curl php$PHP_VERSION-zip php$PHP_VERSION-redis php-apcu sphinxsearch
+apt-get -y install nodejs ffmpeg imagemagick pngquant gifsicle freeglut3 webp php$PHP_VERSION php$PHP_VERSION-mbstring php$PHP_VERSION-mysql php$PHP_VERSION-xml php$PHP_VERSION-opcache php$PHP_VERSION-gd php$PHP_VERSION-curl php$PHP_VERSION-zip php$PHP_VERSION-redis php-apcu sphinxsearch
 
 # Switch Apache to PHP 7
 a2dismod php5
@@ -72,20 +81,13 @@ if [ ! -d "/vagrant/dev/phpmyadmin" ]; then
 fi
 
 # Mount node_modules for better performance of nodejs.
-mkdir /home/vagrant/.node_modules
-mkdir /vagrant/www/node_modules
+mkdir -p /vagrant/www/node_modules
+mkdir -p /home/vagrant/.node_modules
+chown vagrant:vagrant /home/vagrant/.node_modules
 mount --bind /home/vagrant/.node_modules /vagrant/www/node_modules
 
-# NodeJS dependencies
-NPM_INSTALL_ARGS=
-#if [ -n "$WINDOWS_HOST" ]
-#then
-#	# NOTE: --no-bin-links doesn't actually help. Run your shell as an administrator instead. Symlinks will work then.
-#	NPM_INSTALL_ARGS=--no-bin-links
-#fi
-
-cd /vagrant/www/ && npm install $NPM_INSTALL_ARGS
-#npm install $NPM_INSTALL_ARGS -g svgo less clean-css-cli buble rollup uglify-js eslint
+# Install NodeJS packages
+sudo -H -u vagrant sh -c 'cd /vagrant/www/; npm install'
 
 
 cd /home/vagrant
