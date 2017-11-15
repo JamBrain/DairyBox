@@ -153,49 +153,8 @@ This compiles from inside the VM. You can repeat running `make` as many time as 
 
 With the source built and the VM running, you can now view your instance in a browser at http://ludumdare.org
 
-### Building outside the VM (Linux/Mac only)
-Building outside the VM requires more setup. You may want to do this, as you can get much faster build times outside the VM.
-
-Some of the things you need:
-
-* PHP 7.x with MBString and XML addons
-* Node.js
-* GNU Make
-* Other image and video manipulation command-line tools
-* A Unix compatible environment
-
-### Ubuntu
-Debian setup be similar.
-
-```sh
-# Install latest versions of PHP
-sudo add-apt-repository -y ppa:ondrej/php
-sudo apt update
-sudo apt-get install php7.0 php7.0-mbstring php7.0-xml
-
-# Install Image and Video/GIF Manipulation Tools
-sudo add-apt-repository -y ppa:mc3man/trusty-media
-sudo add-apt-repository -y ppa:jamedjo/ppa
-sudo apt update
-sudo apt-get install ffmpeg imagemagick pngquant gifsicle webp
-
-# Install Other Tools
-sudo apt-get install make
-
-# Install Node.js (NOTE: You can also install newer versions)
-sudo apt-get install nodejs npm
-
-# Install Node packages (some of these commands may need sudo)
-cd www
-npm install
-sudo npm install -g svgo less clean-css-cli buble rollup uglify-js eslint
-```
-That should be everything you need to install.
-
-Then simply navigate to your version of the `ludumdare/www` folder in bash, and run `make`.
-
-### Mac
-TODO: that wacky package manager whose name I forget
+### Building outside the VM 
+See [wiki/External-VM-Builds](https://github.com/ludumdare/dairybox/wiki/External-VM-Builds)
 
 ## Updating the database tables
 **IMPORTANT**: When you've been working a while, ocassionally you will need to update the database tables. 
