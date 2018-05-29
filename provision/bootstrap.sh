@@ -12,7 +12,7 @@ echo "HOST OS: $HOST_OS"
 
 cd /home/vagrant
 
-# Needed by Ubuntu 14.04 to get FFMPEG packages (remove this for Ubuntu 16.04) 
+# Needed by Ubuntu 14.04 to get FFMPEG packages (remove this for Ubuntu 16.04)
 add-apt-repository -y ppa:mc3man/trusty-media
 
 # Newer version of ImageMagick on Ubuntu 14.04 (needed for correct webp support)
@@ -53,8 +53,9 @@ cp /etc/php5/apache2/conf.d/20-mailcatcher.ini /etc/php/$PHP_VERSION/apache2/con
 
 # Copy old php5 user config (disables opcache, enables warnings) - but enable opcache.
 sed "s/opcache\.enable.*/opcache.enable = 1/" /etc/php5/apache2/conf.d/user.ini > /tmp/php.edited.user.ini
-# Also enable redis
+# Also enable redis, and make it the save handler
 echo "extension=redis.so" >> /tmp/php.edited.user.ini
+echo "session.save_handler = redis" >> /tmp/php.edited.user.ini
 cp /tmp/php.edited.user.ini /etc/php/$PHP_VERSION/apache2/conf.d/user.ini
 
 # To correctly use pecl and other packages, we need a few prerequisites
