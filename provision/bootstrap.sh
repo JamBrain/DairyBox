@@ -56,6 +56,7 @@ sed "s/opcache\.enable.*/opcache.enable = 1/" /etc/php5/apache2/conf.d/user.ini 
 # Also enable redis, and make it the save handler
 echo "extension=redis.so" >> /tmp/php.edited.user.ini
 echo "session.save_handler = redis" >> /tmp/php.edited.user.ini
+echo "session.save_path = tcp://127.0.0.1:6379" >> /tmp/php.edited.user.ini
 cp /tmp/php.edited.user.ini /etc/php/$PHP_VERSION/apache2/conf.d/user.ini
 
 # To correctly use pecl and other packages, we need a few prerequisites
