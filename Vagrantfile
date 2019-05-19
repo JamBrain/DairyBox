@@ -34,8 +34,8 @@ Vagrant.configure("2") do |config|
 
 	config.vm.provision :shell, path: "provision/bootstrap.sh"
 
+	config.vm.provision :shell, path: "provision/userbootstrap.sh", privileged: false
+
 	config.vm.provision :shell, inline: "mount --bind /home/vagrant/.node_modules /vagrant/www/node_modules", run: "always"
 
-	# Mailcatcher
-	config.vm.provision :shell, inline: "/home/vagrant/.rbenv/shims/mailcatcher --http-ip=0.0.0.0", run: "always"
 end
