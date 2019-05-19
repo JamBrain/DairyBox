@@ -5,7 +5,7 @@ Vagrant.configure("2") do |config|
 	config.vm.box = "scotch/box"
 	config.vm.box_version = "3.5"
 
-	#config.exec.commands '*', directory: '/vagrant/www'
+	config.exec.commands '*', directory: '/vagrant/www'
 
 	config.vm.provider "virtualbox" do |v|
 		v.memory = 1024
