@@ -8,16 +8,16 @@ Vagrant.configure("2") do |config|
 	#config.exec.commands '*', directory: '/vagrant/www'
 
 	config.vm.provider "virtualbox" do |v|
-		v.memory = 2048
-		v.cpus = 4
+		v.memory = 1024
+		v.cpus = 2
 		v.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/www", "1"]
 	end
 
 	config.vm.network "private_network", ip: "192.168.48.48"
 #	config.vm.network "public_network"
 	config.vm.hostname = "dairybox"
-	config.vm.synced_folder "./www", "/var/www", :mount_options => ["dmode=775","fmode=664"]
-	config.vm.synced_folder "./dev", "/var/www/sandbox/dev", :mount_options => ["dmode=775", "fmode=664"]
+	config.vm.synced_folder "www", "/var/www", :mount_options => ["dmode=777","fmode=666"]
+	config.vm.synced_folder "dev", "/var/www/sandbox/dev", :mount_options => ["dmode=775", "fmode=664"]
 
 	# Store an environment variable that lets us know what the host machine is (Windows, or a Unix)
 	if Vagrant::Util::Platform.windows? then

@@ -38,7 +38,7 @@ echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongod
 # Repo for MariaDB https://mariadb.com/kb/en/library/installing-mariadb-deb-files/
 apt-get install -y software-properties-common
 apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
-add-apt-repository "deb [arch=amd64,arm64,ppc64el] http://sfo1.mirrors.digitalocean.com/mariadb/repo/10.3/ubuntu $UBUNTU_VERSION main"
+add-apt-repository "deb [arch=amd64,arm64,ppc64el] http://sfo1.mirrors.digitalocean.com/mariadb/repo/$MARIADB_VERSION/ubuntu $UBUNTU_VERSION main"
 
 # Repo for Sphinx
 add-apt-repository ppa:builds/sphinxsearch-rel22
