@@ -19,11 +19,11 @@ echo "\n"
 # dpkg-preconfigure and debconf may be needed to seed valuesif defaults are not okay
 export DEBIAN_FRONTEND=noninteractive
 
-
+# TODO:: is this still needed? what version were we running and what version is it now?
 # Newer version of ImageMagick on Ubuntu 14.04 (needed for correct webp support)
 #add-apt-repository -y ppa:jamedjo/ppa
 
-#TODO:: php7 is avalible in scotch box by default now so remove this
+#TODO:: php7 is avalible in scotch box by default now so remove this ? or is this better ?
 # Repo for current PHP versions
 #rm /etc/apt/sources.list.d/ondrej-php5-5_6-trusty.list
 #rm /etc/apt/sources.list.d/ondrej-php5-5_6-trusty.list.save
@@ -55,10 +55,6 @@ apt-get -y install ffmpeg imagemagick pngquant gifsicle freeglut3 webp sphinxsea
 # Switch Apache to PHP 7
 a2enmod php$PHP_VERSION
 
-# TODO:: Find this maw/src/shrub/tools && ./table-create $@
-#sudo sh -c "cd /vagrant/www/src/shrub/tools && ./table-create ilcatcher config, it's not there currently
-# Copy old mailcatcher config
-#cp /etc/php5/apache2/conf.d/20-mailcatcher.ini /etc/php/$PHP_VERSION/apache2/conf.d/
 
 # TODO:: is this actually working
 # Copy config change setting and copy back
