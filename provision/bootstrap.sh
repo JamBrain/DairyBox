@@ -77,9 +77,6 @@ echo "Installing MariaDB"
 apt-get install -y mariadb-server galera mariadb-client libmariadb3 mariadb-backup mariadb-common
 service mysql restart
 
-
-sudo service mysql restart
-
 # PHPMyAdmin
 if [ ! -d "/vagrant/dev/phpmyadmin" ]; then
 	wget --quiet https://files.phpmyadmin.net/phpMyAdmin/$PHP_MYADMIN_VERSION/phpMyAdmin-$PHP_MYADMIN_VERSION-all-languages.zip
