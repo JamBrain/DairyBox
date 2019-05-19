@@ -77,10 +77,6 @@ echo "Installing MariaDB"
 apt-get install -y mariadb-server galera mariadb-client libmariadb3 mariadb-backup mariadb-common
 service mysql restart
 
-# Permitir ROOT em todos os hosts
-sudo sed -i "s/bind-address\s*=\s*127.0.0.1/bind-address = 0.0.0.0/" /etc/mysql/my.cnf
-sudo echo "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root' WITH GRANT OPTION" | mysql -u root --password=root
-sudo echo "GRANT PROXY ON ''@'' TO 'root'@'%' WITH GRANT OPTION" | mysql -u root --password=root
 
 sudo service mysql restart
 
