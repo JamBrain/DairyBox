@@ -2,7 +2,7 @@
 # This is the bootstrapping script that provisions Scotch Box for us
 
 PHP_VERSION="7.1"
-PHP_MYADMIN_VERSION="4.6.3"
+PHP_MYADMIN_VERSION="4.8.5"
 MARIADB_VERSION="10.2"
 UBUNTU_VERSION="xenial"
 
