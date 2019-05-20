@@ -3,7 +3,7 @@
 
 PHP_VERSION="7.0"
 PHP_MYADMIN_VERSION="4.6.3"
-MARIADB_VERSION="10.1"
+MARIADB_VERSION="10.2"
 UBUNTU_VERSION="xenial"
 
 echo "\nRunning bootstrap.sh as privileged user \n"
@@ -56,12 +56,13 @@ apt-get -y install ffmpeg imagemagick pngquant gifsicle freeglut3 webp sphinxsea
 a2enmod php$PHP_VERSION
 
 
-# TODO:: is this actually working
+echo "\nConfiguring PHP"
 # Copy config change setting and copy back
 sed "s/opcache\.enable.*/opcache.enable = 1/" /etc/php/$PHP_VERSION/apache2/conf.d/user.ini > /tmp/php.edited.user.ini
 echo "extension=redis.so" >> /tmp/php.edited.user.ini
 echo "session.save_handler = redis" >> /tmp/php.edited.user.ini
 echo "session.save_path = tcp://127.0.0.1:6379" >> /tmp/php.edited.user.ini
+sed -i '/mongo.so/d' /tmp/php.edited.user.ini # this is from scotchbox but it dosen't exist so remove the refrence
 cp /tmp/php.edited.user.ini /etc/php/$PHP_VERSION/apache2/conf.d/user.ini
 
 # Tell Pear/Pecl packages where to find php.ini
@@ -73,11 +74,11 @@ cp /tmp/php.edited.user.ini /etc/php/$PHP_VERSION/apache2/conf.d/user.ini
 
 
 # Install MariaDB https://mariadb.com/kb/en/library/installing-mariadb-deb-files/
-echo "Installing MariaDB"
-apt-get install -y mariadb-server galera mariadb-client libmariadb3 mariadb-backup mariadb-common
+echo "\nInstalling MariaDB"
+apt-get install -y mariadb-server-$MARIADB_VERSION galera mariadb-client-$MARIADB_VERSION mariadb-common mariadb-backup-$MARIADB_VERSION
 service mysql restart
 
-# PHPMyAdmin
+echo "\nInstalling PHPMyAdmin"
 if [ ! -d "/vagrant/dev/phpmyadmin" ]; then
 	wget --quiet https://files.phpmyadmin.net/phpMyAdmin/$PHP_MYADMIN_VERSION/phpMyAdmin-$PHP_MYADMIN_VERSION-all-languages.zip
 	unzip phpMyAdmin-$PHP_MYADMIN_VERSION-all-languages.zip
@@ -85,13 +86,13 @@ if [ ! -d "/vagrant/dev/phpmyadmin" ]; then
 	rm phpMyAdmin-$PHP_MYADMIN_VERSION-all-languages.zip
 fi
 
-# Mount node_modules for better performance of nodejs.
+echo "\nMounting node_modules" # for better performance of nodejs.
 mkdir -p /vagrant/www/node_modules
 mkdir -p /home/vagrant/.node_modules
 chown vagrant:vagrant /home/vagrant/.node_modules
 mount --bind /home/vagrant/.node_modules /vagrant/www/node_modules
 
-# Create symlinks to useful folders
+echo "\nCreating useful symlinks"
 #ln -s /var/www www
 #ln -s /vagrant/www vvv
 ln -s /vagrant/www www

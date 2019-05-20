@@ -20,13 +20,13 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # install the correct node version and make it the default
-nvm install $NODEJS_VERSION;
+nvm install $NODEJS_VERSION > /dev/null 2>&1; #for some inexplicaable reason nvm's download progress bar is on stderr? wtf
 nvm alias default $NODEJS_VERSION;
 
 # update npm
 npm install --quiet npm -g ;
 
-echo "\n Installing project specific node modules\n"
+echo "\n Installing project specific node modules"
 
 cd /vagrant/www/
 npm install --quiet
