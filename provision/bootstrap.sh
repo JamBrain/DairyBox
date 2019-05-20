@@ -23,11 +23,9 @@ export DEBIAN_FRONTEND=noninteractive
 # Newer version of ImageMagick on Ubuntu 14.04 (needed for correct webp support)
 #add-apt-repository -y ppa:jamedjo/ppa
 
-#TODO:: php7 is avalible in scotch box by default now so remove this ? or is this better ?
+#TODO:: remove php7.0 maybe??
 # Repo for current PHP versions
-#rm /etc/apt/sources.list.d/ondrej-php5-5_6-trusty.list
-#rm /etc/apt/sources.list.d/ondrej-php5-5_6-trusty.list.save
-#add-apt-repository -y ppa:ondrej/php
+add-apt-repository -y ppa:ondrej/php
 
 #Fix ScotchBox's keys https://github.com/scotch-io/scotch-box/issues/403
 wget -qO - https://raw.githubusercontent.com/yarnpkg/releases/gh-pages/debian/pubkey.gpg | sudo apt-key add - #yarn
@@ -51,14 +49,14 @@ apt-get -y install php$PHP_VERSION php$PHP_VERSION-dev php-redis php-apcu php$PH
 apt-get -y install ffmpeg imagemagick pngquant gifsicle freeglut3 webp sphinxsearch
 
 
-# TODO:: is this needed? were already using php 7
-# Switch Apache to PHP 7
+# Switch Apache to correct php version
+a2dismod php7.0 #disable existing php module
 a2enmod php$PHP_VERSION
-
+service apache2 restart
 
 echo "\nConfiguring PHP"
 # Copy config change setting and copy back
-sed "s/opcache\.enable.*/opcache.enable = 1/" /etc/php/$PHP_VERSION/apache2/conf.d/user.ini > /tmp/php.edited.user.ini
+sed "s/opcache\.enable.*/opcache.enable = 1/" /etc/php/7.0/apache2/conf.d/user.ini > /tmp/php.edited.user.ini
 echo "extension=redis.so" >> /tmp/php.edited.user.ini
 echo "session.save_handler = redis" >> /tmp/php.edited.user.ini
 echo "session.save_path = tcp://127.0.0.1:6379" >> /tmp/php.edited.user.ini
