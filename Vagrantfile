@@ -3,7 +3,7 @@
 
 Vagrant.configure("2") do |config|
 	config.vm.box = "scotch/box"
-	config.vm.box_version = "2.5"
+	config.vm.box_version = "3.5"
 
 	config.exec.commands '*', directory: '/vagrant/www'
 
@@ -16,7 +16,7 @@ Vagrant.configure("2") do |config|
 	config.vm.network "private_network", ip: "192.168.48.48"
 #	config.vm.network "public_network"
 	config.vm.hostname = "dairybox"
-	config.vm.synced_folder "www", "/var/www", :mount_options => ["dmode=777", "fmode=666"]
+	config.vm.synced_folder "www", "/var/www", :mount_options => ["dmode=777","fmode=666"]
 	config.vm.synced_folder "dev", "/var/www/sandbox/dev", :mount_options => ["dmode=775", "fmode=664"]
 
 	# Store an environment variable that lets us know what the host machine is (Windows, or a Unix)
@@ -34,8 +34,8 @@ Vagrant.configure("2") do |config|
 
 	config.vm.provision :shell, path: "provision/bootstrap.sh"
 
+	config.vm.provision :shell, path: "provision/userbootstrap.sh", privileged: false
+
 	config.vm.provision :shell, inline: "mount --bind /home/vagrant/.node_modules /vagrant/www/node_modules", run: "always"
 
-	# Mailcatcher
-	config.vm.provision :shell, inline: "/home/vagrant/.rbenv/shims/mailcatcher --http-ip=0.0.0.0", run: "always"
 end
