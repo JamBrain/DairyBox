@@ -1,8 +1,8 @@
 #!/bin/sh
 # This is the bootstrapping script that provisions Scotch Box for us
 
-PHP_VERSION="7.0"
-PHP_MYADMIN_VERSION="4.6.3"
+PHP_VERSION="7.1"
+PHP_MYADMIN_VERSION="4.8.5"
 MARIADB_VERSION="10.2"
 UBUNTU_VERSION="xenial"
 
@@ -96,7 +96,6 @@ echo "\nCreating useful symlinks"
 #ln -s /var/www www
 #ln -s /vagrant/www vvv
 ln -s /vagrant/www www
-ln -s /vagrant/provision/start_mailcatcher.sh start_mailcatcher.sh
 ln -s /vagrant/provision/db-create.sh db-create.sh
 #ln -s /etc/php/$PHP_VERSION/apache2/php.ini php.ini
 #ln -s /etc/php/$PHP_VERSION/apache2/conf.d/user.ini user.ini
