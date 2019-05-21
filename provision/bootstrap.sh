@@ -57,8 +57,11 @@ apt-get -y install ffmpeg imagemagick pngquant gifsicle freeglut3 webp sphinxsea
 #systemctl restart apache2.service
 
 echo "\nConfiguring PHP"
-echo "session.save_handler = redis" >> /etc/php/$PHP_VERSION/apache2/conf.d/custom.ini
-echo "session.save_path = tcp://127.0.0.1:6379" >> /etc/php/$PHP_VERSION/apache2/conf.d/custom.ini
+#sed -i "s/opcache\.enable.*/opcache.enable = 1/" /etc/php/$PHP_VERSION/apache2/conf.d/user.ini
+sed -i "s/opache\.enable.*/opcache.enable = 1/" /etc/php/$PHP_VERSION/apache2/conf.d/user.ini # there's a typo :(
+sed -i '/mongo.so/d' /etc/php/$PHP_VERSION/apache2/conf.d/user.ini
+echo "session.save_handler = redis" >> /etc/php/$PHP_VERSION/apache2/conf.d/user.ini
+echo "session.save_path = tcp://127.0.0.1:6379" >> /etc/php/$PHP_VERSION/apache2/conf.d/user.ini
 
 # Tell Pear/Pecl packages where to find php.ini
 #pear config-set php_ini /etc/php/$PHP_VERSION/apache2/php.ini
@@ -92,7 +95,6 @@ ln -s /vagrant/www www
 ln -s /vagrant/provision/db-create.sh db-create.sh
 ln -s /etc/php/$PHP_VERSION/apache2/php.ini php.ini
 ln -s /etc/php/$PHP_VERSION/apache2/conf.d/user.ini user.ini
-ln -s /etc/php/$PHP_VERSION/apache2/conf.d/custom.ini custom.ini
 ln -s /etc/apache2/apache2.conf apache2.conf
 ln -s /etc/mysql/my.cnf mysql.conf
 ln -s /etc/redis/redis.conf redis.conf
