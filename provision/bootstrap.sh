@@ -1,7 +1,7 @@
 #!/bin/sh
 # This is the bootstrapping script that provisions Scotch Box for us
 
-PHP_VERSION="7.1"
+PHP_VERSION="7.0"
 PHP_MYADMIN_VERSION="4.8.5"
 MARIADB_VERSION="10.2"
 UBUNTU_VERSION="xenial"
@@ -23,10 +23,7 @@ export DEBIAN_FRONTEND=noninteractive
 # Newer version of ImageMagick on Ubuntu 14.04 (needed for correct webp support)
 #add-apt-repository -y ppa:jamedjo/ppa
 
-#TODO:: php7 is avalible in scotch box by default now so remove this ? or is this better ?
 # Repo for current PHP versions
-#rm /etc/apt/sources.list.d/ondrej-php5-5_6-trusty.list
-#rm /etc/apt/sources.list.d/ondrej-php5-5_6-trusty.list.save
 #add-apt-repository -y ppa:ondrej/php
 
 #Fix ScotchBox's keys https://github.com/scotch-io/scotch-box/issues/403
