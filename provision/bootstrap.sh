@@ -43,6 +43,7 @@ add-apt-repository ppa:builds/sphinxsearch-rel22
 # Update once after all new repos have been added
 apt-get -y update
 
+
 # Install packages
 apt-get -y install php$PHP_VERSION php$PHP_VERSION-dev php-redis php-apcu php$PHP_VERSION-mbstring php$PHP_VERSION-mysql php$PHP_VERSION-xml php$PHP_VERSION-opcache php$PHP_VERSION-gd php$PHP_VERSION-curl php$PHP_VERSION-zip
 apt-get -y install ffmpeg imagemagick pngquant gifsicle freeglut3 webp sphinxsearch
@@ -50,17 +51,14 @@ apt-get -y install ffmpeg imagemagick pngquant gifsicle freeglut3 webp sphinxsea
 
 # TODO:: is this needed? were already using php 7
 # Switch Apache to PHP 7
-a2enmod php$PHP_VERSION
+#a2dismod php7.0 #disable existing php module
+#a2enmod php$PHP_VERSION
 
+#systemctl restart apache2.service
 
 echo "\nConfiguring PHP"
-# Copy config change setting and copy back
-sed "s/opcache\.enable.*/opcache.enable = 1/" /etc/php/$PHP_VERSION/apache2/conf.d/user.ini > /tmp/php.edited.user.ini
-echo "extension=redis.so" >> /tmp/php.edited.user.ini
-echo "session.save_handler = redis" >> /tmp/php.edited.user.ini
-echo "session.save_path = tcp://127.0.0.1:6379" >> /tmp/php.edited.user.ini
-sed -i '/mongo.so/d' /tmp/php.edited.user.ini # this is from scotchbox but it dosen't exist so remove the refrence
-cp /tmp/php.edited.user.ini /etc/php/$PHP_VERSION/apache2/conf.d/user.ini
+echo "session.save_handler = redis" >> /etc/php/$PHP_VERSION/apache2/conf.d/custom.ini
+echo "session.save_path = tcp://127.0.0.1:6379" >> /etc/php/$PHP_VERSION/apache2/conf.d/custom.ini
 
 # Tell Pear/Pecl packages where to find php.ini
 #pear config-set php_ini /etc/php/$PHP_VERSION/apache2/php.ini
@@ -90,17 +88,14 @@ chown vagrant:vagrant /home/vagrant/.node_modules
 mount --bind /home/vagrant/.node_modules /vagrant/www/node_modules
 
 echo "\nCreating useful symlinks"
-#ln -s /var/www www
-#ln -s /vagrant/www vvv
 ln -s /vagrant/www www
 ln -s /vagrant/provision/db-create.sh db-create.sh
-#ln -s /etc/php/$PHP_VERSION/apache2/php.ini php.ini
-#ln -s /etc/php/$PHP_VERSION/apache2/conf.d/user.ini user.ini
 ln -s /etc/php/$PHP_VERSION/apache2/php.ini php.ini
 ln -s /etc/php/$PHP_VERSION/apache2/conf.d/user.ini user.ini
+ln -s /etc/php/$PHP_VERSION/apache2/conf.d/custom.ini custom.ini
 ln -s /etc/apache2/apache2.conf apache2.conf
 ln -s /etc/mysql/my.cnf mysql.conf
-ln -s /etc/redis/6379.conf redis.conf
+ln -s /etc/redis/redis.conf redis.conf
 #ln -s /etc/memcached.conf memcached.conf
 
 # Run codebase specific setup scripts
