@@ -1,7 +1,7 @@
 # DairyBox
 <img align="right" src="https://raw.githubusercontent.com/ludumdare/dairybox/gh-pages/assets/Logo.png">
 
-DairyBox is the Web Development Toolchain for the **Jammer** and **Ludum Dare** projects. To make contributions to the website, you will be using this suite of tools.
+DairyBox is the Web Development Toolchain for the **Jammer** and **Ludum Dare** projects. To make contributions to the website, you will be using these suite of tools.
 
 ### DairyBox Uses
 * **Vagrant** - A set of tools for automating and controlling Virtual Machines (VMs)
@@ -17,7 +17,7 @@ In the case of Scotch/Box, the important files (i.e. the website) lives on your 
 
 Since the files are NOT on the VM, you can safely `vagrant destroy` whenever you need to update DairyBox.
 
-## I still don't understand
+## I still don't understand!
 You're running a fake computer on your computer. That fake computer runs Linux. We installed everything for you, and if you break it, you can *push a button* (Vagrant) to get a brand new fake computer. You can destroy and create that fake computer as many times as you want.
 
 Once set up, DairyBox will serve web pages to you. All you have to do is edit files and refresh your browser any time you change something. And if it ever stops working, you can blow up your fake computer using *the button* (Vagrant) and get a new one (though you probably just need to restart it).
