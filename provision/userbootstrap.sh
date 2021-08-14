@@ -1,7 +1,7 @@
 #!/bin/sh
 # This is the bootstrapping script that provisions the vagrant user
 
-NODEJS_VERSION="v12"
+NODEJS_VERSION="v14"
 
 echo "\nRunning userbootstrap.sh as unprivileged user \n"
 
