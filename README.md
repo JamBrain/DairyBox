@@ -113,9 +113,9 @@ Setup should take about 4 minutes, but longer on a brand new install (lots of do
 After setup, you'll be able to access VM's sandbox folder here: http://192.168.48.48. It may take a moment to connect.
 
 The following domains have been configured to point to the VM running on your local machine:
-* http://ludumdare.org - **ludumdare.com** (`www/public-ludumdare.com`)
-  * http://api.ludumdare.org - **api.ludumdare.com** (`www/public-api`)
-  * http://url.ludumdare.org - **ldj.am** (`www/public-url.shortener`)
+* http://ldjam.work - **ldjam.com** (`www/public-ludumdare.com`)
+  * http://api.ldjam.work - **api.ldjam.com** (`www/public-api`)
+  * http://url.ldjam.work - **ldj.am** (`www/public-url.shortener`)
 * http://jammer.work - **jammer.vg** (`www/public-jammer.vg`)
   * http://api.jammer.work - **api.jammer.vg** (`www/public-api`)
   * http://url.jammer.work - **jam.mr** (`www/public-url.shortener`)
@@ -151,7 +151,7 @@ make
 ```
 This compiles from inside the VM. You can repeat running `make` as many time as you like thereafter.
 
-With the source built and the VM running, you can now view your instance in a browser at http://ludumdare.org
+With the source built and the VM running, you can now view your instance in a browser at http://ldjam.work
 
 ### Building outside the VM
 See [wiki/External-VM-Builds](https://github.com/ludumdare/dairybox/wiki/External-VM-Builds)
@@ -262,7 +262,7 @@ Once setup completes, you can use the info script to fetch the public IP address
 
 The public IP is usually the IP listed under **eth2**.
 
-The public IP address is needed to connect to the VM remotely. The domains, `jammer.work` and `ludumdare.org` are configured for the default local IP address (`192.168.48.48`), and can't be used for this.
+The public IP address is needed to connect to the VM remotely. The domains, `jammer.work` and `ldjam.work` are configured for the default local IP address (`192.168.48.48`), and can't be used for this.
 
 You can change the `.hosts` file of your local internet router. For details, go here:
 
@@ -358,9 +358,9 @@ To work offline we must add the following to the hosts-file:
 
 ```
 # For LudumDare Development
-192.168.48.48 ludumdare.org
-192.168.48.48 api.ludumdare.org
-192.168.48.48 url.ludumdare.org
+192.168.48.48 ldjam.work
+192.168.48.48 api.ldjam.work
+192.168.48.48 url.ldjam.work
 192.168.48.48 jammer.work
 192.168.48.48 api.jammer.work
 192.168.48.48 url.jammer.work
