@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
 		v.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/www", "1"]
 	end
 
-	config.vm.network "private_network", ip: "192.168.48.48"
+	config.vm.network "private_network", ip: "192.168.56.48"
 #	config.vm.network "public_network"
 	config.vm.hostname = "dairybox"
 	config.vm.synced_folder "www", "/var/www", :mount_options => ["dmode=777","fmode=666"]
