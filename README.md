@@ -1,14 +1,20 @@
 # DairyBox
 <img align="right" src="https://raw.githubusercontent.com/ludumdare/dairybox/gh-pages/assets/Logo.png">
 
-DairyBox is the Web Development Toolchain for the **Jammer** and **Ludum Dare** projects. To make contributions to the website, you will be using this suite of tools.
+DairyBox is the web development toolchain for the **Ludum Dare** and **Jammer** event websites. To make contributions, you will be using this suite of tools.
 
-### DairyBox Uses
+**IMPORTANT UPDATE 2022**: Elements of Dairybox are end of life (EOL), unsutable for production, but still usable for development. We will take steps to correct this, but do understand the tooling is a bit out-of-date.
+
+
+### DairyBox uses
 * **Vagrant** - A set of tools for automating and controlling Virtual Machines (VMs)
 * **Virtual Box** - for hosting and running those Virtual Machines
 * **Scotch/Box** - a flexible preconfigured LAMP VM for Vagrant (Linux+Apache+MySQL+PHP)
 
-The live servers **don't** run LAMP, but instead runs a similar bleeding-edge configuration (Linux+OpenLiteSpeed+MariaDB+PHP7). In the future we may switch to a custom VM that better mirrors what is run on the servers. For details, check out [JuiceBox](https://github.com/povrazor/juicebox).
+The live servers **don't** run a LAMP stack, but instead run a similar bleeding-edge configuration (Linux+OpenLiteSpeed+MariaDB+PHP7).
+
+**UPDATE 2022**: The live servers currently run some more akin to a LEMP stack (Linux+NginX+MariaDB+PHP8), but that doesn't do it justice. I'll link to a more detailed architecture breakdown in the future.
+
 
 ## What? Explain working with Vagrant and Scotch/Box
 The key thing to understand about working with Vagrant boxes (VMs) like Scotch/Box is that Vagrant boxes are temporary. Though you can connect to the Virtual Machine and install whatever you like, Vagrant boxes work best when you install things via setup scripts. That way, they can be *nuked from orbit* whenever you like, giving you fresh/clean install whenever you want one.
@@ -16,6 +22,7 @@ The key thing to understand about working with Vagrant boxes (VMs) like Scotch/B
 In the case of Scotch/Box, the important files (i.e. the website) lives on your local machine. The Scotch/Box VM is pre-configured with a share to those files. You simply edit the files in the `www` folder, refresh your browser to see the changes, and commit/push your changes to your GIT repository once you're happy with them. Easy.
 
 Since the files are NOT on the VM, you can safely `vagrant destroy` whenever you need to update DairyBox.
+
 
 ## I still don't understand
 You're running a fake computer on your computer. That fake computer runs Linux. We installed everything for you, and if you break it, you can *push a button* (Vagrant) to get a brand new fake computer. You can destroy and create that fake computer as many times as you want.
@@ -26,8 +33,8 @@ We call that editing, clicking, and blowing up computers *the workflow*.
 
 We call the stuff you download and install *the toolchain*.
 
-# Pre Setup (Part 0)
 
+# Pre Setup (Part 0)
 First, you may need to enable virtualization support in your BIOS. How you do this will depend on your computer model or motherboard. A good place to start is Google:
 
 https://www.google.com/#q=enable+virtualization
@@ -43,10 +50,12 @@ https://www.google.com/#q=enable+virtualization
     vagrant plugin install vagrant-exec
     ```
 
+
 ### Linux Notes (***)
 If you're an Ubuntu/Debian user, **DON'T INSTALL VAGRANT AND VIRTUAL BOX USING APT-GET**! The repositories for these are **VERY** out of date. Most Vagrant setup problems on Linux are because you don't have the latest version.
 
 If you're on Arch Linux, you will need the **net-tools** package to make Vagrant work right. See [here](https://wiki.archlinux.org/index.php/Vagrant#No_ping_between_host_and_vagrant_box_.28host-only_networking.29).
+
 
 ### Windows Notes (*)
 Dairybox on Windows works _best_ with a Unix environment. The latest version of **GIT** includes one (Based on **MSys**). Launch the **GIT Bash** shell to use it (may require a reboot).
@@ -73,6 +82,7 @@ where `ludumdare` is the directory you plan to work out of.
 **NOTE:** DairyBox is the toolchain. For convenience, we use GIT to download and install it. Most people don't need a Fork of DairyBox. Upgrades are MUCH simpler if you don't.
 
 **DO NOT** do a `vagrant up` yet. We have one more step...
+
 
 # Setup Part 2: Source
 Enter the `www` directory, initialize a new repository there, and set the origin to your source repository.
@@ -101,9 +111,13 @@ git remote add upstream https://github.com/ludumdare/ludumdare.git
 git fetch
 git checkout -t origin/master
 ```
+Very important: don't forget the `-t`, else you'll be left with a detached head.
+
+
 This will make committing your changes, and merging upstream changes easier.
 
 We will be working in the `www` directory.
+
 
 # Setup Part 3: Vagrant Up
 Do a `vagrant up`.
@@ -129,6 +143,7 @@ For details on the **Jammer/Ludum Dare** source tree, visit:
 
 https://github.com/ludumdare/ludumdare
 
+
 # Using Dairybox
 ## Building the Source Code and SVG Assets
 There are two ways to build the source code and assets.
@@ -140,6 +155,7 @@ Common to both methods is how you build.
 
 * `make` to compile the latest changes to the project
 * `make clean` to destroy all files, and start over
+
 
 ### Building inside the VM
 This is ready to-go after setup. Simply do the following.
@@ -153,8 +169,10 @@ This compiles from inside the VM. You can repeat running `make` as many time as 
 
 With the source built and the VM running, you can now view your instance in a browser at http://ldjam.work
 
+
 ### Building outside the VM
 See [wiki/External-VM-Builds](https://github.com/ludumdare/dairybox/wiki/External-VM-Builds)
+
 
 ## Updating the database tables
 **IMPORTANT**: When you've been working a while, ocassionally you will need to update the database tables.
@@ -166,6 +184,7 @@ sudo ~/db-create.sh
 ```
 
 If you're working outside the VM, a version of `db-create.sh` can be found in the DairyBox folder (i.e. `../db-create.sh`).
+
 
 ## Merging Upstream
 GitHub will often complain that your version is behind master. To merge the latest changes, do the following:
@@ -181,6 +200,7 @@ git push -u
 https://help.github.com/articles/syncing-a-fork/
 
 https://help.github.com/articles/merging-an-upstream-repository-into-your-fork/
+
 
 ## Cherry-Picking
 If you've made several changes and want to make a patch for specific changes, you can use Git's cherry-pick feature.
@@ -203,6 +223,7 @@ git checkout master
 
 Reference: http://stackoverflow.com/a/25955829/5678759
 
+
 ## Upgrading DairyBox
 From your root working directory (not `www`).
 * Destroy your VM with `vagrant destroy`. This shuts down the server and removes the VM.
@@ -211,6 +232,7 @@ From your root working directory (not `www`).
 * Initialize a fresh VM with `vagrant up`.
 
 If however you forked Dairybox, you will have to do something like above (Merging Upstream).
+
 
 # Tips
 You should **suspend** the VM before put it to sleep (or close the lid). If you forget, do a `vagrant suspend` then a `vagrant up` to resume the server.
@@ -221,11 +243,13 @@ You should **suspend** the VM before put it to sleep (or close the lid). If you 
 * `vagrant destroy` to delete the VM (the files in www are fine, but everything else is lost)
 * `vagrant ssh` to connect to the VM with SSH
 
+
 ## Utilities
 ### Local Utilities
 With **Vagrant-Exec** installed, these shell scripts are available in the Dairybox folder.
 * **info.sh** - Get information about the VM. IP addresses, etc.
 * **log.sh** - Get the Apache+PHP Log (use PHP function "error_log" to send errors here).
+
 
 ### Config File Symlinks
 If you do a `vagrant ssh`, inside your home directory (`~`), you'll find symlinks to configuration files for the various software run on the webserver.
@@ -237,6 +261,7 @@ If you do a `vagrant ssh`, inside your home directory (`~`), you'll find symlink
 Also, for convenience, there are symlinks to the following helpful folders:
 * **~/www/** - to the WWW root folder
 
+
 ### Web Utilities
 These are some pre-installed tools you can access with your browser. Helpful for debugging.
 * http://192.168.56.48/dev/ (`../dev/`)
@@ -246,6 +271,7 @@ These are some pre-installed tools you can access with your browser. Helpful for
   * **phpmyadmin/** - Manage the Databases - login: **root**  password: **root**
 
 Data can be found in the `scotchbox` database.
+
 
 ## Public Server
 By default, your DairyBox can only be accessed on the local machine. To access it from another machine or device on your network, you need to enable the _Public Server_, and either edit your router or remote devices `.hosts` file. If you don't have SSH access or another way to change the `.hosts` file of your router/device, you **will not** be able to do this.
@@ -313,6 +339,7 @@ sudo service apache2 restart
 
 http://php.net/manual/en/opcache.configuration.php
 
+
 ## Configuring APCu (Memory Cache)
 APCu comes pre-configured in DairyBox.
 
@@ -330,15 +357,17 @@ To change setting (memory usage, etc), do edit `~/user.ini`.
 
 http://php.net/manual/en/apcu.configuration.php
 
-## Configuring e-mail for testing
 
+## Configuring e-mail for testing
 You can monitor outgoing e-mails using MailHog here:
 
 http://192.168.56.48:8025/
 
 Any emails generated by the server will be caught and displayed there.
 
+
 ## Testing legacy Internet Explorer versions
+**UPDATE 2022**: We are no longer supporting Internet Explorer.
 
 Microsoft offers a variety of Virtual Machines for testing Internet Explorer 8-11 on Windows 7 and 8, as well as Microsoft Edge on Windows 10. The toolchain is already using VirtualBox, so it makes sense to grab VirtualBox images.
 
@@ -352,8 +381,8 @@ https://github.com/magnetikonline/linuxmicrosoftievirtualmachines#ie8---xp
 
 **NOTE**: Be sure to snapshot the VMs **BEFORE** starting them for the first time. The VMs use un-activated versions of Windows, and will expire after 30-90 days. With a snapshot, you can roll-back the VM and get a new 30-90 days.
 
-## Working Offline
 
+## Working Offline
 To work offline we must add the following to the hosts-file:
 
 ```
@@ -377,8 +406,8 @@ On windows in `git bash` as **administrator** you can edit it by:
 vi /c/Windows/System32/drivers/etc/hosts
 ```
 
-## When your box stops working.
 
+## When your box stops working.
 1. Navigate to where you usually do `vagrant up`
 2. If your box is running `vagrant halt`
 3. Do `vagrant box list`, this should show you a `scotch/box`
