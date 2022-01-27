@@ -1,9 +1,9 @@
 # DairyBox
-<img align="right" src="https://raw.githubusercontent.com/ludumdare/dairybox/gh-pages/assets/Logo.png">
+<img align="right" src="https://raw.githubusercontent.com/JammerCore/DairyBox/gh-pages/assets/Logo.png">
 
-DairyBox is the web development toolchain for the **Ludum Dare** and **Jammer** event websites. To make contributions, you will be using this suite of tools.
+DairyBox is the web development toolchain for **Jammer Core**, the software powering **Ludum Dare** events. To make contributions, you will be using this suite of tools.
 
-**IMPORTANT UPDATE 2022**: Elements of Dairybox are end of life (EOL), unsutable for production, but still usable for development. We will take steps to correct this, but do understand the tooling is a bit out-of-date.
+**IMPORTANT UPDATE 2022**: Elements of DairyBox are end of life (EOL), unsutable for production, but still usable for development. We will take steps to correct this, but do understand the tooling is a bit out-of-date.
 
 
 ### DairyBox uses
