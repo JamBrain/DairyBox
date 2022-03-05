@@ -2,7 +2,7 @@
 # This is the bootstrapping script that provisions Scotch Box for us
 
 PHP_VERSION="7.0"
-PHP_MYADMIN_VERSION="4.8.5"
+PHP_MYADMIN_VERSION="4.9.10"
 MARIADB_VERSION="10.2"
 UBUNTU_VERSION="xenial"
 
@@ -23,7 +23,7 @@ export DEBIAN_FRONTEND=noninteractive
 # Newer version of ImageMagick on Ubuntu 14.04 (needed for correct webp support)
 #add-apt-repository -y ppa:jamedjo/ppa
 
-# Repo for current PHP versions
+# Repo for current PHP versions (no longer available)
 #add-apt-repository -y ppa:ondrej/php
 
 #Fix ScotchBox's keys https://github.com/scotch-io/scotch-box/issues/403
@@ -38,15 +38,24 @@ apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74C
 add-apt-repository "deb [arch=amd64,arm64,ppc64el] http://sfo1.mirrors.digitalocean.com/mariadb/repo/$MARIADB_VERSION/ubuntu $UBUNTU_VERSION main"
 
 # Repo for Sphinx
-add-apt-repository ppa:builds/sphinxsearch-rel22
+#add-apt-repository ppa:builds/sphinxsearch-rel22
 
 # Update once after all new repos have been added
 apt-get -y update
 
+# Remove the expired Lets Encrypt certificate
+sed -i"" 's/mozilla\/DST_Root_CA_X3.crt/!mozilla\/DST_Root_CA_X3.crt/' /etc/ca-certificates.conf
+dpkg-reconfigure -fnoninteractive ca-certificates
+update-ca-certificates
+
+apt-get -y remove ca-certificates
+apt-get -y install ca-certificates
+
 
 # Install packages
 apt-get -y install php$PHP_VERSION php$PHP_VERSION-dev php-redis php-apcu php$PHP_VERSION-mbstring php$PHP_VERSION-mysql php$PHP_VERSION-xml php$PHP_VERSION-opcache php$PHP_VERSION-gd php$PHP_VERSION-curl php$PHP_VERSION-zip
-apt-get -y install ffmpeg imagemagick pngquant gifsicle freeglut3 webp sphinxsearch
+apt-get -y install ffmpeg imagemagick pngquant gifsicle freeglut3 webp
+# sphinxsearch
 
 
 # TODO:: is this needed? were already using php 7
