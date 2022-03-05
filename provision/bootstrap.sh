@@ -91,6 +91,10 @@ if [ ! -d "/vagrant/dev/phpmyadmin" ]; then
 	unzip phpMyAdmin-$PHP_MYADMIN_VERSION-all-languages.zip
 	mv phpMyAdmin-$PHP_MYADMIN_VERSION-all-languages /vagrant/dev/phpmyadmin
 	rm phpMyAdmin-$PHP_MYADMIN_VERSION-all-languages.zip
+	cp /vagrant/dev/phpmyadmin/config.sample.inc.php /vagrant/dev/phpmyadmin/config.inc.php
+	echo "\$cfg['TempDir'] = '/tmp';" >> /vagrant/dev/phpmyadmin/config.inc.php
+	echo "\$cfg['blowfish_secret'] = '`openssl rand -base64 36`';" >> /vagrant/dev/phpmyadmin/config.inc.php
+	mysql -u root -proot < /vagrant/dev/phpmyadmin/sql/create_tables.sql
 fi
 
 echo "\nMounting node_modules" # for better performance of nodejs.
